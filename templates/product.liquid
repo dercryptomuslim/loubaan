@@ -1,0 +1,40 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign first_3d_model = product.media | where: "media_type", "model" | first
+  if first_3d_model
+    echo '<script type="application/json" id="ProductJSON-' | append: product.id | append: '">'
+    echo product.media | where: 'media_type', 'model' | json
+    echo '</script>'
+    echo '<script src="' | append: 'product-model.js' | asset_url | append: '" defer="defer"></script>'
+  endif
+-%}
+
+{% section 'main-product' %}
+{% section 'product-recommendations' %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
+    const noScriptInputWrapper = document.createElement('div');
+    const variantSwitcher = document.querySelector('variant-radios[data-section="{{ section.id }}"]') || document.querySelector('variant-selects[data-section="{{ section.id }}"]');
+    noScriptInputWrapper.innerHTML = document.querySelector('.no-js-hidden input[name="id"]').outerHTML;
+    variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
+  });
+</script>
