@@ -1,0 +1,210 @@
+{%- comment -%}
+  Unit Price and Savings Calculator for LOUBAAN
+  Fügen Sie diesen Code direkt nach dem Preis-Element in Ihrer main-product.liquid ein
+{%- endcomment -%}
+
+{%- liquid
+  # Get base variant (smallest ml size) for comparison
+  assign base_variant = null
+  assign base_ml = 999999
+  
+  for variant in product.variants
+    assign option1_lower = variant.option1 | downcase
+    if option1_lower contains 'ml'
+      assign ml_value = option1_lower | remove: 'ml' | remove: ' ' | times: 1
+      if ml_value > 0 and ml_value < base_ml
+        assign base_ml = ml_value
+        assign base_variant = variant
+      endif
+    endif
+  endfor
+  
+  # Check if product has ml variants
+  assign has_ml_variants = false
+  if base_variant != null
+    assign has_ml_variants = true
+  endif
+-%}
+
+{%- if has_ml_variants -%}
+  <div class="unit-price-container" id="unit-price-container">
+    <div class="unit-price-display">
+      <div class="current-unit-price" id="current-unit-price">
+        <span class="unit-price-value"></span>
+      </div>
+      <div class="savings-display" id="savings-display" style="display: none;">
+        <span class="savings-text"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.loubaan_unit_price_data = {
+      base_variant: {
+        id: {{ base_variant.id }},
+        price: {{ base_variant.price }},
+        ml: {{ base_ml }}
+      },
+      variants: [
+        {%- for variant in product.variants -%}
+          {%- assign option1_lower = variant.option1 | downcase -%}
+          {%- if option1_lower contains 'ml' -%}
+            {%- assign ml_value = option1_lower | remove: 'ml' | remove: ' ' | times: 1 -%}
+            {%- if ml_value > 0 -%}
+              {
+                id: {{ variant.id }},
+                price: {{ variant.price }},
+                ml: {{ ml_value }},
+                available: {{ variant.available | json }}
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      ]
+    };
+  </script>
+
+  <script>
+    class LoubaaUnitPriceCalculator {
+      constructor() {
+        this.data = window.loubaan_unit_price_data;
+        this.currentVariant = null;
+        this.init();
+      }
+
+      init() {
+        // Find current variant on page load
+        const currentVariantId = this.getCurrentVariantId();
+        if (currentVariantId) {
+          this.updateDisplay(currentVariantId);
+        }
+
+        // Listen for variant changes (Dawn theme events)
+        document.addEventListener('variant:change', (event) => {
+          if (event.detail && event.detail.variant) {
+            this.updateDisplay(event.detail.variant.id);
+          }
+        });
+
+        // Fallback: Listen for option changes
+        const variantSelectors = document.querySelectorAll('input[name="id"], select[name="id"]');
+        variantSelectors.forEach(selector => {
+          selector.addEventListener('change', (e) => {
+            this.updateDisplay(e.target.value);
+          });
+        });
+
+        // Listen for option button clicks (Dawn variant pills)
+        document.querySelectorAll('.product-form__buttons input[type="radio"]').forEach(radio => {
+          radio.addEventListener('change', () => {
+            setTimeout(() => {
+              const currentVariantId = this.getCurrentVariantId();
+              if (currentVariantId) {
+                this.updateDisplay(currentVariantId);
+              }
+            }, 100);
+          });
+        });
+      }
+
+      getCurrentVariantId() {
+        // Try multiple methods to get current variant
+        const variantInput = document.querySelector('input[name="id"]');
+        const variantSelect = document.querySelector('select[name="id"]');
+        
+        if (variantInput) return parseInt(variantInput.value);
+        if (variantSelect) return parseInt(variantSelect.value);
+        
+        // Fallback: get from URL or default to first variant
+        const urlParams = new URLSearchParams(window.location.search);
+        const variantParam = urlParams.get('variant');
+        if (variantParam) return parseInt(variantParam);
+        
+        return this.data.variants[0]?.id;
+      }
+
+      updateDisplay(variantId) {
+        const selectedVariant = this.data.variants.find(v => v.id === parseInt(variantId));
+        
+        if (!selectedVariant) {
+          this.hideDisplay();
+          return;
+        }
+
+        this.currentVariant = selectedVariant;
+        this.showUnitPrice();
+        this.showSavings();
+      }
+
+      showUnitPrice() {
+        const unitPriceElement = document.getElementById('current-unit-price');
+        const unitPricePerLiter = (this.currentVariant.price / this.currentVariant.ml) * 1000;
+        
+        const formattedPrice = new Intl.NumberFormat('de-DE', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 3,
+          maximumFractionDigits: 3
+        }).format(unitPricePerLiter / 100);
+
+        unitPriceElement.innerHTML = `
+          <span class="unit-price-volume">${this.currentVariant.ml} ml</span> · 
+          <span class="unit-price-value">${formattedPrice} / Liter</span>
+        `;
+      }
+
+      showSavings() {
+        const savingsElement = document.getElementById('savings-display');
+        
+        // Only show savings if current variant is larger than base
+        if (this.currentVariant.ml <= this.data.base_variant.ml) {
+          savingsElement.style.display = 'none';
+          return;
+        }
+
+        const basePricePerLiter = (this.data.base_variant.price / this.data.base_variant.ml) * 1000;
+        const currentPricePerLiter = (this.currentVariant.price / this.currentVariant.ml) * 1000;
+        
+        const savingsPerLiter = basePricePerLiter - currentPricePerLiter;
+        
+        if (savingsPerLiter <= 0) {
+          savingsElement.style.display = 'none';
+          return;
+        }
+
+        const savingsPercent = (savingsPerLiter / basePricePerLiter) * 100;
+        
+        const formattedSavings = new Intl.NumberFormat('de-DE', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: 3,
+          maximumFractionDigits: 3
+        }).format(savingsPerLiter / 100);
+
+        savingsElement.innerHTML = `
+          <span class="savings-text">
+            Du sparst ${Math.round(savingsPercent)} % (${formattedSavings} / Liter) gegenüber ${this.data.base_variant.ml} ml
+          </span>
+        `;
+        
+        savingsElement.style.display = 'block';
+      }
+
+      hideDisplay() {
+        const container = document.getElementById('unit-price-container');
+        if (container) {
+          container.style.display = 'none';
+        }
+      }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        new LoubaaUnitPriceCalculator();
+      });
+    } else {
+      new LoubaaUnitPriceCalculator();
+    }
+  </script>
+{%- endif -%}
