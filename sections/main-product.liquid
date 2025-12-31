@@ -114,31 +114,10 @@
                     price_class: 'price--large'
                   -%}
 
-                  {%- comment -%} LOUBAAN Unit Price & Savings Display {%- endcomment -%}
-                  {%- liquid
-                    # Get base variant (smallest ml size) for comparison
-                    assign base_variant = null
-                    assign base_ml = 999999
-                    
-                    for variant in product.variants
-                      assign option1_lower = variant.option1 | downcase
-                      if option1_lower contains 'ml'
-                        assign ml_value = option1_lower | remove: 'ml' | remove: ' ' | times: 1
-                        if ml_value > 0 and ml_value < base_ml
-                          assign base_ml = ml_value
-                          assign base_variant = variant
-                        endif
-                      endif
-                    endfor
-                    
-                    # Check if product has ml variants
-                    assign has_ml_variants = false
-                    if base_variant != null
-                      assign has_ml_variants = true
-                    endif
-                  -%}
-
-                  {%- if has_ml_variants -%}
+                  {%- comment -%} LOUBAAN Unit Price - MINIMAL VERSION {%- endcomment -%}
+                  {%- assign loubaan_test_enabled = false -%}
+                  
+                  {%- if loubaan_test_enabled -%}
                     <div class="loubaan-unit-price" id="loubaan-unit-price-{{ section.id }}">
                       <div class="unit-price-display" id="unit-price-display-{{ section.id }}">
                         <div class="current-unit-price" id="current-unit-price-{{ section.id }}">
