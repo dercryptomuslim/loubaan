@@ -19,6 +19,13 @@
             "heading_size": "h0"
           }
         },
+        "text_hTCrHh": {
+          "type": "text",
+          "settings": {
+            "text": "Für tägliche Ruhe, Entspannung und Erholung.",
+            "text_style": "body"
+          }
+        },
         "button": {
           "type": "buttons",
           "settings": {
@@ -33,6 +40,7 @@
       },
       "block_order": [
         "heading",
+        "text_hTCrHh",
         "button"
       ],
       "settings": {
