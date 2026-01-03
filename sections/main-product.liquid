@@ -114,10 +114,32 @@
                     price_class: 'price--large'
                   -%}
 
-                  {%- comment -%} LOUBAAN Unit Price - MINIMAL VERSION {%- endcomment -%}
-                  {%- assign loubaan_test_enabled = false -%}
-                  
-                  {%- if loubaan_test_enabled -%}
+                  {%- comment -%} LOUBAAN Unit Price & Savings Display {%- endcomment -%}
+                  {%- liquid
+                    # Get base variant (smallest ml size) for comparison
+                    assign base_variant = null
+                    assign base_ml = 999999
+                    
+                    for variant in product.variants
+                      assign option1_lower = variant.option1 | downcase
+                      if option1_lower contains 'ml'
+                        assign ml_string = option1_lower | remove: 'ml' | strip
+                        assign ml_value = ml_string | times: 1
+                        if ml_value > 0 and ml_value < base_ml
+                          assign base_ml = ml_value
+                          assign base_variant = variant
+                        endif
+                      endif
+                    endfor
+                    
+                    # Check if product has ml variants
+                    assign has_ml_variants = false
+                    if base_variant != null
+                      assign has_ml_variants = true
+                    endif
+                  -%}
+
+                  {%- if has_ml_variants -%}
                     <div class="loubaan-unit-price" id="loubaan-unit-price-{{ section.id }}">
                       <div class="unit-price-display" id="unit-price-display-{{ section.id }}">
                         <div class="current-unit-price" id="current-unit-price-{{ section.id }}">
@@ -130,32 +152,6 @@
                     </div>
 
                     <script>
-                      // Debug: Log all variant data for debugging
-                      console.log('LOUBAAN DEBUG - All variants:', [
-                        {%- for variant in product.variants -%}
-                          {
-                            id: {{ variant.id }},
-                            title: "{{ variant.title | escape }}",
-                            option1: "{{ variant.option1 | escape }}",
-                            price: {{ variant.price }},
-                            available: {{ variant.available | json }}
-                          }{%- unless forloop.last -%},{%- endunless -%}
-                        {%- endfor -%}
-                      ]);
-
-                      // Debug: Check base variant detection
-                      {%- if base_variant -%}
-                        console.log('LOUBAAN DEBUG - Base variant found:', {
-                          id: {{ base_variant.id }},
-                          title: "{{ base_variant.title | escape }}",
-                          option1: "{{ base_variant.option1 | escape }}",
-                          ml: {{ base_ml }},
-                          price: {{ base_variant.price }}
-                        });
-                      {%- else -%}
-                        console.log('LOUBAAN DEBUG - No base variant found!');
-                      {%- endif -%}
-
                       window.loubaan_unit_price_data_{{ section.id }} = {
                         section_id: '{{ section.id }}',
                         {%- if base_variant -%}
@@ -190,8 +186,6 @@
                         ]
                       };
 
-                      console.log('LOUBAAN DEBUG - Final data:', window.loubaan_unit_price_data_{{ section.id }});
-
                       if (typeof LoubaaUnitPriceManager === 'undefined') {
                         class LoubaaUnitPriceManager {
                           constructor() {
@@ -200,32 +194,17 @@
                           }
 
                           register(sectionId) {
-                            console.log('LOUBAAN DEBUG - Registering section:', sectionId);
                             const data = window[`loubaan_unit_price_data_${sectionId}`];
-                            console.log('LOUBAAN DEBUG - Section data:', data);
                             
-                            if (!data) {
-                              console.error('LOUBAAN ERROR - No data found for section:', sectionId);
-                              return;
-                            }
-
-                            if (!data.base_variant) {
-                              console.error('LOUBAAN ERROR - No base variant found for section:', sectionId);
-                              return;
-                            }
-
-                            if (!data.variants || data.variants.length === 0) {
-                              console.error('LOUBAAN ERROR - No ml variants found for section:', sectionId);
+                            if (!data || !data.base_variant || !data.variants || data.variants.length === 0) {
                               return;
                             }
 
                             const calculator = new LoubaaUnitPriceCalculator(data);
                             this.instances.set(sectionId, calculator);
-                            console.log('LOUBAAN DEBUG - Calculator created for section:', sectionId);
                             
                             // Initialize display
                             setTimeout(() => {
-                              console.log('LOUBAAN DEBUG - Initializing display for section:', sectionId);
                               calculator.initializeDisplay();
                             }, 100);
                           }
@@ -400,25 +379,9 @@
                       }
 
                       // Register this section
-                      console.log('LOUBAAN DEBUG - Registering section:', '{{ section.id }}');
                       if (window.loubaaManager) {
                         window.loubaaManager.register('{{ section.id }}');
-                        console.log('LOUBAAN DEBUG - Section registered successfully');
-                      } else {
-                        console.error('LOUBAAN ERROR - loubaaManager not found!');
                       }
-
-                      // Additional check after page load
-                      setTimeout(() => {
-                        const container = document.getElementById('loubaan-unit-price-{{ section.id }}');
-                        console.log('LOUBAAN DEBUG - Container found:', !!container);
-                        if (container) {
-                          console.log('LOUBAAN DEBUG - Container HTML:', container.innerHTML);
-                        }
-                        
-                        const data = window.loubaan_unit_price_data_{{ section.id }};
-                        console.log('LOUBAAN DEBUG - Has ml variants:', data && data.variants && data.variants.length > 0);
-                      }, 2000);
                     </script>
                   {%- endif -%}
                 </div>
