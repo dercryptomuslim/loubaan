@@ -61,8 +61,8 @@
       "type": "featured-collection",
       "settings": {
         "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
+        "products_to_show": 4,
+        "title": "Bestseller",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -84,10 +84,59 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_RDBpjr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_JaMpMC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Was ist LOUBAAN?",
+            "heading_size": "h1"
+          }
+        },
+        "text_43jGYg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LOUBAAN entstand aus der Sehnsucht nach echter Tiefe in einer lauten Welt. Unsere Wurzeln liegen in der Verbindung von kostbaren orientalischen Hatem-Ölen und der minimalistischen Klarheit skandinavisch-japanischen Designs.</p><p>Wir glauben an Rituale statt an Konsum. Ein Duft von LOUBAAN ist kein Hintergrundgeräusch – er ist eine bewusste Entscheidung für den Moment. Qualität steht bei uns vor Masse: Jede Komposition wird in kleinen Chargen handgefertigt.</p><p>Stille ist unser höchster Luxus. Unsere Düfte sind leise, aber präsent. Edel, aber niemals aufdringlich. Ein Versprechen an Ihre Sinne.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_QNWqqg": {
+          "type": "button",
+          "settings": {
+            "button_label": "ZUM SHOP",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_JaMpMC",
+        "text_43jGYg",
+        "button_QNWqqg"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Generated_Image_December_21_2025_-_5_09PM.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "image_with_text_RDBpjr"
   ]
 }
