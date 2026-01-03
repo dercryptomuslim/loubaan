@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "image_banner": {
@@ -31,10 +22,10 @@
           "settings": {
             "button_label_1": "Kollektionen entdecken",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_1": false,
+            "button_label_2": "Was ist LOUBAAN?",
+            "button_link_2": "#loubaan-info",
+            "button_style_secondary_2": true
           }
         }
       },
@@ -45,16 +36,99 @@
       ],
       "settings": {
         "image": "shopify://shop_images/Generated_Image_December_21_2025_-_4_34PM.jpg",
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 30,
         "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
-        "show_text_box": false,
+        "show_text_box": true,
         "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
+        "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Natürliche Aromatherapie",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Entdecken Sie unsere Kollektion handverlesener ätherischer Öle, die mit größter Sorgfalt und Leidenschaft kreiert wurden. Jeder Tropfen erzählt eine Geschichte von Reinheit, Qualität und natürlicher Heilkraft.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column1": {
+          "type": "column",
+          "settings": {
+            "title": "100% Rein",
+            "text": "<p>Unsere ätherischen Öle sind zu 100% rein und natürlich, ohne jegliche künstliche Zusätze oder Verdünnungen.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column2": {
+          "type": "column", 
+          "settings": {
+            "title": "Handgefertigt",
+            "text": "<p>Jedes Öl wird in kleinen Chargen handgefertigt und sorgfältig geprüft, um höchste Qualität zu gewährleisten.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column3": {
+          "type": "column",
+          "settings": {
+            "title": "Nachhaltig",
+            "text": "<p>Wir beziehen unsere Rohstoffe aus nachhaltigen Quellen und unterstützen lokale Gemeinschaften.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column1",
+        "column2", 
+        "column3"
+      ],
+      "settings": {
+        "title": "Warum LOUBAAN",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 60
       }
     },
     "featured_collection": {
@@ -62,27 +136,27 @@
       "settings": {
         "collection": "all",
         "products_to_show": 4,
-        "title": "Bestseller",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
+        "title": "Unsere Bestseller",
+        "heading_size": "h1",
+        "description": "<p>Entdecken Sie unsere beliebtesten ätherischen Öle</p>",
+        "show_description": true,
+        "description_style": "subtitle",
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": false,
+        "show_vendor": true,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "bulk",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "image_with_text_RDBpjr": {
@@ -106,7 +180,7 @@
           "type": "button",
           "settings": {
             "button_label": "ZUM SHOP",
-            "button_link": "",
+            "button_link": "/collections/all",
             "button_style_secondary": false
           }
         }
@@ -132,11 +206,47 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bleiben Sie informiert",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Erhalten Sie exklusive Angebote, Aromatherapie-Tipps und Neuigkeiten über unsere neuesten Kreationen direkt in Ihr Postfach.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
     "image_banner",
+    "rich_text",
+    "multicolumn",
     "featured_collection",
-    "image_with_text_RDBpjr"
+    "image_with_text_RDBpjr",
+    "newsletter"
   ]
 }
