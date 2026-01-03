@@ -116,14 +116,20 @@
 
                   {%- comment -%} LOUBAAN Unit Price & Savings Display {%- endcomment -%}
                   {%- liquid
+                    # Debug: Check all variant options
+                    assign debug_variants = ''
+                    for variant in product.variants
+                      assign debug_variants = debug_variants | append: variant.title | append: ' | '
+                    endfor
+                    
                     # Get base variant (smallest ml size) for comparison
                     assign base_variant = null
                     assign base_ml = 999999
                     
                     for variant in product.variants
-                      assign option1_lower = variant.option1 | downcase
-                      if option1_lower contains 'ml'
-                        assign ml_string = option1_lower | remove: 'ml' | strip
+                      assign option_text = variant.title | downcase | replace: ' ', ''
+                      if option_text contains 'ml'
+                        assign ml_string = option_text | remove: 'ml' | strip
                         assign ml_value = ml_string | times: 1
                         if ml_value > 0 and ml_value < base_ml
                           assign base_ml = ml_value
@@ -138,6 +144,14 @@
                       assign has_ml_variants = true
                     endif
                   -%}
+
+                  <!-- Debug Info -->
+                  <div style="background: #f0f0f0; padding: 10px; margin: 10px 0; font-size: 12px;">
+                    <strong>DEBUG:</strong><br>
+                    Variants: {{ debug_variants }}<br>
+                    Has ML variants: {{ has_ml_variants }}<br>
+                    Base variant: {% if base_variant %}{{ base_variant.title }} ({{ base_ml }}ml){% else %}None{% endif %}
+                  </div>
 
                   {%- if has_ml_variants -%}
                     <div class="loubaan-unit-price" id="loubaan-unit-price-{{ section.id }}">
