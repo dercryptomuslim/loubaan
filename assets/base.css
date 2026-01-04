@@ -3827,3 +3827,242 @@ details-disclosure > details {
     border: 1px solid #000;
   }
 }
+
+/* =============================================================================
+   LOUBAAN Rounded Product Page Design
+   ============================================================================= */
+
+/* Product Images - Rounded */
+.product__media img,
+.product__media video,
+.product__media model-viewer {
+  border-radius: 2rem !important;
+  box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.product__media img:hover,
+.product__media video:hover {
+  transform: translateY(-0.2rem) !important;
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Thumbnails - Rounded */
+.product__media-toggle {
+  border-radius: 1.2rem !important;
+  overflow: hidden !important;
+  border: 2px solid transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.product__media-toggle:hover,
+.product__media-toggle.product__media-toggle--active {
+  border-color: rgb(var(--color-base-accent-2)) !important;
+  transform: translateY(-0.1rem) !important;
+}
+
+.product__media-toggle img {
+  border-radius: 1rem !important;
+}
+
+/* Buttons - Super Rounded */
+.btn,
+.button,
+.product-form__cart-submit,
+.shopify-payment-button__button,
+.shopify-payment-button__more-options {
+  border-radius: 5rem !important;
+  padding: 1.4rem 2.8rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 0.4rem 1.2rem rgba(var(--color-button), 0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.btn:hover,
+.button:hover,
+.product-form__cart-submit:hover {
+  transform: translateY(-0.2rem) !important;
+  box-shadow: 0 0.8rem 2rem rgba(var(--color-button), 0.3) !important;
+}
+
+.btn:active,
+.button:active,
+.product-form__cart-submit:active {
+  transform: translateY(-0.1rem) !important;
+}
+
+/* Quantity Selectors - Rounded */
+.quantity__input,
+.quantity__button,
+.product-form__input,
+.select__select,
+.field__input {
+  border-radius: 1.6rem !important;
+  border: 2px solid rgba(var(--color-foreground), 0.12) !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0.2rem 0.8rem rgba(var(--color-foreground), 0.04) !important;
+}
+
+.quantity__input:focus,
+.product-form__input:focus,
+.select__select:focus,
+.field__input:focus {
+  border-color: rgb(var(--color-base-accent-2)) !important;
+  box-shadow: 0 0.4rem 1.2rem rgba(var(--color-base-accent-2), 0.15) !important;
+  outline: none !important;
+}
+
+.quantity__button {
+  border-radius: 50% !important;
+  width: 4rem !important;
+  height: 4rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.quantity__button:hover {
+  background: rgb(var(--color-base-accent-2)) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+}
+
+/* Product Information Cards */
+.product__info-wrapper,
+.product__info-container,
+.product-form {
+  background: rgba(var(--color-background), 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 2.4rem !important;
+  padding: 2.4rem !important;
+  box-shadow: 0 0.8rem 3.2rem rgba(var(--color-foreground), 0.06) !important;
+  border: 1px solid rgba(var(--color-foreground), 0.08) !important;
+}
+
+/* Variant Selector Buttons - Pill Style */
+.product-form__input[type="radio"] + label,
+.variant-input-wrap label {
+  border-radius: 3rem !important;
+  padding: 1rem 2rem !important;
+  border: 2px solid rgba(var(--color-foreground), 0.15) !important;
+  background: rgba(var(--color-background), 0.8) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.product-form__input[type="radio"]:checked + label,
+.variant-input-wrap input:checked + label {
+  background: rgb(var(--color-base-accent-2)) !important;
+  color: white !important;
+  border-color: rgb(var(--color-base-accent-2)) !important;
+  transform: translateY(-0.1rem) !important;
+  box-shadow: 0 0.6rem 1.6rem rgba(var(--color-base-accent-2), 0.25) !important;
+}
+
+.product-form__input[type="radio"] + label:hover,
+.variant-input-wrap label:hover {
+  border-color: rgb(var(--color-base-accent-2)) !important;
+  transform: translateY(-0.1rem) !important;
+  box-shadow: 0 0.4rem 1.2rem rgba(var(--color-base-accent-2), 0.15) !important;
+}
+
+/* Price Display - Rounded Container */
+.price {
+  background: linear-gradient(135deg, rgba(var(--color-base-accent-2), 0.08) 0%, rgba(var(--color-base-accent-2), 0.03) 100%) !important;
+  padding: 1.6rem 2rem !important;
+  border-radius: 2rem !important;
+  border: 1px solid rgba(var(--color-base-accent-2), 0.12) !important;
+  margin: 1.6rem 0 !important;
+}
+
+/* Accordion/Collapsible Content */
+.accordion summary,
+.collapsible-content summary,
+.product__accordion summary {
+  border-radius: 1.6rem !important;
+  padding: 1.6rem 2rem !important;
+  background: rgba(var(--color-foreground), 0.04) !important;
+  border: 1px solid rgba(var(--color-foreground), 0.08) !important;
+  margin-bottom: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.accordion summary:hover,
+.collapsible-content summary:hover,
+.product__accordion summary:hover {
+  background: rgba(var(--color-foreground), 0.08) !important;
+  transform: translateY(-0.1rem) !important;
+}
+
+.accordion[open] summary,
+.collapsible-content[open] summary,
+.product__accordion[open] summary {
+  border-bottom-left-radius: 0.4rem !important;
+  border-bottom-right-radius: 0.4rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* Product Media Wrapper */
+.product__media-wrapper {
+  border-radius: 2.4rem !important;
+  overflow: hidden !important;
+  background: rgba(var(--color-background), 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 1.2rem !important;
+  box-shadow: 0 1rem 4rem rgba(var(--color-foreground), 0.08) !important;
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 749px) {
+  .product__info-wrapper,
+  .product__info-container,
+  .product-form {
+    border-radius: 2rem !important;
+    padding: 2rem !important;
+    margin: 1rem !important;
+  }
+  
+  .product__media img,
+  .product__media video {
+    border-radius: 1.6rem !important;
+  }
+  
+  .product__media-wrapper {
+    border-radius: 2rem !important;
+    padding: 1rem !important;
+  }
+  
+  .btn,
+  .button,
+  .product-form__cart-submit {
+    padding: 1.2rem 2.4rem !important;
+    border-radius: 4rem !important;
+  }
+}
+
+/* Enhanced Animations */
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.4rem);
+  }
+}
+
+.product__media:hover img {
+  animation: gentle-float 3s ease-in-out infinite !important;
+}
+
+/* Smooth Focus States */
+*:focus {
+  outline: 3px solid rgba(var(--color-base-accent-2), 0.4) !important;
+  outline-offset: 2px !important;
+  border-radius: inherit !important;
+}
