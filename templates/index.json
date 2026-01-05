@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -91,7 +100,7 @@
           }
         },
         "column2": {
-          "type": "column", 
+          "type": "column",
           "settings": {
             "title": "Handgefertigt",
             "text": "<p>Jedes Öl wird in kleinen Chargen handgefertigt und sorgfältig geprüft, um höchste Qualität zu gewährleisten.</p>",
@@ -111,7 +120,7 @@
       },
       "block_order": [
         "column1",
-        "column2", 
+        "column2",
         "column3"
       ],
       "settings": {
@@ -119,17 +128,16 @@
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
-        "button_label": "",
-        "button_link": "",
         "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 80,
-        "padding_bottom": 60,
-        "heading_alignment": "center"
+        "padding_bottom": 60
       }
     },
     "featured_collection": {
