@@ -8,11 +8,17 @@
 
 .multicolumn .title-wrapper-with-link {
   margin-top: 0;
+  text-align: center;
+}
+
+.multicolumn .title {
+  text-align: center;
 }
 
 @media screen and (max-width: 749px) {
   .multicolumn .title-wrapper-with-link {
     margin-bottom: 3rem;
+    text-align: center;
   }
 }
 

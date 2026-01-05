@@ -1,0 +1,90 @@
+/* LOUBAAN Center Fix - Force center alignment for all multicolumn headings */
+
+/* Main title centering with high specificity */
+.multicolumn .title-wrapper-with-link,
+.multicolumn .title-wrapper-with-link .title,
+.multicolumn .multicolumn__title,
+.multicolumn .multicolumn__title .title,
+.multicolumn h2.title,
+.multicolumn h1.title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Ensure the wrapper container is also centered */
+.multicolumn .page-width .title-wrapper-with-link {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Specific targeting for the "Warum LOUBAAN" section */
+.multicolumn .title-wrapper-with-link .title.inline-richtext {
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 749px) {
+  .multicolumn .title-wrapper-with-link,
+  .multicolumn .title-wrapper-with-link .title,
+  .multicolumn .multicolumn__title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Tablet responsiveness */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .multicolumn__title {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+    text-align: center !important;
+  }
+}
+
+/* Desktop responsiveness */
+@media screen and (min-width: 990px) {
+  .multicolumn .title-wrapper-with-link {
+    text-align: center !important;
+  }
+  
+  .multicolumn .title {
+    text-align: center !important;
+  }
+}
+
+/* Featured Collection Title Centering */
+.collection .title-wrapper-with-link,
+.collection .title-wrapper-with-link .title,
+.collection h2.title,
+.collection h1.title,
+.section-collection-padding .title-wrapper-with-link,
+.section-collection-padding .title-wrapper-with-link .title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Specific targeting for featured collection */
+.featured-collection .title,
+.featured-collection .title-wrapper-with-link {
+  text-align: center !important;
+}
+
+/* Mobile responsiveness for featured collection */
+@media screen and (max-width: 749px) {
+  .collection .title-wrapper-with-link,
+  .featured-collection .title-wrapper-with-link {
+    text-align: center !important;
+  }
+}

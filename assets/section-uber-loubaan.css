@@ -1,0 +1,288 @@
+/* LOUBAAN Über uns - Premium Story Page Styling */
+
+.uber-loubaan-page {
+  background: #fafafa;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.uber-loubaan__hero {
+  padding: 120px 0 80px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.uber-loubaan__main-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.uber-loubaan__subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Content Sections */
+.uber-loubaan__section {
+  padding: 80px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.uber-loubaan__section--final {
+  padding-bottom: 60px;
+}
+
+.uber-loubaan__content {
+  text-align: center;
+}
+
+/* Typography */
+.uber-loubaan__heading {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 48px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.uber-loubaan__text-block {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.uber-loubaan__text-block p {
+  margin-bottom: 28px;
+}
+
+.uber-loubaan__text-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Emphasis Text */
+.uber-loubaan__emphasis {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 1.2rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Special Styling Elements */
+.uber-loubaan__principles,
+.uber-loubaan__values,
+.uber-loubaan__vision {
+  margin: 40px 0;
+  padding: 32px;
+  background: rgba(212, 165, 116, 0.08);
+  border-left: 4px solid #d4a574;
+  border-radius: 0 8px 8px 0;
+}
+
+.uber-loubaan__quote {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #d4a574;
+  font-weight: 500;
+  margin: 40px 0;
+  text-align: center;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.uber-loubaan__list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0;
+}
+
+.uber-loubaan__list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.uber-loubaan__list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #d4a574;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+/* Dividers */
+.uber-loubaan__divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #e0e0e0 50%, transparent 100%);
+  margin: 60px auto;
+  max-width: 400px;
+}
+
+/* CTA Section */
+.uber-loubaan__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.uber-loubaan__button {
+  display: inline-block;
+  background: linear-gradient(135deg, #d4a574 0%, #c8956d 100%);
+  color: white;
+  padding: 18px 48px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+}
+
+.uber-loubaan__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(212, 165, 116, 0.4);
+  background: linear-gradient(135deg, #c8956d 0%, #b8835f 100%);
+}
+
+/* Brand Signature */
+.uber-loubaan__signature {
+  padding: 60px 0 80px;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+}
+
+.uber-loubaan__brand-name {
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: #d4a574;
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.uber-loubaan__tagline {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 749px) {
+  .uber-loubaan__hero {
+    padding: 80px 0 60px;
+  }
+
+  .uber-loubaan__section {
+    padding: 60px 20px;
+  }
+
+  .uber-loubaan__text-block {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .uber-loubaan__heading {
+    margin-bottom: 36px;
+  }
+
+  .uber-loubaan__emphasis {
+    font-size: 1.1rem !important;
+  }
+
+  .uber-loubaan__quote {
+    font-size: 1.2rem;
+    padding: 20px;
+    margin: 32px 0;
+  }
+
+  .uber-loubaan__principles,
+  .uber-loubaan__values,
+  .uber-loubaan__vision {
+    padding: 24px 20px;
+    margin: 32px 0;
+  }
+
+  .uber-loubaan__button {
+    padding: 16px 36px;
+    font-size: 1rem;
+  }
+
+  .uber-loubaan__brand-name {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .uber-loubaan__signature {
+    padding: 40px 20px 60px;
+  }
+
+  .uber-loubaan__divider {
+    margin: 40px auto;
+    max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .uber-loubaan__section {
+    padding: 40px 16px;
+  }
+
+  .uber-loubaan__text-block {
+    font-size: 0.95rem;
+  }
+
+  .uber-loubaan__text-block p {
+    margin-bottom: 24px;
+  }
+
+  .uber-loubaan__principles,
+  .uber-loubaan__values,
+  .uber-loubaan__vision {
+    padding: 20px 16px;
+  }
+}
+
+/* Animation for reveal on scroll */
+.uber-loubaan__section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animations for sections */
+.uber-loubaan__section:nth-child(1) { animation-delay: 0.1s; }
+.uber-loubaan__section:nth-child(3) { animation-delay: 0.2s; }
+.uber-loubaan__section:nth-child(5) { animation-delay: 0.3s; }
+.uber-loubaan__section:nth-child(7) { animation-delay: 0.4s; }
+.uber-loubaan__section:nth-child(9) { animation-delay: 0.5s; }
+.uber-loubaan__section:nth-child(11) { animation-delay: 0.6s; }
+.uber-loubaan__section:nth-child(13) { animation-delay: 0.7s; }
