@@ -1,0 +1,348 @@
+{{ 'section-loubaan-testimonials.css' | asset_url | stylesheet_tag }}
+
+<div class="loubaan-testimonials {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width">
+    <div class="loubaan-testimonials__container">
+      <!-- Section Header -->
+      {%- if section.settings.heading != blank -%}
+        <h2 class="loubaan-testimonials__heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      
+      {%- if section.settings.subheading != blank -%}
+        <p class="loubaan-testimonials__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      <!-- Trust Stats -->
+      <div class="loubaan-testimonials__stats">
+        <div class="loubaan-testimonials__stat">
+          <div class="loubaan-testimonials__stat-number">4.8★</div>
+          <div class="loubaan-testimonials__stat-label">Bewertung</div>
+        </div>
+        <div class="loubaan-testimonials__stat">
+          <div class="loubaan-testimonials__stat-number">10K+</div>
+          <div class="loubaan-testimonials__stat-label">Kunden</div>
+        </div>
+        <div class="loubaan-testimonials__stat">
+          <div class="loubaan-testimonials__stat-number">98%</div>
+          <div class="loubaan-testimonials__stat-label">Empfehlen uns</div>
+        </div>
+        <div class="loubaan-testimonials__stat">
+          <div class="loubaan-testimonials__stat-number">24h</div>
+          <div class="loubaan-testimonials__stat-label">Versand</div>
+        </div>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="loubaan-testimonials__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'testimonial' -%}
+              <div class="loubaan-testimonials__item" {{ block.shopify_attributes }}>
+                <div class="loubaan-testimonials__stars">
+                  {%- for i in (1..5) -%}
+                    {%- if i <= block.settings.rating -%}
+                      ⭐
+                    {%- else -%}
+                      ☆
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                
+                {%- if block.settings.quote != blank -%}
+                  <blockquote class="loubaan-testimonials__quote">
+                    "{{ block.settings.quote }}"
+                  </blockquote>
+                {%- endif -%}
+
+                <div class="loubaan-testimonials__author">
+                  <div class="loubaan-testimonials__avatar">
+                    {%- if block.settings.avatar != blank -%}
+                      <img src="{{ block.settings.avatar | image_url: width: 60 }}" 
+                           alt="{{ block.settings.author_name }}"
+                           loading="lazy">
+                    {%- else -%}
+                      <div class="loubaan-testimonials__avatar-placeholder">
+                        {{ block.settings.author_name | slice: 0 }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  
+                  <div class="loubaan-testimonials__author-info">
+                    {%- if block.settings.author_name != blank -%}
+                      <div class="loubaan-testimonials__author-name">
+                        {{ block.settings.author_name }}
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if block.settings.author_location != blank -%}
+                      <div class="loubaan-testimonials__author-location">
+                        {{ block.settings.author_location }}
+                      </div>
+                    {%- endif -%}
+
+                    {%- if block.settings.product != blank -%}
+                      <div class="loubaan-testimonials__product">
+                        Gekauft: {{ block.settings.product }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                {%- if block.settings.verified -%}
+                  <div class="loubaan-testimonials__verified">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 12l2 2 4-4"/>
+                      <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                    Verifizierter Kauf
+                  </div>
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Guarantees Section -->
+      <div class="loubaan-testimonials__guarantees">
+        <div class="loubaan-testimonials__guarantee">
+          <div class="loubaan-testimonials__guarantee-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>30 Tage Garantie</h3>
+          <p>Nicht zufrieden? Geld zurück - ohne Fragen!</p>
+        </div>
+
+        <div class="loubaan-testimonials__guarantee">
+          <div class="loubaan-testimonials__guarantee-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>Kostenloser Versand</h3>
+          <p>Ab 29€ - Deutschlandweit innerhalb 24h</p>
+        </div>
+
+        <div class="loubaan-testimonials__guarantee">
+          <div class="loubaan-testimonials__guarantee-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3>Premium Qualität</h3>
+          <p>100% natürliche ätherische Öle höchster Qualität</p>
+        </div>
+      </div>
+
+      <!-- Recent Purchase Notifications -->
+      {%- if section.settings.show_recent_purchases -%}
+        <div class="loubaan-testimonials__recent">
+          <div class="loubaan-testimonials__recent-item" id="recent-purchase">
+            <div class="loubaan-testimonials__recent-avatar">M</div>
+            <div class="loubaan-testimonials__recent-text">
+              <strong>Maria aus München</strong> kaufte gerade das 
+              <strong>3er Duft-Bundle</strong> und sparte 13,50€
+            </div>
+            <div class="loubaan-testimonials__recent-time">vor 3 Min.</div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+// Rotating recent purchases for FOMO effect
+{%- if section.settings.show_recent_purchases -%}
+const recentPurchases = [
+  { name: "Maria aus München", product: "3er Duft-Bundle", savings: "13,50€", time: "3 Min." },
+  { name: "Thomas aus Berlin", product: "2er Entspannungs-Set", savings: "6,00€", time: "7 Min." },
+  { name: "Anna aus Hamburg", product: "Premium Lavendelöl", savings: "4,50€", time: "12 Min." },
+  { name: "Michael aus Frankfurt", product: "3er Energie-Bundle", savings: "13,50€", time: "18 Min." },
+  { name: "Sarah aus Köln", product: "2er Schlaf-Set", savings: "6,00€", time: "25 Min." }
+];
+
+let currentIndex = 0;
+
+function updateRecentPurchase() {
+  const item = recentPurchases[currentIndex];
+  const element = document.getElementById('recent-purchase');
+  
+  if (element) {
+    element.querySelector('.loubaan-testimonials__recent-avatar').textContent = item.name.charAt(0);
+    element.querySelector('.loubaan-testimonials__recent-text').innerHTML = 
+      `<strong>${item.name}</strong> kaufte gerade das <strong>${item.product}</strong> und sparte ${item.savings}`;
+    element.querySelector('.loubaan-testimonials__recent-time').textContent = `vor ${item.time}`;
+    
+    currentIndex = (currentIndex + 1) % recentPurchases.length;
+  }
+}
+
+// Update every 8 seconds
+setInterval(updateRecentPurchase, 8000);
+{%- endif -%}
+</script>
+
+{% schema %}
+{
+  "name": "LOUBAAN Testimonials",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Überschriften"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Hauptüberschrift",
+      "default": "Was unsere Kunden sagen"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Klein"
+        },
+        {
+          "value": "h1",
+          "label": "Mittel"
+        },
+        {
+          "value": "h0",
+          "label": "Groß"
+        }
+      ],
+      "default": "h1",
+      "label": "Überschrift Größe"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Untertitel",
+      "default": "Über 10.000 zufriedene Kunden vertrauen auf LOUBAAN Premium-Düfte"
+    },
+    {
+      "type": "header",
+      "content": "FOMO Elemente"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recent_purchases",
+      "label": "Aktuelle Käufe anzeigen",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Kundenbewertung",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Bewertung (Sterne)",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Zitat",
+          "default": "Die Düfte sind einfach fantastisch! Ich habe das 3er Bundle gekauft und die Qualität ist unglaublich. Dazu noch die Gratisprobe - perfekt!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Kundenname",
+          "default": "Maria Schmidt"
+        },
+        {
+          "type": "text",
+          "id": "author_location",
+          "label": "Ort",
+          "default": "München"
+        },
+        {
+          "type": "text",
+          "id": "product",
+          "label": "Gekauftes Produkt",
+          "default": "3er Entspannungs-Bundle"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Profilbild (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verifizierter Kauf",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LOUBAAN Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Die Düfte sind einfach fantastisch! Das 3er Bundle war die beste Entscheidung - super Qualität und noch dazu gespart!",
+            "author_name": "Maria Schmidt",
+            "author_location": "München",
+            "product": "3er Entspannungs-Bundle",
+            "verified": true
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Schnelle Lieferung, tolle Verpackung und die Gratisprobe war ein schönes Extra. Werde definitiv wieder bestellen!",
+            "author_name": "Thomas Weber",
+            "author_location": "Berlin",
+            "product": "2er Energie-Set",
+            "verified": true
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Endlich ätherische Öle in Premium-Qualität zu fairen Preisen. Der Rabatt ab 2 Stück ist genial!",
+            "author_name": "Anna Müller",
+            "author_location": "Hamburg",
+            "product": "2er Lavendel-Set",
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

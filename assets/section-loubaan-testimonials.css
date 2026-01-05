@@ -1,0 +1,371 @@
+.loubaan-testimonials {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.loubaan-testimonials__container {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loubaan-testimonials__heading {
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+.loubaan-testimonials__subheading {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.loubaan-testimonials__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loubaan-testimonials__stat {
+  text-align: center;
+}
+
+.loubaan-testimonials__stat-number {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #d4a574;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.loubaan-testimonials__stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.loubaan-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.loubaan-testimonials__item {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  border-radius: 20px;
+  padding: 32px 24px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  text-align: left;
+  border: 2px solid transparent;
+}
+
+.loubaan-testimonials__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  border-color: rgba(212, 165, 116, 0.3);
+}
+
+.loubaan-testimonials__stars {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #ffc107;
+  line-height: 1;
+}
+
+.loubaan-testimonials__quote {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 24px;
+  font-style: italic;
+  font-weight: 500;
+  position: relative;
+}
+
+.loubaan-testimonials__quote::before {
+  content: '"';
+  font-size: 4rem;
+  color: #d4a574;
+  opacity: 0.3;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-family: serif;
+  line-height: 1;
+}
+
+.loubaan-testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.loubaan-testimonials__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.loubaan-testimonials__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.loubaan-testimonials__avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d4a574 0%, #b8835f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.loubaan-testimonials__author-info {
+  flex-grow: 1;
+}
+
+.loubaan-testimonials__author-name {
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.loubaan-testimonials__author-location {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.loubaan-testimonials__product {
+  font-size: 0.85rem;
+  color: #d4a574;
+  font-weight: 600;
+}
+
+.loubaan-testimonials__verified {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #28a745;
+  font-weight: 600;
+}
+
+.loubaan-testimonials__verified svg {
+  color: #28a745;
+}
+
+.loubaan-testimonials__guarantees {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 48px;
+  padding: 48px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.loubaan-testimonials__guarantee {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.loubaan-testimonials__guarantee-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4a574 0%, #c8956d 100%);
+  color: white;
+}
+
+.loubaan-testimonials__guarantee h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.loubaan-testimonials__guarantee p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.loubaan-testimonials__recent {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  max-width: 350px;
+}
+
+.loubaan-testimonials__recent-item {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border: 2px solid #d4a574;
+  border-radius: 15px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(212, 165, 116, 0.2);
+  animation: slide-in-notification 0.5s ease-out, pulse-notification 2s infinite;
+}
+
+.loubaan-testimonials__recent-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4a574 0%, #b8835f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.loubaan-testimonials__recent-text {
+  flex-grow: 1;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.loubaan-testimonials__recent-text strong {
+  color: #d4a574;
+}
+
+.loubaan-testimonials__recent-time {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Mobile Optimierungen */
+@media screen and (max-width: 749px) {
+  .loubaan-testimonials {
+    padding: 60px 0;
+  }
+
+  .loubaan-testimonials__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .loubaan-testimonials__stat-number {
+    font-size: 1.8rem;
+  }
+
+  .loubaan-testimonials__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .loubaan-testimonials__item {
+    padding: 24px 20px;
+  }
+
+  .loubaan-testimonials__guarantees {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  .loubaan-testimonials__recent {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    max-width: none;
+  }
+
+  .loubaan-testimonials__recent-item {
+    padding: 12px;
+  }
+
+  .loubaan-testimonials__recent-avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .loubaan-testimonials__recent-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .loubaan-testimonials__stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .loubaan-testimonials__stat-number {
+    font-size: 1.6rem;
+  }
+}
+
+/* Animations */
+@keyframes slide-in-notification {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-notification {
+  0%, 100% {
+    border-color: #d4a574;
+  }
+  50% {
+    border-color: #b8835f;
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.4);
+  }
+}
+
+/* Animation für reveal on scroll */
+.loubaan-testimonials.animate--fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
