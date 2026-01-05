@@ -161,11 +161,59 @@
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": false,
-        "quick_add": "bulk",
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 60,
         "padding_bottom": 60
+      }
+    },
+    "volume_discount_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_volume": {
+          "type": "heading",
+          "settings": {
+            "heading": "Mehr kaufen = Mehr sparen",
+            "heading_size": "h1"
+          }
+        },
+        "text_volume": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Automatische Rabatte bei jedem Bundle + GRATIS Probe!</p>"
+          }
+        },
+        "button_2er": {
+          "type": "button",
+          "settings": {
+            "button_label": "2er Bundle - 10% sparen",
+            "button_link": "/collections/all",
+            "button_style_secondary": false
+          }
+        },
+        "button_3er": {
+          "type": "button",
+          "settings": {
+            "button_label": "3er Bundle - 15% sparen",
+            "button_link": "/collections/all", 
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_volume",
+        "text_volume",
+        "button_2er",
+        "button_3er"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "image_with_text_RDBpjr": {
@@ -255,6 +303,7 @@
     "rich_text",
     "multicolumn",
     "featured_collection",
+    "volume_discount_cta",
     "image_with_text_RDBpjr",
     "newsletter"
   ]

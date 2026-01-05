@@ -60,3 +60,31 @@
     text-align: center !important;
   }
 }
+
+/* Featured Collection Title Centering */
+.collection .title-wrapper-with-link,
+.collection .title-wrapper-with-link .title,
+.collection h2.title,
+.collection h1.title,
+.section-collection-padding .title-wrapper-with-link,
+.section-collection-padding .title-wrapper-with-link .title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Specific targeting for featured collection */
+.featured-collection .title,
+.featured-collection .title-wrapper-with-link {
+  text-align: center !important;
+}
+
+/* Mobile responsiveness for featured collection */
+@media screen and (max-width: 749px) {
+  .collection .title-wrapper-with-link,
+  .featured-collection .title-wrapper-with-link {
+    text-align: center !important;
+  }
+}
