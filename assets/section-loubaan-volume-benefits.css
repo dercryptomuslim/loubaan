@@ -1,0 +1,333 @@
+.loubaan-volume-benefits {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.loubaan-volume-benefits__container {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loubaan-volume-benefits__heading {
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #d4a574 0%, #c8956d 50%, #b8835f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.loubaan-volume-benefits__subheading {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.loubaan-volume-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 48px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loubaan-volume-benefits__item {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 20px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.loubaan-volume-benefits__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.loubaan-volume-benefits__item--popular {
+  border-color: #d4a574;
+  transform: scale(1.05);
+}
+
+.loubaan-volume-benefits__item--popular:hover {
+  transform: scale(1.08) translateY(-5px);
+}
+
+.loubaan-volume-benefits__item--best {
+  border-color: #b8835f;
+  background: linear-gradient(135deg, #fff 0%, #fefefe 100%);
+  transform: scale(1.05);
+}
+
+.loubaan-volume-benefits__item--best:hover {
+  transform: scale(1.08) translateY(-5px);
+}
+
+.loubaan-volume-benefits__badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #d4a574;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.loubaan-volume-benefits__badge--gold {
+  background: linear-gradient(135deg, #b8835f 0%, #d4a574 100%);
+  box-shadow: 0 4px 15px rgba(184, 131, 95, 0.3);
+}
+
+.loubaan-volume-benefits__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #d4a574;
+}
+
+.loubaan-volume-benefits__item--popular .loubaan-volume-benefits__icon {
+  background: linear-gradient(135deg, #d4a574 0%, #c8956d 100%);
+  color: white;
+}
+
+.loubaan-volume-benefits__item--best .loubaan-volume-benefits__icon {
+  background: linear-gradient(135deg, #b8835f 0%, #d4a574 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(184, 131, 95, 0.2);
+}
+
+.loubaan-volume-benefits__item h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.loubaan-volume-benefits__item .pricing-info {
+  margin-bottom: 16px;
+}
+
+.loubaan-volume-benefits__item .original-price {
+  font-size: 1.2rem;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.loubaan-volume-benefits__item .price {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #d4a574;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.loubaan-volume-benefits__item .per-bottle {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.loubaan-volume-benefits__item .benefits {
+  margin-bottom: 0;
+}
+
+.loubaan-volume-benefits__item .benefits p {
+  margin: 8px 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.loubaan-volume-benefits__item .discount {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.loubaan-volume-benefits__item .free-sample {
+  color: #d4a574;
+  font-weight: 600;
+}
+
+.loubaan-volume-benefits__item .you-save {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin: 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.loubaan-volume-benefits__item .bonus {
+  background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin: 4px 0;
+}
+
+.stock-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 20px;
+}
+
+.stock-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #28a745;
+  animation: pulse-dot 2s infinite;
+}
+
+.stock-dot--low {
+  background: #ffc107;
+}
+
+.stock-dot--high {
+  background: #28a745;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loubaan-volume-benefits__cta {
+  margin-bottom: 40px;
+}
+
+.loubaan-volume-benefits__cta .button {
+  padding: 16px 48px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #d4a574 0%, #b8835f 100%);
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(212, 165, 116, 0.3);
+}
+
+.loubaan-volume-benefits__cta .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(212, 165, 116, 0.4);
+  background: linear-gradient(135deg, #b8835f 0%, #d4a574 100%);
+}
+
+.loubaan-volume-benefits__trust {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.loubaan-volume-benefits__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.loubaan-volume-benefits__trust-item svg {
+  color: #d4a574;
+}
+
+/* Mobile Optimierung */
+@media screen and (max-width: 749px) {
+  .loubaan-volume-benefits {
+    padding: 40px 0;
+  }
+
+  .loubaan-volume-benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .loubaan-volume-benefits__item {
+    padding: 30px 20px;
+  }
+
+  .loubaan-volume-benefits__item--popular,
+  .loubaan-volume-benefits__item--best {
+    transform: none;
+  }
+
+  .loubaan-volume-benefits__item--popular:hover,
+  .loubaan-volume-benefits__item--best:hover {
+    transform: translateY(-3px);
+  }
+
+  .loubaan-volume-benefits__trust {
+    gap: 20px;
+  }
+
+  .loubaan-volume-benefits__trust-item {
+    font-size: 0.85rem;
+  }
+
+  .loubaan-volume-benefits__cta .button {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}
+
+/* Animation für reveal on scroll */
+.loubaan-volume-benefits.animate--fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

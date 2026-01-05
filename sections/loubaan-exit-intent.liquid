@@ -1,0 +1,362 @@
+{{ 'section-loubaan-exit-intent.css' | asset_url | stylesheet_tag }}
+
+<!-- Exit Intent Popup -->
+<div id="loubaan-exit-intent" class="loubaan-exit-intent" style="display: none;">
+  <div class="loubaan-exit-intent__backdrop"></div>
+  <div class="loubaan-exit-intent__modal">
+    <div class="loubaan-exit-intent__close" onclick="closeExitIntent()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </div>
+
+    <div class="loubaan-exit-intent__content">
+      <!-- Header -->
+      <div class="loubaan-exit-intent__header">
+        <div class="loubaan-exit-intent__emoji">😱</div>
+        <h2 class="loubaan-exit-intent__title">
+          {{ section.settings.title | default: "Warte! Verpasse nicht diese einmalige Chance!" }}
+        </h2>
+        <p class="loubaan-exit-intent__subtitle">
+          {{ section.settings.subtitle | default: "Bevor du gehst - sichere dir 20% EXTRA Rabatt!" }}
+        </p>
+      </div>
+
+      <!-- Special Offer -->
+      <div class="loubaan-exit-intent__offer">
+        <div class="loubaan-exit-intent__offer-badge">
+          🎁 EXKLUSIVES ANGEBOT
+        </div>
+        <div class="loubaan-exit-intent__offer-main">
+          <span class="loubaan-exit-intent__discount">20% EXTRA</span>
+          <span class="loubaan-exit-intent__offer-text">auf deine erste Bestellung</span>
+        </div>
+        <div class="loubaan-exit-intent__offer-details">
+          + Gratis Premium-Probe + Kostenloser Express-Versand
+        </div>
+      </div>
+
+      <!-- Email Capture -->
+      <div class="loubaan-exit-intent__email">
+        <p class="loubaan-exit-intent__email-text">
+          Gib deine E-Mail ein und erhalte sofort den Rabattcode:
+        </p>
+        <form class="loubaan-exit-intent__form" id="exit-intent-form">
+          <div class="loubaan-exit-intent__input-group">
+            <input type="email" 
+                   class="loubaan-exit-intent__input" 
+                   placeholder="Deine E-Mail-Adresse" 
+                   required
+                   id="exit-email-input">
+            <button type="submit" class="loubaan-exit-intent__button">
+              Code sichern! 🚀
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="loubaan-exit-intent__social">
+        <div class="loubaan-exit-intent__social-item">
+          <span class="loubaan-exit-intent__social-number">2,847</span>
+          <span class="loubaan-exit-intent__social-text">haben heute bestellt</span>
+        </div>
+        <div class="loubaan-exit-intent__social-item">
+          <span class="loubaan-exit-intent__social-number">⭐ 4.8</span>
+          <span class="loubaan-exit-intent__social-text">Kundenbewertung</span>
+        </div>
+      </div>
+
+      <!-- Urgency Timer -->
+      <div class="loubaan-exit-intent__urgency">
+        <div class="loubaan-exit-intent__urgency-text">
+          ⏰ Dieses Angebot läuft ab in:
+        </div>
+        <div class="loubaan-exit-intent__timer" id="exit-timer">
+          <span class="loubaan-exit-intent__time" data-time="minutes">04</span>:
+          <span class="loubaan-exit-intent__time" data-time="seconds">59</span>
+        </div>
+      </div>
+
+      <!-- Alternative CTA -->
+      <div class="loubaan-exit-intent__alternative">
+        <button class="loubaan-exit-intent__no-thanks" onclick="closeExitIntent()">
+          Nein danke, ich zahle lieber den vollen Preis
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success State -->
+<div id="loubaan-exit-success" class="loubaan-exit-intent" style="display: none;">
+  <div class="loubaan-exit-intent__backdrop"></div>
+  <div class="loubaan-exit-intent__modal loubaan-exit-intent__modal--success">
+    <div class="loubaan-exit-intent__close" onclick="closeExitSuccess()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </div>
+
+    <div class="loubaan-exit-intent__content">
+      <div class="loubaan-exit-intent__success-icon">🎉</div>
+      <h2 class="loubaan-exit-intent__success-title">Perfekt! Du hast 20% gespart!</h2>
+      
+      <div class="loubaan-exit-intent__code">
+        <div class="loubaan-exit-intent__code-label">Dein Rabattcode:</div>
+        <div class="loubaan-exit-intent__code-value" id="discount-code">SAVE20NOW</div>
+        <button class="loubaan-exit-intent__copy-btn" onclick="copyDiscountCode()">
+          📋 Code kopieren
+        </button>
+      </div>
+
+      <div class="loubaan-exit-intent__success-cta">
+        <a href="{{ section.settings.shop_link | default: '/collections/all' }}" 
+           class="loubaan-exit-intent__shop-button">
+          Jetzt shoppen & sparen! 🛍️
+        </a>
+      </div>
+
+      <div class="loubaan-exit-intent__code-info">
+        ✅ Code automatisch beim Checkout angewendet<br>
+        ⏰ Gültig für die nächsten 24 Stunden
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Exit Intent Detection
+let exitIntentShown = false;
+let mouseLeaveTimer;
+
+function detectExitIntent(e) {
+  const shouldShowExitIntent = e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth;
+  
+  if (shouldShowExitIntent && !exitIntentShown) {
+    clearTimeout(mouseLeaveTimer);
+    mouseLeaveTimer = setTimeout(() => {
+      showExitIntent();
+    }, 100);
+  } else {
+    clearTimeout(mouseLeaveTimer);
+  }
+}
+
+function showExitIntent() {
+  if (exitIntentShown) return;
+  
+  exitIntentShown = true;
+  const popup = document.getElementById('loubaan-exit-intent');
+  if (popup) {
+    popup.style.display = 'flex';
+    popup.classList.add('loubaan-exit-intent--show');
+    
+    // Start countdown
+    startExitTimer();
+    
+    // Track event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'exit_intent_shown', {
+        event_category: 'engagement',
+        event_label: 'popup'
+      });
+    }
+  }
+}
+
+function closeExitIntent() {
+  const popup = document.getElementById('loubaan-exit-intent');
+  if (popup) {
+    popup.classList.remove('loubaan-exit-intent--show');
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 300);
+  }
+}
+
+function closeExitSuccess() {
+  const popup = document.getElementById('loubaan-exit-success');
+  if (popup) {
+    popup.classList.remove('loubaan-exit-intent--show');
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 300);
+  }
+}
+
+// Email Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('exit-intent-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('exit-email-input').value;
+      if (email) {
+        // Hide main popup
+        closeExitIntent();
+        
+        // Show success popup
+        setTimeout(() => {
+          const successPopup = document.getElementById('loubaan-exit-success');
+          if (successPopup) {
+            successPopup.style.display = 'flex';
+            successPopup.classList.add('loubaan-exit-intent--show');
+          }
+        }, 400);
+        
+        // Track conversion
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'exit_intent_email_capture', {
+            event_category: 'conversion',
+            event_label: 'email_signup',
+            value: 20
+          });
+        }
+        
+        // You can add email to newsletter here
+        // subscribeToNewsletter(email);
+      }
+    });
+  }
+});
+
+// Countdown Timer
+function startExitTimer() {
+  let totalSeconds = 5 * 60; // 5 minutes
+  const timerElement = document.getElementById('exit-timer');
+  
+  if (!timerElement) return;
+  
+  function updateTimer() {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    
+    const minutesEl = timerElement.querySelector('[data-time="minutes"]');
+    const secondsEl = timerElement.querySelector('[data-time="seconds"]');
+    
+    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+    
+    if (totalSeconds > 0) {
+      totalSeconds--;
+    } else {
+      // Timer expired - could close popup or show different message
+      totalSeconds = 5 * 60; // Reset
+    }
+  }
+  
+  updateTimer();
+  setInterval(updateTimer, 1000);
+}
+
+// Copy Discount Code
+function copyDiscountCode() {
+  const codeElement = document.getElementById('discount-code');
+  const copyBtn = document.querySelector('.loubaan-exit-intent__copy-btn');
+  
+  if (codeElement && copyBtn) {
+    // Create temporary input
+    const tempInput = document.createElement('input');
+    tempInput.value = codeElement.textContent;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    
+    // Update button
+    const originalText = copyBtn.textContent;
+    copyBtn.textContent = '✅ Kopiert!';
+    copyBtn.style.background = '#28a745';
+    
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+      copyBtn.style.background = '';
+    }, 2000);
+  }
+}
+
+// Initialize Exit Intent
+function initExitIntent() {
+  // Only show on desktop and tablet
+  if (window.innerWidth > 768) {
+    document.addEventListener('mouseleave', detectExitIntent);
+  }
+  
+  // Alternative: Show after time delay for mobile
+  if (window.innerWidth <= 768) {
+    setTimeout(() => {
+      if (!exitIntentShown && Math.random() > 0.7) {
+        showExitIntent();
+      }
+    }, 30000); // 30 seconds
+  }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initExitIntent);
+
+// Prevent multiple triggers
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.loubaan-exit-intent__backdrop')) {
+    if (e.target.closest('#loubaan-exit-intent')) {
+      closeExitIntent();
+    } else if (e.target.closest('#loubaan-exit-success')) {
+      closeExitSuccess();
+    }
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "LOUBAAN Exit Intent",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Popup Inhalt"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Haupttitel",
+      "default": "Warte! Verpasse nicht diese einmalige Chance!"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Untertitel",
+      "default": "Bevor du gehst - sichere dir 20% EXTRA Rabatt!"
+    },
+    {
+      "type": "header",
+      "content": "Links"
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "Shop Link (nach Email-Eingabe)",
+      "default": "/collections/all"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LOUBAAN Exit Intent"
+    }
+  ]
+}
+{% endschema %}

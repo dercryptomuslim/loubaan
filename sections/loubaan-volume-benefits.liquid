@@ -1,0 +1,268 @@
+{{ 'section-loubaan-volume-benefits.css' | asset_url | stylesheet_tag }}
+
+<div class="loubaan-volume-benefits {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width">
+    <div class="loubaan-volume-benefits__container">
+      <!-- Hauptüberschrift -->
+      {%- if section.settings.heading != blank -%}
+        <h2 class="loubaan-volume-benefits__heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+      
+      <!-- Untertitel -->
+      {%- if section.settings.subheading != blank -%}
+        <p class="loubaan-volume-benefits__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      <!-- Volume Benefits Grid -->
+      <div class="loubaan-volume-benefits__grid">
+        <!-- Single Item -->
+        <div class="loubaan-volume-benefits__item">
+          <div class="loubaan-volume-benefits__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="m15 9-6 6"/>
+              <path d="m9 9 6 6"/>
+            </svg>
+          </div>
+          <h3>1 Flasche</h3>
+          <div class="pricing-info">
+            <p class="price">{{ section.settings.single_price }}</p>
+            <p class="per-bottle">{{ section.settings.single_price }} / Stück</p>
+          </div>
+          <p class="discount">Normalpreis</p>
+          <div class="stock-indicator">
+            <span class="stock-dot"></span>
+            Auf Lager
+          </div>
+        </div>
+
+        <!-- 2 Items Bundle -->
+        <div class="loubaan-volume-benefits__item loubaan-volume-benefits__item--popular">
+          <div class="loubaan-volume-benefits__badge">🔥 MEISTGEWÄHLT</div>
+          <div class="loubaan-volume-benefits__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </div>
+          <h3>2 Flaschen</h3>
+          <div class="pricing-info">
+            <p class="original-price">{{ section.settings.double_original_price }}</p>
+            <p class="price">{{ section.settings.double_price }}</p>
+            <p class="per-bottle">{{ section.settings.double_per_bottle }} / Stück</p>
+          </div>
+          <div class="benefits">
+            <p class="discount">✨ 10% RABATT</p>
+            <p class="free-sample">🎁 + GRATIS Probe</p>
+            <p class="you-save">Du sparst: {{ section.settings.double_savings }}</p>
+          </div>
+          <div class="stock-indicator">
+            <span class="stock-dot stock-dot--low"></span>
+            Nur noch wenige auf Lager
+          </div>
+        </div>
+
+        <!-- 3 Items Bundle -->
+        <div class="loubaan-volume-benefits__item loubaan-volume-benefits__item--best">
+          <div class="loubaan-volume-benefits__badge loubaan-volume-benefits__badge--gold">💎 BESTER DEAL</div>
+          <div class="loubaan-volume-benefits__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3>3 Flaschen</h3>
+          <div class="pricing-info">
+            <p class="original-price">{{ section.settings.triple_original_price }}</p>
+            <p class="price">{{ section.settings.triple_price }}</p>
+            <p class="per-bottle">{{ section.settings.triple_per_bottle }} / Stück</p>
+          </div>
+          <div class="benefits">
+            <p class="discount">🔥 15% RABATT</p>
+            <p class="free-sample">🎁 + PREMIUM Probe</p>
+            <p class="you-save">Du sparst: {{ section.settings.max_savings }}</p>
+            <p class="bonus">🚀 BONUS: Expressversand</p>
+          </div>
+          <div class="stock-indicator">
+            <span class="stock-dot stock-dot--high"></span>
+            ✅ Sehr beliebt
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      {%- if section.settings.button_label != blank -%}
+        <div class="loubaan-volume-benefits__cta">
+          <a href="{{ section.settings.button_link | default: '/collections/all' }}" 
+             class="button button--primary button--large">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {%- endif -%}
+
+      <!-- Trust Indicators -->
+      <div class="loubaan-volume-benefits__trust">
+        <div class="loubaan-volume-benefits__trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 12l2 2 4-4"/>
+            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+          </svg>
+          <span>Versandkostenfrei</span>
+        </div>
+        <div class="loubaan-volume-benefits__trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span>Premium Qualität</span>
+        </div>
+        <div class="loubaan-volume-benefits__trust-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 11H1v12h8V11z"/>
+            <path d="M23 11H15v12h8V11z"/>
+          </svg>
+          <span>Sichere Zahlung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LOUBAAN Volume Benefits",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Überschriften"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Hauptüberschrift",
+      "default": "MEHR KAUFEN = MEHR SPAREN"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Klein"
+        },
+        {
+          "value": "h1",
+          "label": "Mittel"
+        },
+        {
+          "value": "h0",
+          "label": "Groß"
+        },
+        {
+          "value": "hxl",
+          "label": "Extra Groß"
+        }
+      ],
+      "default": "h1",
+      "label": "Überschrift Größe"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Untertitel",
+      "default": "Bei LOUBAAN sparst du automatisch, wenn du mehrere Produkte kaufst - und erhältst zusätzlich eine Gratisprobe!"
+    },
+    {
+      "type": "header",
+      "content": "Preise"
+    },
+    {
+      "type": "text",
+      "id": "single_price",
+      "label": "Einzelpreis",
+      "default": "29,99€"
+    },
+    {
+      "type": "text",
+      "id": "double_original_price",
+      "label": "2er Bundle ursprünglicher Preis",
+      "default": "59,98€"
+    },
+    {
+      "type": "text",
+      "id": "double_price",
+      "label": "2er Bundle Preis",
+      "default": "53,98€"
+    },
+    {
+      "type": "text",
+      "id": "double_per_bottle",
+      "label": "2er Bundle Preis pro Stück",
+      "default": "26,99€"
+    },
+    {
+      "type": "text",
+      "id": "double_savings",
+      "label": "2er Bundle Ersparnis",
+      "default": "6,00€"
+    },
+    {
+      "type": "text",
+      "id": "triple_original_price",
+      "label": "3er Bundle ursprünglicher Preis",
+      "default": "89,97€"
+    },
+    {
+      "type": "text",
+      "id": "triple_price",
+      "label": "3er Bundle Preis",
+      "default": "76,47€"
+    },
+    {
+      "type": "text",
+      "id": "triple_per_bottle",
+      "label": "3er Bundle Preis pro Stück",
+      "default": "25,49€"
+    },
+    {
+      "type": "text",
+      "id": "max_savings",
+      "label": "Maximale Ersparnis",
+      "default": "13,50€"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Jetzt sparen & shoppen"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LOUBAAN Volume Benefits"
+    }
+  ]
+}
+{% endschema %}

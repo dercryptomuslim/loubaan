@@ -1,0 +1,269 @@
+{{ 'section-loubaan-urgency-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="loubaan-urgency-banner {% if section.settings.is_sticky %} loubaan-urgency-banner--sticky{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="page-width">
+    <div class="loubaan-urgency-banner__container">
+      <!-- Flash Sale Badge -->
+      <div class="loubaan-urgency-banner__badge">
+        <span class="loubaan-urgency-banner__flash">⚡ FLASH SALE</span>
+      </div>
+
+      <!-- Main Content -->
+      <div class="loubaan-urgency-banner__content">
+        {%- if section.settings.heading != blank -%}
+          <h3 class="loubaan-urgency-banner__heading">
+            {{ section.settings.heading }}
+          </h3>
+        {%- endif -%}
+
+        {%- if section.settings.offer_text != blank -%}
+          <p class="loubaan-urgency-banner__offer">
+            {{ section.settings.offer_text }}
+          </p>
+        {%- endif -%}
+      </div>
+
+      <!-- Countdown Timer -->
+      {%- if section.settings.show_countdown -%}
+        <div class="loubaan-urgency-banner__countdown">
+          <div class="loubaan-urgency-banner__countdown-label">
+            ⏰ Angebot endet in:
+          </div>
+          <div class="loubaan-urgency-banner__timer" id="urgency-countdown">
+            <div class="loubaan-urgency-banner__time-unit">
+              <span class="loubaan-urgency-banner__time-number" data-time="hours">02</span>
+              <span class="loubaan-urgency-banner__time-label">Std</span>
+            </div>
+            <div class="loubaan-urgency-banner__time-separator">:</div>
+            <div class="loubaan-urgency-banner__time-unit">
+              <span class="loubaan-urgency-banner__time-number" data-time="minutes">45</span>
+              <span class="loubaan-urgency-banner__time-label">Min</span>
+            </div>
+            <div class="loubaan-urgency-banner__time-separator">:</div>
+            <div class="loubaan-urgency-banner__time-unit">
+              <span class="loubaan-urgency-banner__time-number" data-time="seconds">23</span>
+              <span class="loubaan-urgency-banner__time-label">Sek</span>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      <!-- Stock Counter -->
+      {%- if section.settings.show_stock_counter -%}
+        <div class="loubaan-urgency-banner__stock">
+          <div class="loubaan-urgency-banner__stock-bar">
+            <div class="loubaan-urgency-banner__stock-progress" style="width: {{ section.settings.stock_percentage }}%"></div>
+          </div>
+          <div class="loubaan-urgency-banner__stock-text">
+            🔥 Nur noch <strong id="stock-counter">{{ section.settings.stock_remaining }}</strong> auf Lager!
+          </div>
+        </div>
+      {%- endif -%}
+
+      <!-- CTA Button -->
+      {%- if section.settings.button_label != blank -%}
+        <div class="loubaan-urgency-banner__cta">
+          <a href="{{ section.settings.button_link | default: '/collections/all' }}" 
+             class="loubaan-urgency-banner__button">
+            {{ section.settings.button_label }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </a>
+        </div>
+      {%- endif -%}
+
+      <!-- Close Button -->
+      <button class="loubaan-urgency-banner__close" onclick="this.parentElement.parentElement.style.display='none'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Countdown Timer
+{%- if section.settings.show_countdown -%}
+function initUrgencyCountdown() {
+  const countdownElement = document.getElementById('urgency-countdown');
+  if (!countdownElement) return;
+
+  // Set initial countdown time (2 hours 45 minutes 23 seconds)
+  let totalSeconds = (2 * 3600) + (45 * 60) + 23;
+
+  function updateCountdown() {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const hoursEl = countdownElement.querySelector('[data-time="hours"]');
+    const minutesEl = countdownElement.querySelector('[data-time="minutes"]');
+    const secondsEl = countdownElement.querySelector('[data-time="seconds"]');
+
+    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+    if (totalSeconds > 0) {
+      totalSeconds--;
+    } else {
+      // Reset countdown when it reaches zero
+      totalSeconds = (2 * 3600) + (45 * 60) + 23;
+    }
+  }
+
+  // Update immediately and then every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initUrgencyCountdown);
+{%- endif -%}
+
+// Decreasing Stock Counter for FOMO
+{%- if section.settings.show_stock_counter -%}
+function animateStockCounter() {
+  const stockCounter = document.getElementById('stock-counter');
+  const stockProgress = document.querySelector('.loubaan-urgency-banner__stock-progress');
+  
+  if (!stockCounter || !stockProgress) return;
+  
+  let currentStock = parseInt(stockCounter.textContent);
+  const originalStock = currentStock;
+  
+  // Decrease stock randomly every 15-45 seconds
+  function decreaseStock() {
+    if (currentStock > 3) {
+      currentStock--;
+      stockCounter.textContent = currentStock;
+      
+      // Update progress bar
+      const percentage = (currentStock / originalStock) * {{ section.settings.stock_percentage }};
+      stockProgress.style.width = percentage + '%';
+      
+      // Add flash effect
+      stockCounter.parentElement.style.animation = 'flash-urgency 0.5s ease';
+      setTimeout(() => {
+        stockCounter.parentElement.style.animation = '';
+      }, 500);
+    }
+    
+    // Schedule next decrease
+    const nextDecrease = Math.random() * 30000 + 15000; // 15-45 seconds
+    setTimeout(decreaseStock, nextDecrease);
+  }
+  
+  // Start after initial delay
+  setTimeout(decreaseStock, Math.random() * 10000 + 5000);
+}
+
+document.addEventListener('DOMContentLoaded', animateStockCounter);
+{%- endif -%}
+</script>
+
+{% schema %}
+{
+  "name": "LOUBAAN Urgency Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Inhalt"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Hauptüberschrift",
+      "default": "🔥 Letzte Chance: 15% Rabatt + Gratis Probe"
+    },
+    {
+      "type": "textarea",
+      "id": "offer_text",
+      "label": "Angebot Text",
+      "default": "Nur heute! Spare bei jedem Bundle und erhalte eine Premium-Probe dazu."
+    },
+    {
+      "type": "header",
+      "content": "Countdown Timer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Countdown anzeigen",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Lagerbestand"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stock_counter",
+      "label": "Lagerbestand anzeigen",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "stock_remaining",
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "label": "Verbleibende Artikel",
+      "default": 23
+    },
+    {
+      "type": "range",
+      "id": "stock_percentage",
+      "min": 10,
+      "max": 90,
+      "step": 5,
+      "label": "Lagerbestand Fortschritt (%)",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Jetzt zuschlagen!"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Darstellung"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_sticky",
+      "label": "Sticky Banner (bleibt oben)",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LOUBAAN Urgency Banner"
+    }
+  ]
+}
+{% endschema %}

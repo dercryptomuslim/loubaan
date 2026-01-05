@@ -1,0 +1,448 @@
+.loubaan-exit-intent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.loubaan-exit-intent--show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loubaan-exit-intent__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.loubaan-exit-intent__modal {
+  position: relative;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border-radius: 25px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.8) translateY(20px);
+  transition: all 0.3s ease;
+  border: 3px solid #ff6b35;
+}
+
+.loubaan-exit-intent--show .loubaan-exit-intent__modal {
+  transform: scale(1) translateY(0);
+}
+
+.loubaan-exit-intent__modal--success {
+  border-color: #28a745;
+}
+
+.loubaan-exit-intent__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 107, 53, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff6b35;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.loubaan-exit-intent__close:hover {
+  background: rgba(255, 107, 53, 0.2);
+  transform: scale(1.1);
+}
+
+.loubaan-exit-intent__content {
+  padding: 40px 32px 32px;
+  text-align: center;
+}
+
+.loubaan-exit-intent__header {
+  margin-bottom: 32px;
+}
+
+.loubaan-exit-intent__emoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  animation: shake 0.5s ease-in-out;
+}
+
+.loubaan-exit-intent__title {
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.loubaan-exit-intent__subtitle {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.loubaan-exit-intent__offer {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loubaan-exit-intent__offer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: shimmer-offer 3s infinite;
+}
+
+.loubaan-exit-intent__offer-badge {
+  background: linear-gradient(135deg, #ffc107 0%, #ffed4e 100%);
+  color: #ff4500;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 16px;
+  animation: pulse-badge 2s infinite;
+}
+
+.loubaan-exit-intent__offer-main {
+  margin-bottom: 12px;
+}
+
+.loubaan-exit-intent__discount {
+  font-size: 2.5rem;
+  font-weight: 900;
+  display: block;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.loubaan-exit-intent__offer-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.loubaan-exit-intent__offer-details {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.loubaan-exit-intent__email {
+  margin-bottom: 24px;
+}
+
+.loubaan-exit-intent__email-text {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.loubaan-exit-intent__input-group {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.loubaan-exit-intent__input {
+  flex: 1;
+  padding: 16px;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.loubaan-exit-intent__input:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.loubaan-exit-intent__button {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 16px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 140px;
+}
+
+.loubaan-exit-intent__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  background: linear-gradient(135deg, #ff4500 0%, #ff6b35 100%);
+}
+
+.loubaan-exit-intent__social {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.loubaan-exit-intent__social-item {
+  text-align: center;
+}
+
+.loubaan-exit-intent__social-number {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ff6b35;
+  display: block;
+  line-height: 1;
+}
+
+.loubaan-exit-intent__social-text {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.loubaan-exit-intent__urgency {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe8cc 100%);
+  border: 2px solid #ff6b35;
+  border-radius: 15px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.loubaan-exit-intent__urgency-text {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.loubaan-exit-intent__timer {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ff6b35;
+  letter-spacing: 1px;
+}
+
+.loubaan-exit-intent__time {
+  animation: pulse-time 1s infinite;
+}
+
+.loubaan-exit-intent__no-thanks {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.loubaan-exit-intent__no-thanks:hover {
+  color: #666;
+}
+
+/* Success State */
+.loubaan-exit-intent__success-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce-success 0.6s ease-out;
+}
+
+.loubaan-exit-intent__success-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #28a745;
+  margin-bottom: 24px;
+}
+
+.loubaan-exit-intent__code {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.loubaan-exit-intent__code-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.loubaan-exit-intent__code-value {
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.loubaan-exit-intent__copy-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.loubaan-exit-intent__copy-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.loubaan-exit-intent__shop-button {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%);
+  color: white;
+  padding: 18px 32px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.loubaan-exit-intent__shop-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.loubaan-exit-intent__code-info {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Mobile Optimierung */
+@media screen and (max-width: 749px) {
+  .loubaan-exit-intent__modal {
+    max-width: 95%;
+    margin: 20px;
+  }
+
+  .loubaan-exit-intent__content {
+    padding: 32px 24px 24px;
+  }
+
+  .loubaan-exit-intent__emoji {
+    font-size: 2.5rem;
+  }
+
+  .loubaan-exit-intent__discount {
+    font-size: 2rem;
+  }
+
+  .loubaan-exit-intent__input-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .loubaan-exit-intent__button {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .loubaan-exit-intent__social {
+    gap: 20px;
+  }
+
+  .loubaan-exit-intent__code-value {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .loubaan-exit-intent__modal {
+    border-radius: 15px;
+  }
+
+  .loubaan-exit-intent__offer {
+    padding: 20px;
+  }
+
+  .loubaan-exit-intent__discount {
+    font-size: 1.8rem;
+  }
+
+  .loubaan-exit-intent__success-icon {
+    font-size: 3rem;
+  }
+}
+
+/* Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes shimmer-offer {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(100%) translateY(100%); }
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes pulse-time {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes bounce-success {
+  0% { transform: scale(0.3); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
