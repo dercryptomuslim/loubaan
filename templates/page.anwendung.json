@@ -103,15 +103,15 @@
         "heading_wLPDiC": {
           "type": "heading",
           "settings": {
-            "heading": "Ein bewusster Gegenentwurf",
+            "heading": "Anwendung in Duftlampe & Diffusor",
             "heading_size": "h2"
           }
         },
         "text_4nBHnz": {
           "type": "text",
           "settings": {
-            "text": "<p>LOUBAAN steht für Reduktion und Tiefe.<br/>Weniger Reizüberflutung. Mehr Ruhe. Mehr Fokus.<br/>Unsere Blends sollen nicht dominieren – sondern begleiten. Leise, elegant und beständig.</p>",
-            "text_style": "body"
+            "text": "<p><strong>Duftlampe mit Teelicht</strong><br/>2–3 Tropfen des Öls mit ca. 2 Esslöffeln Wasser in die Duftschale geben.<br/>Geeignet für Räume bis ca. 15 m².<br/>Die Duftwirkung hält etwa 2–3 Stunden an.</p><p><strong>Diffusor</strong><br/>Ebenfalls 2–3 Tropfen auf ca. 2 Esslöffel Wasser geben (bzw. entsprechend der Herstellerangaben des Diffusors). Gilt sowohl für Blends als auch für reine Öle.</p>",
+            "text_style": "subtitle"
           }
         }
       },
@@ -128,7 +128,7 @@
         "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "mobile_content_alignment": "center",
         "section_color_scheme": "",
         "color_scheme": "",
