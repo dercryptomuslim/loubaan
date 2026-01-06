@@ -299,23 +299,11 @@
           "settings": {
             "text": "<p>Unsere Vision ist eine zeitlose Premium-Marke für Aroma-Rituale – klar, hochwertig und fernab von Trends.<br/>Unsere Mission: naturreine Duftkompositionen zugänglich machen, bewusste Momente fördern und Qualität vor Quantität stellen.</p>"
           }
-        },
-        "button_RAfhfJ": {
-          "type": "button",
-          "settings": {
-            "button_label": "Schaltflächenbeschriftung",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
         }
       },
       "block_order": [
         "heading_feHmr7",
-        "text_FebC8m",
-        "button_RAfhfJ"
+        "text_FebC8m"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -325,6 +313,53 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "image_with_text_XtV8Jq": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_9pKrQD": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Eine Einladung</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_7NKiye": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LOUBAAN ist für Menschen, die bewusst wählen statt impulsiv kaufen.<br/>Wenn du Düfte suchst, die nicht laut sind, sondern begleiten – bist du hier richtig.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_CDVHTA": {
+          "type": "button",
+          "settings": {
+            "button_label": "Blends entdecken",
+            "button_link": "shopify://collections/blends",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_9pKrQD",
+        "text_7NKiye",
+        "button_CDVHTA"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -336,6 +371,7 @@
     "multicolumn_nhXk3f",
     "rich_text_8jGRNX",
     "collapsible_content_Gnp7GD",
-    "rich_text_DGXkFK"
+    "rich_text_DGXkFK",
+    "image_with_text_XtV8Jq"
   ]
 }
