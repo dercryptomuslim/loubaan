@@ -231,6 +231,101 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "collapsible_content_Gnp7GD": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_gwrwhW": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Qualität statt Masse",
+            "icon": "perfume",
+            "row_content": "<p>Wir produzieren bewusst – lieber weniger Produkte, dafür kompromisslos gut.</p><p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jXfDAJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Transparenz statt Marketing",
+            "icon": "perfume",
+            "row_content": "<p>Wir setzen auf klare Informationen und ehrliche Kommunikation.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_d7RRcp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Bewusster Alltag",
+            "icon": "perfume",
+            "row_content": "<p>Düfte sind für uns Rituale: Abendruhe, Fokusmomente, stille Pausen.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_gwrwhW",
+        "collapsible_row_jXfDAJ",
+        "collapsible_row_d7RRcp"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Unsere Haltung",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_DGXkFK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_feHmr7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Vision & Mission",
+            "heading_size": "h1"
+          }
+        },
+        "text_FebC8m": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unsere Vision ist eine zeitlose Premium-Marke für Aroma-Rituale – klar, hochwertig und fernab von Trends.<br/>Unsere Mission: naturreine Duftkompositionen zugänglich machen, bewusste Momente fördern und Qualität vor Quantität stellen.</p>"
+          }
+        },
+        "button_RAfhfJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "Schaltflächenbeschriftung",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_feHmr7",
+        "text_FebC8m",
+        "button_RAfhfJ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -239,6 +334,8 @@
     "rich_text_RndykC",
     "image_with_text_g44a6E",
     "multicolumn_nhXk3f",
-    "rich_text_8jGRNX"
+    "rich_text_8jGRNX",
+    "collapsible_content_Gnp7GD",
+    "rich_text_DGXkFK"
   ]
 }
