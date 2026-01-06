@@ -45,8 +45,8 @@
       ],
       "settings": {
         "image": "shopify://shop_images/Generated_Image_December_21_2025_-_4_34PM.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "large",
+        "image_overlay_opacity": 20,
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
@@ -189,15 +189,21 @@
           "settings": {
             "button_label": "2er Bundle - 10% sparen",
             "button_link": "/collections/all",
-            "button_style_secondary": false
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         },
         "button_3er": {
           "type": "button",
           "settings": {
             "button_label": "3er Bundle - 15% sparen",
-            "button_link": "/collections/all", 
-            "button_style_secondary": true
+            "button_link": "/collections/all",
+            "button_style_secondary": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
