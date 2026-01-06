@@ -1,14 +1,244 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "image_banner_PegqXD": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_bn9U4N": {
+          "type": "heading",
+          "settings": {
+            "heading": "Über LOUBAAN",
+            "heading_size": "h1"
+          }
+        },
+        "text_3CQ9gC": {
+          "type": "text",
+          "settings": {
+            "text": "Premium Aroma Rituals – naturrein, bewusst komponiert.",
+            "text_style": "body"
+          }
+        },
+        "buttons_9M9nmE": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Unsere Blends entdecken",
+            "button_link_1": "shopify://collections/blends",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_bn9U4N",
+        "text_3CQ9gC",
+        "buttons_9M9nmE"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Generated_Image_January_06_2026_-_6_41PM_011371b3-0cad-4beb-8a7d-2773df91312f.png",
+        "image_overlay_opacity": 10,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "rich_text_RndykC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kMkFHY": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Die Idee hinter LOUBAAN</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_yeXGy3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LOUBAAN entstand nicht aus einem Trend, sondern aus einer Lücke.<br/>Viele Düfte sind heute laut, künstlich oder beliebig. Wir wollten einen Gegenentwurf: naturrein, ruhig und klar – Düfte als Begleiter für bewusste Momente im Alltag.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kMkFHY",
+        "text_yeXGy3"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_with_text_g44a6E": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wLPDiC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ein bewusster Gegenentwurf",
+            "heading_size": "h2"
+          }
+        },
+        "text_4nBHnz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LOUBAAN steht für Reduktion und Tiefe.<br/>Weniger Reizüberflutung. Mehr Ruhe. Mehr Fokus.<br/>Unsere Blends sollen nicht dominieren – sondern begleiten. Leise, elegant und beständig.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wLPDiC",
+        "text_4nBHnz"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_nhXk3f": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_nXa8DL": {
+          "type": "column",
+          "settings": {
+            "title": "Naturrein",
+            "text": "<p>Wir verwenden ausschließlich hochwertige ätherische Öle – ohne synthetische Duftstoffe.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ACbEhL": {
+          "type": "column",
+          "settings": {
+            "title": "Komponiert",
+            "text": "<p>Jeder Blend entsteht mit klarer Intention: Balance, Harmonie und Charakter.</p><h3></h3>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mbGyjL": {
+          "type": "column",
+          "settings": {
+            "title": "Zeitlos",
+            "text": "<p>Keine lauten Versprechen. Keine Effekthascherei. Nur Qualität, die bleibt.</p><p></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_nXa8DL",
+        "column_ACbEhL",
+        "column_mbGyjL"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Was LOUBAAN besonders macht",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_8jGRNX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fQVFFb": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Wie unsere Blends entstehen</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_6CzB7d": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Jeder Blend beginnt mit einer Frage: <em>Wie soll sich dieser Moment anfühlen?</em><br/>Erst danach wählen wir die Öle – nicht nach Trend, sondern nach Tiefe und Harmonie.<br/>Unsere Kompositionen werden getestet und feinjustiert, bis sie ruhig, rund und hochwertig wirken.</p>"
+          }
+        },
+        "button_UzeJkz": {
+          "type": "button",
+          "settings": {
+            "button_label": "Zu unseren Blends",
+            "button_link": "shopify://collections/blends",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_fQVFFb",
+        "text_6CzB7d",
+        "button_UzeJkz"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_banner_PegqXD",
+    "rich_text_RndykC",
+    "image_with_text_g44a6E",
+    "multicolumn_nhXk3f",
+    "rich_text_8jGRNX"
   ]
 }
