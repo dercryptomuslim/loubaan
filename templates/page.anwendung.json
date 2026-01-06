@@ -53,8 +53,8 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Generated_Image_January_06_2026_-_8_24PM.png",
-        "image_overlay_opacity": 10,
+        "image": "shopify://shop_images/Generated_Image_January_06_2026_-_8_34PM.png",
+        "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
