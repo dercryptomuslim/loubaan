@@ -121,7 +121,7 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Generated_Image_January_06_2026_-_6_41PM_011371b3-0cad-4beb-8a7d-2773df91312f.png",
+        "image": "shopify://shop_images/Generated_Image_January_06_2026_-_9_56PM.png",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -136,14 +136,45 @@
         "padding_bottom": 36
       }
     },
+    "rich_text_8jGRNX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fQVFFb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Hinweis zur Anwendung",
+            "heading_size": "h1"
+          }
+        },
+        "text_6CzB7d": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unsere Loubaan Öle sind hochkonzentriert – weniger ist mehr.<br/>Nicht unverdünnt auf Haut oder Schleimhäute auftragen.<br/>Außerhalb der Reichweite von Kindern aufbewahren.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fQVFFb",
+        "text_6CzB7d"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "multicolumn_nhXk3f": {
       "type": "multicolumn",
       "blocks": {
         "column_nXa8DL": {
           "type": "column",
           "settings": {
-            "title": "Naturrein",
-            "text": "<p>Wir verwenden ausschließlich hochwertige ätherische Öle – ohne synthetische Duftstoffe.</p>",
+            "title": "Für Blends & Pure Oils",
+            "text": "<p>Die Anwendung gilt für alle Loubaan Duftkompositionen und reinen Öle.</p>",
             "link_label": "",
             "link": ""
           }
@@ -151,8 +182,8 @@
         "column_ACbEhL": {
           "type": "column",
           "settings": {
-            "title": "Komponiert",
-            "text": "<p>Jeder Blend entsteht mit klarer Intention: Balance, Harmonie und Charakter.</p><h3></h3>",
+            "title": "Hochkonzentriert",
+            "text": "<p>Schon wenige Tropfen reichen für ein langanhaltendes Dufterlebnis.</p>",
             "link_label": "",
             "link": ""
           }
@@ -160,8 +191,8 @@
         "column_mbGyjL": {
           "type": "column",
           "settings": {
-            "title": "Zeitlos",
-            "text": "<p>Keine lauten Versprechen. Keine Effekthascherei. Nur Qualität, die bleibt.</p><p></p>",
+            "title": "Bewusste Nutzung",
+            "text": "<p>Sanft dosiert für eine harmonische Raumwirkung.</p>",
             "link_label": "",
             "link": ""
           }
@@ -188,49 +219,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "rich_text_8jGRNX": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_fQVFFb": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Wie unsere Blends entstehen</strong>",
-            "heading_size": "h1"
-          }
-        },
-        "text_6CzB7d": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Jeder Blend beginnt mit einer Frage: <em>Wie soll sich dieser Moment anfühlen?</em><br/>Erst danach wählen wir die Öle – nicht nach Trend, sondern nach Tiefe und Harmonie.<br/>Unsere Kompositionen werden getestet und feinjustiert, bis sie ruhig, rund und hochwertig wirken.</p>"
-          }
-        },
-        "button_UzeJkz": {
-          "type": "button",
-          "settings": {
-            "button_label": "Zu unseren Blends",
-            "button_link": "shopify://collections/blends",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_fQVFFb",
-        "text_6CzB7d",
-        "button_UzeJkz"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "collapsible_content_Gnp7GD": {
@@ -272,7 +260,7 @@
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
         "caption": "",
-        "heading": "Unsere Haltung",
+        "heading": "Hinweis zur Anwendung",
         "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "none",
@@ -369,8 +357,8 @@
     "image_banner_PegqXD",
     "rich_text_RndykC",
     "image_with_text_g44a6E",
-    "multicolumn_nhXk3f",
     "rich_text_8jGRNX",
+    "multicolumn_nhXk3f",
     "collapsible_content_Gnp7GD",
     "rich_text_DGXkFK",
     "image_with_text_XtV8Jq"
