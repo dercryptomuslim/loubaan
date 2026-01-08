@@ -349,6 +349,7 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "image": "shopify://shop_images/Generated_Image_January_06_2026_-_11_57PM.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
