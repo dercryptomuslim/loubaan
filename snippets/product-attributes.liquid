@@ -1,0 +1,95 @@
+{%- comment -%}
+  LOUBAAN Produkt-Attribute Snippet
+  Zeigt strukturierte Produktinformationen im Primavera-Stil
+  Erwartet Metafields unter custom.*
+{%- endcomment -%}
+
+{%- liquid
+  assign has_attributes = false
+  if product.metafields.custom.duftnote != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.duftprofil != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.duftthema != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.hautwirkung != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.herkunft != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.gewinnung != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.pflanzenteil != blank
+    assign has_attributes = true
+  endif
+  if product.metafields.custom.inhaltsstoffe != blank
+    assign has_attributes = true
+  endif
+-%}
+
+{%- if has_attributes -%}
+  <div class="product-attributes" {{ block.shopify_attributes }}>
+    <div class="product-attributes__grid">
+      {%- if product.metafields.custom.duftnote != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Duftnote</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.duftnote }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.duftprofil != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Duftprofil</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.duftprofil }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.duftthema != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Duftthema</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.duftthema }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.hautwirkung != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Hautwirkung</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.hautwirkung }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.herkunft != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Herkunft</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.herkunft }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.pflanzenteil != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Pflanzenteil</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.pflanzenteil }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.gewinnung != blank -%}
+        <div class="product-attributes__item">
+          <span class="product-attributes__label">Gewinnung</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.gewinnung }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.inhaltsstoffe != blank -%}
+        <div class="product-attributes__item product-attributes__item--full">
+          <span class="product-attributes__label">Inhaltsstoffe</span>
+          <span class="product-attributes__value">{{ product.metafields.custom.inhaltsstoffe | newline_to_br }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
