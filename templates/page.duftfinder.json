@@ -1,23 +1,52 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "duftfinder": {
+      "type": "loubaan-duftfinder",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
+        "kicker": "✨ Dein KI Duftberater",
+        "heading": "Finde deinen perfekten Duft",
+        "subheading": "Beantworte 4 kurze Fragen und entdecke Düfte, die zu dir passen."
+      },
+      "blocks": {
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "title": "Weihrauch Premium",
+            "subtitle": "Traditionell & Meditativ",
+            "description": "Hochwertiger Weihrauch für tiefe, meditative Momente und spirituelle Rituale.",
+            "mood_tags": "ruhig, sinnlich",
+            "atmosphere_tags": "ritual, zuhause",
+            "character_tags": "harzig",
+            "intensity_tags": "tief, ausgewogen"
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "title": "Oud Deluxe",
+            "subtitle": "Luxuriös & Intensiv",
+            "description": "Edler Oud-Duft für besondere Anlässe und anspruchsvolle Genießer.",
+            "mood_tags": "warm, sinnlich",
+            "atmosphere_tags": "ritual, spa",
+            "character_tags": "holzig, harzig",
+            "intensity_tags": "tief"
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "title": "Bakhoor Rose",
+            "subtitle": "Blumig & Elegant",
+            "description": "Zarter Rosenduft mit orientalischer Note für ein gemütliches Zuhause.",
+            "mood_tags": "warm, ruhig",
+            "atmosphere_tags": "zuhause, spa",
+            "character_tags": "blumig",
+            "intensity_tags": "ausgewogen, sanft"
+          }
+        }
+      },
+      "block_order": ["product_1", "product_2", "product_3"]
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["duftfinder"]
 }
