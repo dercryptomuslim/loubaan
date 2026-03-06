@@ -1,51 +1,419 @@
 {{ 'component-article-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  /* LOUBAAN Blog - Modern Layout */
+  .loubaan-blog {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+  .loubaan-blog__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .loubaan-blog__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+  }
+
+  .loubaan-blog__subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Featured Article (Hero) */
+  .loubaan-featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: #f9f9f7;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    align-items: center;
+  }
+
+  .loubaan-featured__image {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .loubaan-featured__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .loubaan-featured__badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #2d5a45;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .loubaan-featured__content {
+    padding: 40px;
+  }
+
+  .loubaan-featured__meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .loubaan-featured__meta svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  .loubaan-featured__tag {
+    background: #e8f0ec;
+    color: #2d5a45;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .loubaan-featured__title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+
+  .loubaan-featured__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .loubaan-featured__title a:hover {
+    color: #2d5a45;
+  }
+
+  .loubaan-featured__excerpt {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 25px;
+  }
+
+  .loubaan-featured__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1a1a1a;
+    font-weight: 600;
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .loubaan-featured__link:hover {
+    gap: 12px;
+    color: #2d5a45;
+  }
+
+  .loubaan-featured__link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Articles Grid */
+  .loubaan-grid__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .loubaan-grid__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .loubaan-articles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .loubaan-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .loubaan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .loubaan-card__image {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+  }
+
+  .loubaan-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .loubaan-card:hover .loubaan-card__image img {
+    transform: scale(1.05);
+  }
+
+  .loubaan-card__tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255,255,255,0.95);
+    color: #2d5a45;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .loubaan-card__tag svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .loubaan-card__content {
+    padding: 20px;
+  }
+
+  .loubaan-card__meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 12px;
+  }
+
+  .loubaan-card__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .loubaan-card__title a {
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  .loubaan-card__title a:hover {
+    color: #2d5a45;
+  }
+
+  .loubaan-card__excerpt {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Empty State */
+  .loubaan-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #666;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 990px) {
+    .loubaan-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .loubaan-featured__image {
+      min-height: 300px;
+    }
+
+    .loubaan-articles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .loubaan-blog__title {
+      font-size: 1.8rem;
+    }
+
+    .loubaan-featured__title {
+      font-size: 1.5rem;
+    }
+
+    .loubaan-featured__content {
+      padding: 25px;
+    }
+
+    .loubaan-articles {
+      grid-template-columns: 1fr;
     }
   }
 {%- endstyle -%}
 
-{%- paginate blog.articles by 6 -%}
-  <div class="main-blog page-width section-{{ section.id }}-padding">
-    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ blog.title | escape }}
-    </h1>
+{%- paginate blog.articles by 7 -%}
+  <div class="loubaan-blog">
+    
+    <!-- Header -->
+    <header class="loubaan-blog__header">
+      <h1 class="loubaan-blog__title">{{ blog.title | escape }}</h1>
+      <p class="loubaan-blog__subtitle">Wissen, Inspiration & Rituale rund um Weihrauch und ätherische Öle</p>
+    </header>
 
-    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      {%- for article in blog.articles -%}
-        <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          {%- render 'article-card',
-            article: article,
-            media_height: section.settings.image_height,
-            media_aspect_ratio: article.image.aspect_ratio,
-            show_image: section.settings.show_image,
-            show_date: section.settings.show_date,
-            show_author: section.settings.show_author,
-            show_excerpt: true
-          -%}
+    {%- if blog.articles.size > 0 -%}
+      
+      <!-- Featured Article (First One) -->
+      {%- assign featured = blog.articles.first -%}
+      <article class="loubaan-featured">
+        <div class="loubaan-featured__image">
+          {%- if featured.image -%}
+            <img src="{{ featured.image | image_url: width: 800 }}" 
+                 alt="{{ featured.image.alt | escape }}"
+                 loading="eager">
+          {%- else -%}
+            <div style="background: #e8e8e8; height: 100%;"></div>
+          {%- endif -%}
+          <span class="loubaan-featured__badge">Neuester Artikel</span>
         </div>
-      {%- endfor -%}
-    </div>
+        
+        <div class="loubaan-featured__content">
+          <div class="loubaan-featured__meta">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              {{ featured.published_at | date: "%d.%m.%Y" }}
+            </span>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              {% assign words = featured.content | strip_html | split: ' ' | size %}
+              {% assign reading_time = words | divided_by: 200 | plus: 1 %}
+              {{ reading_time }} Min. Lesezeit
+            </span>
+            {%- if featured.tags.size > 0 -%}
+              <span class="loubaan-featured__tag">{{ featured.tags.first }}</span>
+            {%- endif -%}
+          </div>
+          
+          <h2 class="loubaan-featured__title">
+            <a href="{{ featured.url }}">{{ featured.title | escape }}</a>
+          </h2>
+          
+          <p class="loubaan-featured__excerpt">
+            {%- if featured.excerpt.size > 0 -%}
+              {{ featured.excerpt | strip_html | truncate: 200 }}
+            {%- else -%}
+              {{ featured.content | strip_html | truncate: 200 }}
+            {%- endif -%}
+          </p>
+          
+          <a href="{{ featured.url }}" class="loubaan-featured__link">
+            Jetzt lesen
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </article>
 
-    {%- if paginate.pages > 1 -%}
-      {%- render 'pagination', paginate: paginate -%}
+      <!-- Other Articles Grid -->
+      {%- if blog.articles.size > 1 -%}
+        <section class="loubaan-grid">
+          <div class="loubaan-grid__header">
+            <h2 class="loubaan-grid__title">Weitere Artikel</h2>
+          </div>
+          
+          <div class="loubaan-articles">
+            {%- for article in blog.articles offset: 1 -%}
+              <article class="loubaan-card">
+                <div class="loubaan-card__image">
+                  {%- if article.image -%}
+                    <img src="{{ article.image | image_url: width: 600 }}" 
+                         alt="{{ article.image.alt | escape }}"
+                         loading="lazy">
+                  {%- else -%}
+                    <div style="background: linear-gradient(135deg, #e8f0ec 0%, #d4e4db 100%); height: 100%;"></div>
+                  {%- endif -%}
+                  {%- if article.tags.size > 0 -%}
+                    <span class="loubaan-card__tag">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                      {{ article.tags.first }}
+                    </span>
+                  {%- endif -%}
+                </div>
+                
+                <div class="loubaan-card__content">
+                  <div class="loubaan-card__meta">
+                    <span>{{ article.published_at | date: "%d.%m.%Y" }}</span>
+                    <span>
+                      {% assign words = article.content | strip_html | split: ' ' | size %}
+                      {% assign reading_time = words | divided_by: 200 | plus: 1 %}
+                      {{ reading_time }} Min.
+                    </span>
+                  </div>
+                  
+                  <h3 class="loubaan-card__title">
+                    <a href="{{ article.url }}">{{ article.title | escape }}</a>
+                  </h3>
+                  
+                  <p class="loubaan-card__excerpt">
+                    {%- if article.excerpt.size > 0 -%}
+                      {{ article.excerpt | strip_html | truncate: 120 }}
+                    {%- else -%}
+                      {{ article.content | strip_html | truncate: 120 }}
+                    {%- endif -%}
+                  </p>
+                </div>
+              </article>
+            {%- endfor -%}
+          </div>
+        </section>
+      {%- endif -%}
+
+      {%- if paginate.pages > 1 -%}
+        <div style="margin-top: 60px;">
+          {%- render 'pagination', paginate: paginate -%}
+        </div>
+      {%- endif -%}
+
+    {%- else -%}
+      <div class="loubaan-empty">
+        <p>Noch keine Artikel vorhanden.</p>
+      </div>
     {%- endif -%}
   </div>
 {%- endpaginate -%}
@@ -57,17 +425,15 @@
   "class": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
       "type": "select",
       "id": "layout",
       "options": [
-        {
-          "value": "grid",
-          "label": "t:sections.main-blog.settings.layout.options__1.label"
-        },
-        {
-          "value": "collage",
-          "label": "t:sections.main-blog.settings.layout.options__2.label"
-        }
+        { "value": "grid", "label": "t:sections.main-blog.settings.layout.options__1.label" },
+        { "value": "collage", "label": "t:sections.main-blog.settings.layout.options__2.label" }
       ],
       "default": "collage",
       "label": "t:sections.main-blog.settings.layout.label"
@@ -77,30 +443,6 @@
       "id": "show_image",
       "default": true,
       "label": "t:sections.main-blog.settings.show_image.label"
-    },
-    {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.main-blog.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.main-blog.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.main-blog.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.main-blog.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.main-blog.settings.image_height.label"
     },
     {
       "type": "checkbox",
@@ -113,10 +455,6 @@
       "id": "show_author",
       "default": false,
       "label": "t:sections.main-blog.settings.show_author.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
     },
     {
       "type": "range",
