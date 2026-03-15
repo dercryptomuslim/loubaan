@@ -535,12 +535,5 @@
       "expanded": "Formular für den Empfänger des Gutscheins erweitert",
       "collapsed": "Formular für den Empfänger des Gutscheins minimiert"
     }
-  },
-  "shopify": {
-    "checkout": {
-      "stock": {
-        "price_column_header": "Preis"
-      }
-    }
   }
 }
