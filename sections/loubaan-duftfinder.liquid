@@ -15,10 +15,8 @@
       <div class="duftfinder__progress-track">
         <div class="duftfinder__progress-fill" data-progress></div>
       </div>
-      <span class="duftfinder__progress-text" data-progress-text>1 / 4</span>
+      <span class="duftfinder__progress-text" data-progress-text>1 / 5</span>
     </div>
-
-    <div class="duftfinder__selections" data-state></div>
 
     <div class="duftfinder__content" data-question></div>
 
@@ -29,38 +27,23 @@
         </svg>
         Zurück
       </button>
+      <button type="button" class="duftfinder__btn duftfinder__btn--next" data-next hidden>
+        Weiter
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
       <button type="button" class="duftfinder__btn duftfinder__btn--reset" data-reset hidden>Neu starten</button>
     </nav>
   </div>
-
-  <script type="application/json" data-products>
-    [
-      {% for block in section.blocks %}
-        {
-          "title": {{ block.settings.title | default: block.settings.product.title | json }},
-          "subtitle": {{ block.settings.subtitle | json }},
-          "description": {{ block.settings.description | json }},
-          "url": {{ block.settings.link | default: block.settings.product.url | json }},
-          "image": {{ block.settings.product.featured_image | image_url: width: 400 | json }},
-          "price": {{ block.settings.product.price | money_without_trailing_zeros | json }},
-          "mood": {{ block.settings.mood_tags | downcase | split: ',' | json }},
-          "atmosphere": {{ block.settings.atmosphere_tags | downcase | split: ',' | json }},
-          "character": {{ block.settings.character_tags | downcase | split: ',' | json }},
-          "intensity": {{ block.settings.intensity_tags | downcase | split: ',' | json }}
-        }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ]
-  </script>
 </section>
 
 <style>
   /* ============================================
-     LOUBAAN DUFTFINDER — Impeccable Design
-     Editorial/Refined aesthetic for premium brand
+     LOUBAAN DUFTFINDER v2 — Premium Beratung
      ============================================ */
 
   #Duftfinder-{{ section.id }} {
-    /* OKLCH Color System — warm-tinted neutrals */
     --df-bg: oklch(97% 0.008 60);
     --df-surface: oklch(99% 0.004 60);
     --df-border: oklch(88% 0.015 60);
@@ -68,26 +51,22 @@
     --df-text-muted: oklch(45% 0.015 60);
     --df-accent: oklch(45% 0.12 45);
     --df-accent-light: oklch(92% 0.03 45);
-    --df-success: oklch(45% 0.12 155);
+    --df-gold: oklch(65% 0.15 85);
+    --df-gold-light: oklch(95% 0.04 85);
     
-    /* Typography */
     --df-font-display: "Cormorant Garamond", "Times New Roman", serif;
     --df-font-body: "DM Sans", system-ui, sans-serif;
-    
-    /* Motion — exponential easing, no bounce */
     --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
-    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     
     background: var(--df-bg);
     padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
   }
 
   #Duftfinder-{{ section.id }} .duftfinder__inner {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
   }
 
-  /* Header */
   #Duftfinder-{{ section.id }} .duftfinder__header {
     text-align: center;
     margin-bottom: clamp(2rem, 4vw, 3rem);
@@ -119,17 +98,16 @@
     font-size: 1.0625rem;
     color: var(--df-text-muted);
     margin: 0;
-    max-width: 45ch;
+    max-width: 50ch;
     margin-inline: auto;
     line-height: 1.6;
   }
 
-  /* Progress */
   #Duftfinder-{{ section.id }} .duftfinder__progress {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   #Duftfinder-{{ section.id }} .duftfinder__progress-track {
@@ -141,7 +119,7 @@
   }
 
   #Duftfinder-{{ section.id }} .duftfinder__progress-fill {
-    width: 25%;
+    width: 20%;
     height: 100%;
     background: var(--df-accent);
     border-radius: 2px;
@@ -156,27 +134,7 @@
     min-width: 3ch;
   }
 
-  /* Selections (pills showing chosen answers) */
-  #Duftfinder-{{ section.id }} .duftfinder__selections {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    min-height: 1.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  #Duftfinder-{{ section.id }} .duftfinder__pill {
-    font-family: var(--df-font-body);
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--df-accent);
-    background: var(--df-accent-light);
-    padding: 0.375rem 0.75rem;
-    border-radius: 2rem;
-  }
-
-  /* Question Content */
+  /* Question */
   #Duftfinder-{{ section.id }} .duftfinder__question-title {
     font-family: var(--df-font-display);
     font-size: clamp(1.5rem, 3.5vw, 2rem);
@@ -184,7 +142,6 @@
     color: var(--df-text);
     text-align: center;
     margin: 0 0 0.5rem;
-    letter-spacing: -0.01em;
   }
 
   #Duftfinder-{{ section.id }} .duftfinder__question-subtitle {
@@ -195,7 +152,6 @@
     margin: 0 0 2rem;
   }
 
-  /* Options Grid — NO nested cards */
   #Duftfinder-{{ section.id }} .duftfinder__options {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -206,26 +162,46 @@
     overflow: hidden;
   }
 
+  #Duftfinder-{{ section.id }} .duftfinder__options--single {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
   #Duftfinder-{{ section.id }} .duftfinder__option {
     background: var(--df-surface);
     border: none;
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1.5rem;
     text-align: left;
     cursor: pointer;
     transition: background 200ms var(--ease-out);
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    position: relative;
   }
 
   #Duftfinder-{{ section.id }} .duftfinder__option:hover {
     background: var(--df-accent-light);
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__option:focus-visible {
-    outline: 2px solid var(--df-accent);
-    outline-offset: -2px;
-    z-index: 1;
+  #Duftfinder-{{ section.id }} .duftfinder__option[aria-pressed="true"] {
+    background: var(--df-accent-light);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__option[aria-pressed="true"]::after {
+    content: '';
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 20px;
+    height: 20px;
+    background: var(--df-accent);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   #Duftfinder-{{ section.id }} .duftfinder__option-label {
@@ -253,7 +229,7 @@
     font-family: var(--df-font-body);
     font-size: 0.875rem;
     font-weight: 500;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 6px;
     cursor: pointer;
     transition: all 200ms var(--ease-out);
@@ -278,6 +254,17 @@
     cursor: not-allowed;
   }
 
+  #Duftfinder-{{ section.id }} .duftfinder__btn--next {
+    background: var(--df-accent);
+    border: 1px solid var(--df-accent);
+    color: white;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__btn--next:hover {
+    background: var(--df-text);
+    border-color: var(--df-text);
+  }
+
   #Duftfinder-{{ section.id }} .duftfinder__btn--reset {
     background: var(--df-text);
     border: 1px solid var(--df-text);
@@ -290,75 +277,114 @@
   }
 
   /* Results */
-  #Duftfinder-{{ section.id }} .duftfinder__results {
-    display: grid;
-    gap: 1.5rem;
+  #Duftfinder-{{ section.id }} .duftfinder__results-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result {
+  #Duftfinder-{{ section.id }} .duftfinder__results-title {
+    font-family: var(--df-font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 400;
+    color: var(--df-text);
+    margin: 0 0 0.75rem;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__results-text {
+    font-family: var(--df-font-body);
+    font-size: 1rem;
+    color: var(--df-text-muted);
+    max-width: 55ch;
+    margin-inline: auto;
+    line-height: 1.65;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__recommendations {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__rec {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
     padding: 1.5rem;
     background: var(--df-surface);
     border: 1px solid var(--df-border);
     border-radius: 12px;
     text-decoration: none;
-    transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result:hover {
+  #Duftfinder-{{ section.id }} .duftfinder__rec:hover {
     border-color: var(--df-accent);
+    transform: translateY(-2px);
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result[data-top="true"] {
-    border-color: var(--df-accent);
-    box-shadow: 0 4px 24px oklch(45% 0.12 45 / 0.1);
+  /* Hauptempfehlung */
+  #Duftfinder-{{ section.id }} .duftfinder__rec--main {
+    background: linear-gradient(135deg, var(--df-gold-light), var(--df-surface));
+    border: 2px solid var(--df-gold);
+    padding: 2rem;
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    background: var(--df-bg);
+  #Duftfinder-{{ section.id }} .duftfinder__rec--main:hover {
+    border-color: var(--df-gold);
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  #Duftfinder-{{ section.id }} .duftfinder__result-match {
+  #Duftfinder-{{ section.id }} .duftfinder__rec-badge {
     font-family: var(--df-font-body);
     font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--df-success);
+    letter-spacing: 0.08em;
+    color: var(--df-gold);
+    margin-bottom: 0.5rem;
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result-title {
+  #Duftfinder-{{ section.id }} .duftfinder__rec--main .duftfinder__rec-badge {
+    color: oklch(50% 0.15 85);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__rec-name {
     font-family: var(--df-font-display);
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: var(--df-text);
-    margin: 0;
+    margin: 0 0 0.25rem;
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result-subtitle {
+  #Duftfinder-{{ section.id }} .duftfinder__rec--main .duftfinder__rec-name {
+    font-size: 1.75rem;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__rec-character {
     font-family: var(--df-font-body);
     font-size: 0.875rem;
     color: var(--df-text-muted);
+    margin-bottom: 0.75rem;
   }
 
-  #Duftfinder-{{ section.id }} .duftfinder__result-price {
+  #Duftfinder-{{ section.id }} .duftfinder__rec-reason {
     font-family: var(--df-font-body);
     font-size: 0.9375rem;
-    font-weight: 500;
     color: var(--df-text);
-    margin-top: auto;
+    line-height: 1.6;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__rec-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--df-font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--df-accent);
+    margin-top: 1rem;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__rec--main .duftfinder__rec-cta {
+    color: oklch(50% 0.15 85);
   }
 
   /* Responsive */
@@ -367,29 +393,22 @@
       grid-template-columns: 1fr;
     }
 
-    #Duftfinder-{{ section.id }} .duftfinder__result {
-      grid-template-columns: 80px 1fr;
-      gap: 1rem;
-      padding: 1rem;
+    #Duftfinder-{{ section.id }} .duftfinder__rec {
+      padding: 1.25rem;
     }
 
-    #Duftfinder-{{ section.id }} .duftfinder__result-image {
-      width: 80px;
-      height: 80px;
+    #Duftfinder-{{ section.id }} .duftfinder__rec--main {
+      padding: 1.5rem;
     }
   }
 
   /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
-    #Duftfinder-{{ section.id }} .duftfinder__progress-fill,
-    #Duftfinder-{{ section.id }} .duftfinder__option,
-    #Duftfinder-{{ section.id }} .duftfinder__btn,
-    #Duftfinder-{{ section.id }} .duftfinder__result {
+    #Duftfinder-{{ section.id }} * {
       transition-duration: 0.01ms !important;
     }
   }
 
-  /* Animation for content transitions */
   @keyframes df-fade-in {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
@@ -398,118 +417,239 @@
   #Duftfinder-{{ section.id }} .duftfinder__content[data-animate] {
     animation: df-fade-in 400ms var(--ease-out);
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    #Duftfinder-{{ section.id }} .duftfinder__content[data-animate] {
-      animation: none;
-    }
-  }
 </style>
 
 <script>
-  (() => {
-    const root = document.getElementById('Duftfinder-{{ section.id }}');
-    if (!root) return;
+(function() {
+  const root = document.getElementById('Duftfinder-{{ section.id }}');
+  if (!root) return;
 
-    const $ = (sel) => root.querySelector(sel);
-    const questionEl = $('[data-question]');
-    const stateEl = $('[data-state]');
-    const backBtn = $('[data-back]');
-    const resetBtn = $('[data-reset]');
-    const progressBar = $('[data-progress]');
-    const progressText = $('[data-progress-text]');
+  const $ = (sel) => root.querySelector(sel);
+  const questionEl = $('[data-question]');
+  const backBtn = $('[data-back]');
+  const nextBtn = $('[data-next]');
+  const resetBtn = $('[data-reset]');
+  const progressBar = $('[data-progress]');
+  const progressText = $('[data-progress-text]');
 
-    let products = [];
-    try {
-      products = JSON.parse($('[data-products]').textContent.trim() || '[]');
-    } catch (e) {}
+  // LOUBAAN Blends mit Eigenschaften
+  const blends = [
+    {
+      name: 'Lavender Honey Bloom',
+      character: 'Weich, floral, honigsüß, beruhigend',
+      url: '/products/lavender-honey-bloom',
+      gefuehle: ['ruhig', 'warm'],
+      zeit: ['abend', 'schlaf'],
+      duft: ['floral', 'cremig'],
+      intensitaet: ['sanft', 'ausgewogen'],
+      erfahrung: ['einsteiger', 'fortgeschritten']
+    },
+    {
+      name: 'Blossom Velvet',
+      character: 'Pudrig-floral, cremig, warm',
+      url: '/products/blossom-velvet',
+      gefuehle: ['warm', 'sinnlich'],
+      zeit: ['abend', 'alltag'],
+      duft: ['floral', 'cremig'],
+      intensitaet: ['ausgewogen'],
+      erfahrung: ['einsteiger', 'fortgeschritten']
+    },
+    {
+      name: 'Zen Lavender Sanctuary',
+      character: 'Holzig, ruhig, meditativ',
+      url: '/products/zen-lavender-sanctuary',
+      gefuehle: ['ruhig', 'klar'],
+      zeit: ['meditation', 'abend'],
+      duft: ['holzig', 'floral'],
+      intensitaet: ['sanft', 'ausgewogen'],
+      erfahrung: ['einsteiger', 'fortgeschritten', 'kenner']
+    },
+    {
+      name: 'Golden Winter Vanilla',
+      character: 'Warm, gourmand, tröstend',
+      url: '/products/golden-winter-vanilla',
+      gefuehle: ['warm', 'ruhig'],
+      zeit: ['abend', 'schlaf', 'alltag'],
+      duft: ['cremig', 'harzig'],
+      intensitaet: ['ausgewogen', 'praesent'],
+      erfahrung: ['einsteiger', 'fortgeschritten']
+    },
+    {
+      name: 'Golden Sacred Bloom',
+      character: 'Harzig, ambriert, edel, tief',
+      url: '/products/golden-sacred-bloom',
+      gefuehle: ['sinnlich', 'warm'],
+      zeit: ['abend', 'meditation'],
+      duft: ['harzig'],
+      intensitaet: ['praesent'],
+      erfahrung: ['fortgeschritten', 'kenner']
+    },
+    {
+      name: 'Ylang Silk Cream',
+      character: 'Floral-cremig, elegant',
+      url: '/products/ylang-silk-cream',
+      gefuehle: ['sinnlich', 'warm'],
+      zeit: ['abend', 'alltag'],
+      duft: ['floral', 'cremig'],
+      intensitaet: ['ausgewogen'],
+      erfahrung: ['fortgeschritten']
+    },
+    {
+      name: 'Velvet Resin Vanilla',
+      character: 'Ruhig, harzig, erwachsen',
+      url: '/products/velvet-resin-vanilla',
+      gefuehle: ['ruhig', 'warm'],
+      zeit: ['abend', 'meditation'],
+      duft: ['harzig', 'cremig'],
+      intensitaet: ['ausgewogen', 'praesent'],
+      erfahrung: ['fortgeschritten', 'kenner']
+    },
+    {
+      name: 'Ylang Sacred Resin',
+      character: 'Sinnlich, tief, ritualartig',
+      url: '/products/ylang-sacred-resin',
+      gefuehle: ['sinnlich', 'klar'],
+      zeit: ['meditation', 'abend'],
+      duft: ['harzig', 'floral'],
+      intensitaet: ['praesent'],
+      erfahrung: ['kenner']
+    }
+  ];
 
-    const fallback = [
-      { title: 'Weihrauch Premium', subtitle: 'Traditionell & Meditativ', description: 'Hochwertiger Weihrauch für tiefe Momente.', price: '24,90 €', url: '/collections/weihrauch', mood: ['ruhig', 'sinnlich'], atmosphere: ['ritual', 'zuhause'], character: ['harzig'], intensity: ['tief', 'ausgewogen'] },
-      { title: 'Oud Deluxe', subtitle: 'Luxuriös & Warm', description: 'Edler Oud für besondere Anlässe.', price: '39,90 €', url: '/collections/oud', mood: ['warm', 'sinnlich'], atmosphere: ['ritual', 'spa'], character: ['holzig', 'harzig'], intensity: ['tief'] },
-      { title: 'Bakhoor Rose', subtitle: 'Blumig & Elegant', description: 'Rosenduft mit orientalischer Note.', price: '29,90 €', url: '/collections/bakhoor', mood: ['warm', 'ruhig'], atmosphere: ['zuhause', 'spa'], character: ['blumig'], intensity: ['ausgewogen', 'sanft'] }
-    ];
+  const steps = [
+    {
+      key: 'gefuehle',
+      title: 'Wie möchtest du dich fühlen?',
+      subtitle: 'Du kannst mehrere auswählen.',
+      multi: true,
+      options: [
+        { value: 'ruhig', label: 'Ruhig & Entspannt', desc: 'Entschleunigung und innere Ruhe' },
+        { value: 'warm', label: 'Warm & Geborgen', desc: 'Behaglichkeit und Wärme' },
+        { value: 'klar', label: 'Klar & Fokussiert', desc: 'Klarheit und Konzentration' },
+        { value: 'sinnlich', label: 'Sinnlich & Tief', desc: 'Tiefe und Intensität' }
+      ]
+    },
+    {
+      key: 'zeit',
+      title: 'Wann möchtest du den Duft nutzen?',
+      subtitle: 'Wähle den passenden Moment.',
+      multi: false,
+      options: [
+        { value: 'abend', label: 'Am Abend', desc: 'Zur Entspannung nach dem Tag' },
+        { value: 'alltag', label: 'Im Alltag', desc: 'Als täglicher Begleiter' },
+        { value: 'meditation', label: 'Zur Meditation', desc: 'Für achtsame Momente' },
+        { value: 'schlaf', label: 'Vor dem Schlaf', desc: 'Zum sanften Einschlafen' }
+      ]
+    },
+    {
+      key: 'duft',
+      title: 'Welche Duftrichtung spricht dich an?',
+      subtitle: 'Folge deiner Intuition.',
+      multi: false,
+      options: [
+        { value: 'floral', label: 'Floral', desc: 'Blumig und zart' },
+        { value: 'harzig', label: 'Warm-Harzig', desc: 'Tief und ambriert' },
+        { value: 'cremig', label: 'Cremig-Weich', desc: 'Sanft und umhüllend' },
+        { value: 'holzig', label: 'Frisch-Holzig', desc: 'Klar und natürlich' },
+        { value: 'offen', label: 'Ich bin offen', desc: 'Überrasche mich' }
+      ]
+    },
+    {
+      key: 'intensitaet',
+      title: 'Wie intensiv darf der Duft sein?',
+      subtitle: 'Jeder hat seine Präferenz.',
+      multi: false,
+      options: [
+        { value: 'sanft', label: 'Sehr sanft', desc: 'Dezent im Hintergrund' },
+        { value: 'ausgewogen', label: 'Ausgewogen', desc: 'Wahrnehmbar, aber nicht laut' },
+        { value: 'praesent', label: 'Präsent', desc: 'Raumfüllend und deutlich' }
+      ]
+    },
+    {
+      key: 'erfahrung',
+      title: 'Wie erfahren bist du mit ätherischen Ölen?',
+      subtitle: 'Das hilft uns bei der Auswahl.',
+      multi: false,
+      options: [
+        { value: 'einsteiger', label: 'Einsteiger', desc: 'Ich beginne gerade erst' },
+        { value: 'fortgeschritten', label: 'Fortgeschritten', desc: 'Ich habe schon Erfahrung' },
+        { value: 'kenner', label: 'Kenner', desc: 'Ich weiß genau, was ich suche' }
+      ]
+    }
+  ];
 
-    if (!products.length) products = fallback;
+  const answers = {};
+  let step = 0;
 
-    const steps = [
-      { key: 'mood', title: 'Wie möchtest du dich fühlen?', subtitle: 'Wähle das Gefühl, das dich begleiten soll.',
-        options: [
-          { value: 'ruhig', label: 'Ruhig & Entspannt', desc: 'Entschleunigung & Harmonie' },
-          { value: 'warm', label: 'Warm & Geborgen', desc: 'Geborgenheit & Nähe' },
-          { value: 'klar', label: 'Klar & Fokussiert', desc: 'Konzentration & Klarheit' },
-          { value: 'sinnlich', label: 'Sinnlich & Tief', desc: 'Intensität & Tiefe' }
-        ]
-      },
-      { key: 'atmosphere', title: 'Welche Atmosphäre suchst du?', subtitle: 'Wo soll dich der Duft hinbringen?',
-        options: [
-          { value: 'natur', label: 'Natur & Wald', desc: 'Erdung & Frische' },
-          { value: 'spa', label: 'Luxus Spa', desc: 'Wellness & Pflege' },
-          { value: 'zuhause', label: 'Gemütliches Zuhause', desc: 'Kamin & Kerzenlicht' },
-          { value: 'ritual', label: 'Tempel & Ritual', desc: 'Mystik & Spiritualität' }
-        ]
-      },
-      { key: 'character', title: 'Welchen Charakter bevorzugst du?', subtitle: 'Was spricht dich am meisten an?',
-        options: [
-          { value: 'blumig', label: 'Blumig & Weich', desc: 'Zart & elegant' },
-          { value: 'holzig', label: 'Holzig & Klar', desc: 'Stark & natürlich' },
-          { value: 'suess', label: 'Süß & Gourmand', desc: 'Vanille & Honig' },
-          { value: 'harzig', label: 'Harzig & Balsamisch', desc: 'Weihrauch & Amber' }
-        ]
-      },
-      { key: 'intensity', title: 'Wie intensiv darf es sein?', subtitle: 'Deine Duft-Präferenz.',
-        options: [
-          { value: 'sanft', label: 'Sanft & Dezent', desc: 'Leise im Hintergrund' },
-          { value: 'ausgewogen', label: 'Ausgewogen', desc: 'Präsent, nicht laut' },
-          { value: 'tief', label: 'Tief & Intensiv', desc: 'Raumfüllend & stark' },
-          { value: 'frisch', label: 'Klar & Frisch', desc: 'Belebend & leicht' }
-        ]
-      }
-    ];
+  const norm = (s) => (s || '').toString().toLowerCase().trim();
 
-    const answers = {};
-    let step = 0;
+  const updateProgress = () => {
+    const pct = ((step + 1) / steps.length) * 100;
+    progressBar.style.width = `${pct}%`;
+    progressText.textContent = `${step + 1} / ${steps.length}`;
+    backBtn.disabled = step === 0;
+  };
 
-    const norm = (s) => (s || '').toString().toLowerCase().trim();
+  const animate = () => {
+    questionEl.removeAttribute('data-animate');
+    void questionEl.offsetWidth;
+    questionEl.setAttribute('data-animate', '');
+  };
 
-    const updateProgress = () => {
-      const pct = ((step + 1) / steps.length) * 100;
-      progressBar.style.width = `${pct}%`;
-      progressText.textContent = `${step + 1} / ${steps.length}`;
-      backBtn.disabled = step === 0;
-    };
+  const updateNextButton = () => {
+    const s = steps[step];
+    if (s.multi) {
+      const selected = answers[s.key] || [];
+      nextBtn.hidden = selected.length === 0;
+    } else {
+      nextBtn.hidden = true;
+    }
+  };
 
-    const renderState = () => {
-      stateEl.innerHTML = Object.values(answers)
-        .map((v) => `<span class="duftfinder__pill">${v}</span>`)
-        .join('');
-    };
-
-    const animate = () => {
-      questionEl.removeAttribute('data-animate');
-      void questionEl.offsetWidth; // reflow
-      questionEl.setAttribute('data-animate', '');
-    };
-
-    const renderQuestion = () => {
-      const s = steps[step];
-      questionEl.innerHTML = `
-        <h3 class="duftfinder__question-title">${s.title}</h3>
-        <p class="duftfinder__question-subtitle">${s.subtitle}</p>
-        <div class="duftfinder__options">
-          ${s.options.map((o) => `
-            <button type="button" class="duftfinder__option" data-value="${o.value}">
+  const renderQuestion = () => {
+    const s = steps[step];
+    const current = answers[s.key] || (s.multi ? [] : null);
+    
+    questionEl.innerHTML = `
+      <h3 class="duftfinder__question-title">${s.title}</h3>
+      <p class="duftfinder__question-subtitle">${s.subtitle}</p>
+      <div class="duftfinder__options ${s.options.length <= 3 ? 'duftfinder__options--single' : ''}">
+        ${s.options.map((o) => {
+          const isSelected = s.multi 
+            ? current.includes(o.value)
+            : current === o.value;
+          return `
+            <button type="button" class="duftfinder__option" data-value="${o.value}" aria-pressed="${isSelected}">
               <span class="duftfinder__option-label">${o.label}</span>
               <span class="duftfinder__option-desc">${o.desc}</span>
             </button>
-          `).join('')}
-        </div>
-      `;
+          `;
+        }).join('')}
+      </div>
+    `;
 
-      questionEl.querySelectorAll('[data-value]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          answers[s.key] = btn.dataset.value;
-          renderState();
+    questionEl.querySelectorAll('[data-value]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.value;
+        
+        if (s.multi) {
+          let arr = answers[s.key] || [];
+          if (arr.includes(val)) {
+            arr = arr.filter(v => v !== val);
+          } else {
+            arr.push(val);
+          }
+          answers[s.key] = arr;
+          
+          // Update UI
+          questionEl.querySelectorAll('[data-value]').forEach((b) => {
+            b.setAttribute('aria-pressed', arr.includes(b.dataset.value));
+          });
+          updateNextButton();
+        } else {
+          answers[s.key] = val;
+          
+          // Auto-advance for single-select
           if (step < steps.length - 1) {
             step++;
             renderQuestion();
@@ -519,75 +659,160 @@
             renderResults();
             animate();
           }
-        });
+        }
       });
-
-      updateProgress();
-    };
-
-    const rank = () => {
-      return products.map((p) => {
-        let score = 0;
-        steps.forEach((s) => {
-          const ans = norm(answers[s.key]);
-          const tags = (p[s.key] || []).map(norm);
-          if (tags.includes(ans)) score += 25;
-        });
-        return { ...p, score };
-      }).sort((a, b) => b.score - a.score).slice(0, 3);
-    };
-
-    const renderResults = () => {
-      const matches = rank();
-      questionEl.innerHTML = `
-        <h3 class="duftfinder__question-title">Deine Empfehlungen</h3>
-        <p class="duftfinder__question-subtitle">Basierend auf deinen Antworten</p>
-        <div class="duftfinder__results">
-          ${matches.map((m, i) => `
-            <a href="${m.url || '/collections/all'}" class="duftfinder__result" data-top="${i === 0}">
-              ${m.image ? `<img class="duftfinder__result-image" src="${m.image}" alt="${m.title}" loading="lazy">` : '<div class="duftfinder__result-image"></div>'}
-              <div class="duftfinder__result-content">
-                <span class="duftfinder__result-match">${m.score}% Match</span>
-                <h4 class="duftfinder__result-title">${m.title}</h4>
-                ${m.subtitle ? `<span class="duftfinder__result-subtitle">${m.subtitle}</span>` : ''}
-                ${m.price ? `<span class="duftfinder__result-price">${m.price}</span>` : ''}
-              </div>
-            </a>
-          `).join('')}
-        </div>
-      `;
-
-      progressBar.style.width = '100%';
-      progressText.textContent = '✓';
-      backBtn.hidden = true;
-      resetBtn.hidden = false;
-    };
-
-    const reset = () => {
-      Object.keys(answers).forEach((k) => delete answers[k]);
-      step = 0;
-      backBtn.hidden = false;
-      backBtn.disabled = true;
-      resetBtn.hidden = true;
-      renderState();
-      renderQuestion();
-      animate();
-    };
-
-    backBtn.addEventListener('click', () => {
-      if (step === 0) return;
-      delete answers[steps[step].key];
-      step--;
-      renderState();
-      renderQuestion();
-      animate();
     });
 
-    resetBtn.addEventListener('click', reset);
+    updateProgress();
+    updateNextButton();
+  };
 
-    // Init
+  const calculateScore = (blend) => {
+    let score = 0;
+    
+    // Gefühle (Mehrfachauswahl) - max 40 Punkte
+    const userGefuehle = answers.gefuehle || [];
+    userGefuehle.forEach(g => {
+      if (blend.gefuehle.includes(g)) score += 10;
+    });
+    
+    // Zeit - 20 Punkte
+    if (blend.zeit.includes(answers.zeit)) score += 20;
+    
+    // Duft - 25 Punkte (oder 10 wenn "offen")
+    if (answers.duft === 'offen') {
+      score += 10;
+    } else if (blend.duft.includes(answers.duft)) {
+      score += 25;
+    }
+    
+    // Intensität - 15 Punkte
+    if (blend.intensitaet.includes(answers.intensitaet)) score += 15;
+    
+    // Erfahrung - 10 Punkte
+    if (blend.erfahrung.includes(answers.erfahrung)) score += 10;
+    
+    return score;
+  };
+
+  const getRecommendations = () => {
+    return blends
+      .map(b => ({ ...b, score: calculateScore(b) }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 4);
+  };
+
+  const generateReason = (blend, isMain) => {
+    const reasons = [];
+    const userGefuehle = answers.gefuehle || [];
+    
+    // Gefühl-basierte Begründung
+    if (userGefuehle.includes('ruhig') && blend.gefuehle.includes('ruhig')) {
+      reasons.push('unterstützt deine Suche nach Ruhe und Entspannung');
+    }
+    if (userGefuehle.includes('warm') && blend.gefuehle.includes('warm')) {
+      reasons.push('bringt die Wärme und Geborgenheit, die du suchst');
+    }
+    if (userGefuehle.includes('sinnlich') && blend.gefuehle.includes('sinnlich')) {
+      reasons.push('bietet die sinnliche Tiefe, die du dir wünschst');
+    }
+    if (userGefuehle.includes('klar') && blend.gefuehle.includes('klar')) {
+      reasons.push('fördert Klarheit und Fokus');
+    }
+    
+    // Zeit-basierte Ergänzung
+    const zeitText = {
+      'abend': 'Ideal für entspannte Abendstunden.',
+      'alltag': 'Ein verlässlicher Begleiter für jeden Tag.',
+      'meditation': 'Perfekt für achtsame, meditative Momente.',
+      'schlaf': 'Unterstützt sanft beim Einschlafen.'
+    };
+    
+    if (reasons.length > 0) {
+      let text = `Dieser Blend ${reasons[0]}`;
+      if (reasons.length > 1) {
+        text += ` und ${reasons[1]}`;
+      }
+      text += '. ' + (zeitText[answers.zeit] || '');
+      return text;
+    }
+    
+    return `Ein ${blend.character.toLowerCase()} Blend, der gut zu deinen Vorlieben passt. ${zeitText[answers.zeit] || ''}`;
+  };
+
+  const renderResults = () => {
+    const recs = getRecommendations();
+    
+    questionEl.innerHTML = `
+      <div class="duftfinder__results-intro">
+        <h3 class="duftfinder__results-title">Dein persönlicher Duftmoment</h3>
+        <p class="duftfinder__results-text">
+          Basierend auf deinen Antworten haben wir vier Blends ausgewählt, 
+          die besonders gut zu dir passen. Unsere Hauptempfehlung steht an erster Stelle.
+        </p>
+      </div>
+      <div class="duftfinder__recommendations">
+        ${recs.map((r, i) => `
+          <a href="${r.url}" class="duftfinder__rec ${i === 0 ? 'duftfinder__rec--main' : ''}">
+            <div>
+              <span class="duftfinder__rec-badge">${i === 0 ? 'Unsere Empfehlung für dich' : `Alternative ${i}`}</span>
+              <h4 class="duftfinder__rec-name">${r.name}</h4>
+              <p class="duftfinder__rec-character">${r.character}</p>
+              <p class="duftfinder__rec-reason">${generateReason(r, i === 0)}</p>
+              <span class="duftfinder__rec-cta">
+                Blend entdecken
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    `;
+
+    progressBar.style.width = '100%';
+    progressText.textContent = '✓';
+    backBtn.hidden = true;
+    nextBtn.hidden = true;
+    resetBtn.hidden = false;
+  };
+
+  const reset = () => {
+    Object.keys(answers).forEach((k) => delete answers[k]);
+    step = 0;
+    backBtn.hidden = false;
+    backBtn.disabled = true;
+    nextBtn.hidden = true;
+    resetBtn.hidden = true;
     renderQuestion();
-  })();
+    animate();
+  };
+
+  // Event Listeners
+  backBtn.addEventListener('click', () => {
+    if (step === 0) return;
+    delete answers[steps[step].key];
+    step--;
+    renderQuestion();
+    animate();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (step < steps.length - 1) {
+      step++;
+      renderQuestion();
+      updateProgress();
+      animate();
+    } else {
+      renderResults();
+      animate();
+    }
+  });
+
+  resetBtn.addEventListener('click', reset);
+
+  // Init
+  renderQuestion();
+})();
 </script>
 
 {% schema %}
@@ -600,7 +825,7 @@
       "type": "text",
       "id": "kicker",
       "label": "Kicker",
-      "default": "Duftberater"
+      "default": "Persönliche Beratung"
     },
     {
       "type": "text",
@@ -612,70 +837,12 @@
       "type": "textarea",
       "id": "subheading",
       "label": "Unterzeile",
-      "default": "Beantworte vier kurze Fragen und entdecke Düfte, die zu dir passen."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Produkt",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Produkt"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Titel (überschreibt Produktname)"
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Untertitel"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Kurzbeschreibung"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link (überschreibt Produkt-URL)"
-        },
-        {
-          "type": "text",
-          "id": "mood_tags",
-          "label": "Mood Tags",
-          "info": "Kommagetrennt: ruhig, warm, klar, sinnlich"
-        },
-        {
-          "type": "text",
-          "id": "atmosphere_tags",
-          "label": "Atmosphäre Tags",
-          "info": "Kommagetrennt: natur, spa, zuhause, ritual"
-        },
-        {
-          "type": "text",
-          "id": "character_tags",
-          "label": "Charakter Tags",
-          "info": "Kommagetrennt: blumig, holzig, suess, harzig"
-        },
-        {
-          "type": "text",
-          "id": "intensity_tags",
-          "label": "Intensität Tags",
-          "info": "Kommagetrennt: sanft, ausgewogen, tief, frisch"
-        }
-      ]
+      "default": "Fünf kurze Fragen, eine Empfehlung, die zu dir passt."
     }
   ],
   "presets": [
     {
-      "name": "Duftfinder",
-      "blocks": []
+      "name": "Duftfinder"
     }
   ]
 }
