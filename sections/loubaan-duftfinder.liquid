@@ -3,30 +3,34 @@
   assign subheading = section.settings.subheading
 %}
 
-<section class="loubaan-finder" id="Duftfinder-{{ section.id }}">
-  <div class="finder-ambient finder-ambient--one"></div>
-  <div class="finder-ambient finder-ambient--two"></div>
+<section class="duftfinder" id="Duftfinder-{{ section.id }}">
+  <div class="duftfinder__inner">
+    <header class="duftfinder__header">
+      <span class="duftfinder__kicker">{{ section.settings.kicker }}</span>
+      <h2 class="duftfinder__title">{{ heading }}</h2>
+      <p class="duftfinder__subtitle">{{ subheading }}</p>
+    </header>
 
-  <div class="finder-shell">
-    <div class="finder-top">
-      <span class="finder-kicker">{{ section.settings.kicker }}</span>
-      <h2>{{ heading }}</h2>
-      <p>{{ subheading }}</p>
+    <div class="duftfinder__progress" aria-hidden="true">
+      <div class="duftfinder__progress-track">
+        <div class="duftfinder__progress-fill" data-progress></div>
+      </div>
+      <span class="duftfinder__progress-text" data-progress-text>1 / 4</span>
     </div>
 
-    <div class="finder-progress-wrap" aria-hidden="true">
-      <div class="finder-progress-bar"><span data-progress></span></div>
-      <div class="finder-progress-label"><span data-progress-text>Frage 1 von 4</span></div>
-    </div>
+    <div class="duftfinder__selections" data-state></div>
 
-    <div class="finder-state" data-state></div>
+    <div class="duftfinder__content" data-question></div>
 
-    <div class="finder-question" data-question></div>
-
-    <div class="finder-actions">
-      <button type="button" class="finder-btn finder-btn--ghost" data-back disabled>Zurück</button>
-      <button type="button" class="finder-btn" data-reset hidden>Neu starten</button>
-    </div>
+    <nav class="duftfinder__nav">
+      <button type="button" class="duftfinder__btn duftfinder__btn--back" data-back disabled>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Zurück
+      </button>
+      <button type="button" class="duftfinder__btn duftfinder__btn--reset" data-reset hidden>Neu starten</button>
+    </nav>
   </div>
 
   <script type="application/json" data-products>
@@ -50,339 +54,355 @@
 </section>
 
 <style>
+  /* ============================================
+     LOUBAAN DUFTFINDER — Impeccable Design
+     Editorial/Refined aesthetic for premium brand
+     ============================================ */
+
   #Duftfinder-{{ section.id }} {
-    --finder-bg: #f7f2ea;
-    --finder-text: #2c2b29;
-    --finder-muted: #6c645d;
-    --finder-accent: #7c6555;
-    --finder-accent-soft: rgba(124, 101, 85, 0.18);
-    position: relative;
-    padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
-    border-radius: 24px;
-    overflow: hidden;
-    isolation: isolate;
-    background:
-      radial-gradient(circle at 8% 12%, #ffffff 0%, rgba(255, 255, 255, 0) 40%),
-      linear-gradient(130deg, #faf5ee, #f2ebe1);
-    min-height: 600px;
+    /* OKLCH Color System — warm-tinted neutrals */
+    --df-bg: oklch(97% 0.008 60);
+    --df-surface: oklch(99% 0.004 60);
+    --df-border: oklch(88% 0.015 60);
+    --df-text: oklch(25% 0.02 60);
+    --df-text-muted: oklch(45% 0.015 60);
+    --df-accent: oklch(45% 0.12 45);
+    --df-accent-light: oklch(92% 0.03 45);
+    --df-success: oklch(45% 0.12 155);
+    
+    /* Typography */
+    --df-font-display: "Cormorant Garamond", "Times New Roman", serif;
+    --df-font-body: "DM Sans", system-ui, sans-serif;
+    
+    /* Motion — exponential easing, no bounce */
+    --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    
+    background: var(--df-bg);
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem);
   }
 
-  #Duftfinder-{{ section.id }} .finder-ambient {
-    position: absolute;
-    border-radius: 999px;
-    filter: blur(55px);
-    opacity: 0.55;
-    z-index: -1;
-    animation: finderFloat 18s ease-in-out infinite alternate;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-ambient--one {
-    width: 320px;
-    height: 320px;
-    right: -90px;
-    top: -100px;
-    background: #dfd3c4;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-ambient--two {
-    width: 280px;
-    height: 280px;
-    left: -120px;
-    bottom: -120px;
-    background: #f8e8cf;
-    animation-duration: 24s;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-shell {
-    max-width: 900px;
+  #Duftfinder-{{ section.id }} .duftfinder__inner {
+    max-width: 720px;
     margin: 0 auto;
-    backdrop-filter: blur(8px);
   }
 
-  #Duftfinder-{{ section.id }} .finder-top {
+  /* Header */
+  #Duftfinder-{{ section.id }} .duftfinder__header {
     text-align: center;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__kicker {
+    display: inline-block;
+    font-family: var(--df-font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--df-accent);
+    margin-bottom: 1rem;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__title {
+    font-family: var(--df-font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--df-text);
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__subtitle {
+    font-family: var(--df-font-body);
+    font-size: 1.0625rem;
+    color: var(--df-text-muted);
+    margin: 0;
+    max-width: 45ch;
+    margin-inline: auto;
+    line-height: 1.6;
+  }
+
+  /* Progress */
+  #Duftfinder-{{ section.id }} .duftfinder__progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 2rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-kicker {
-    display: inline-flex;
-    margin-bottom: 0.7rem;
-    padding: 0.4rem 0.95rem;
-    border-radius: 999px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--finder-accent);
-    border: 1px solid var(--finder-accent-soft);
-    background: rgba(255, 255, 255, 0.7);
-  }
-
-  #Duftfinder-{{ section.id }} h2 {
-    margin: 0;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    line-height: 1.2;
-    font-family: "Times New Roman", serif;
-    color: var(--finder-text);
-  }
-
-  #Duftfinder-{{ section.id }} .finder-top p {
-    margin: 0.65rem auto 0;
-    color: var(--finder-muted);
-    max-width: 52ch;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-progress-wrap {
-    display: grid;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-progress-bar {
-    width: 100%;
-    height: 8px;
-    border-radius: 999px;
-    background: rgba(124, 101, 85, 0.12);
+  #Duftfinder-{{ section.id }} .duftfinder__progress-track {
+    flex: 1;
+    height: 3px;
+    background: var(--df-border);
+    border-radius: 2px;
     overflow: hidden;
   }
 
-  #Duftfinder-{{ section.id }} .finder-progress-bar span {
-    display: block;
+  #Duftfinder-{{ section.id }} .duftfinder__progress-fill {
     width: 25%;
     height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #7c6555, #9c8573);
-    transition: width 0.35s ease;
+    background: var(--df-accent);
+    border-radius: 2px;
+    transition: width 400ms var(--ease-out);
   }
 
-  #Duftfinder-{{ section.id }} .finder-progress-label {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 0.82rem;
-    color: var(--finder-muted);
-    font-weight: 500;
+  #Duftfinder-{{ section.id }} .duftfinder__progress-text {
+    font-family: var(--df-font-body);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--df-text-muted);
+    min-width: 3ch;
   }
 
-  #Duftfinder-{{ section.id }} .finder-state {
+  /* Selections (pills showing chosen answers) */
+  #Duftfinder-{{ section.id }} .duftfinder__selections {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1.2rem;
-    min-height: 2rem;
     justify-content: center;
+    min-height: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-pill {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(124, 101, 85, 0.16);
-    color: var(--finder-accent);
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 600;
+  #Duftfinder-{{ section.id }} .duftfinder__pill {
+    font-family: var(--df-font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--df-accent);
+    background: var(--df-accent-light);
+    padding: 0.375rem 0.75rem;
+    border-radius: 2rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-question-title {
+  /* Question Content */
+  #Duftfinder-{{ section.id }} .duftfinder__question-title {
+    font-family: var(--df-font-display);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 400;
+    color: var(--df-text);
+    text-align: center;
     margin: 0 0 0.5rem;
-    font-family: "Times New Roman", serif;
-    font-size: clamp(1.35rem, 3vw, 1.9rem);
-    color: var(--finder-text);
-    text-align: center;
+    letter-spacing: -0.01em;
   }
 
-  #Duftfinder-{{ section.id }} .finder-question-subtitle {
-    margin: 0 0 1.5rem;
-    color: var(--finder-muted);
+  #Duftfinder-{{ section.id }} .duftfinder__question-subtitle {
+    font-family: var(--df-font-body);
+    font-size: 0.9375rem;
+    color: var(--df-text-muted);
     text-align: center;
+    margin: 0 0 2rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-grid {
+  /* Options Grid — NO nested cards */
+  #Duftfinder-{{ section.id }} .duftfinder__options {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--df-border);
+    border: 1px solid var(--df-border);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
-  #Duftfinder-{{ section.id }} .finder-option {
-    border: 1px solid rgba(124, 101, 85, 0.17);
-    border-radius: 16px;
-    padding: 1.25rem;
-    background: rgba(255, 255, 255, 0.8);
+  #Duftfinder-{{ section.id }} .duftfinder__option {
+    background: var(--df-surface);
+    border: none;
+    padding: 1.5rem 1.25rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 200ms var(--ease-out);
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    gap: 0.25rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(42, 35, 29, 0.1);
-    border-color: rgba(124, 101, 85, 0.35);
-    background: rgba(255, 255, 255, 0.95);
+  #Duftfinder-{{ section.id }} .duftfinder__option:hover {
+    background: var(--df-accent-light);
   }
 
-  #Duftfinder-{{ section.id }} .finder-option .emoji {
-    font-size: 2rem;
-    margin-bottom: 0.3rem;
+  #Duftfinder-{{ section.id }} .duftfinder__option:focus-visible {
+    outline: 2px solid var(--df-accent);
+    outline-offset: -2px;
+    z-index: 1;
   }
 
-  #Duftfinder-{{ section.id }} .finder-option strong {
+  #Duftfinder-{{ section.id }} .duftfinder__option-label {
+    font-family: var(--df-font-body);
     font-size: 1rem;
-    color: var(--finder-text);
+    font-weight: 500;
+    color: var(--df-text);
   }
 
-  #Duftfinder-{{ section.id }} .finder-option span {
-    color: var(--finder-muted);
-    font-size: 0.85rem;
+  #Duftfinder-{{ section.id }} .duftfinder__option-desc {
+    font-family: var(--df-font-body);
+    font-size: 0.8125rem;
+    color: var(--df-text-muted);
   }
 
-  #Duftfinder-{{ section.id }} .finder-actions {
+  /* Navigation */
+  #Duftfinder-{{ section.id }} .duftfinder__nav {
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
-    margin-top: 1.5rem;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-btn {
-    border: 1px solid #2a2a2a;
-    border-radius: 999px;
-    background: #2a2a2a;
-    color: #fff;
-    padding: 0.7rem 1.3rem;
+  #Duftfinder-{{ section.id }} .duftfinder__btn {
+    font-family: var(--df-font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    transition: all 200ms var(--ease-out);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-btn:hover {
-    background: #fff;
-    color: #2a2a2a;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-btn--ghost {
-    color: #2a2a2a;
+  #Duftfinder-{{ section.id }} .duftfinder__btn--back {
     background: transparent;
+    border: 1px solid var(--df-border);
+    color: var(--df-text-muted);
   }
 
-  #Duftfinder-{{ section.id }} .finder-btn--ghost:hover {
-    background: rgba(0,0,0,0.05);
+  #Duftfinder-{{ section.id }} .duftfinder__btn--back:hover:not(:disabled) {
+    border-color: var(--df-text-muted);
+    color: var(--df-text);
   }
 
-  #Duftfinder-{{ section.id }} .finder-btn:disabled {
+  #Duftfinder-{{ section.id }} .duftfinder__btn--back:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
 
-  /* Results */
-  #Duftfinder-{{ section.id }} .finder-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.2rem;
-    margin-top: 1rem;
+  #Duftfinder-{{ section.id }} .duftfinder__btn--reset {
+    background: var(--df-text);
+    border: 1px solid var(--df-text);
+    color: var(--df-surface);
   }
 
-  #Duftfinder-{{ section.id }} .finder-result-card {
-    border-radius: 20px;
-    border: 1px solid rgba(124, 101, 85, 0.2);
-    background: rgba(255, 255, 255, 0.9);
+  #Duftfinder-{{ section.id }} .duftfinder__btn--reset:hover {
+    background: var(--df-accent);
+    border-color: var(--df-accent);
+  }
+
+  /* Results */
+  #Duftfinder-{{ section.id }} .duftfinder__results {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__result {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
     padding: 1.5rem;
+    background: var(--df-surface);
+    border: 1px solid var(--df-border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__result:hover {
+    border-color: var(--df-accent);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__result[data-top="true"] {
+    border-color: var(--df-accent);
+    box-shadow: 0 4px 24px oklch(45% 0.12 45 / 0.1);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__result-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: var(--df-bg);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__result-content {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    transition: all 0.3s ease;
+    gap: 0.25rem;
   }
 
-  #Duftfinder-{{ section.id }} .finder-result-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px rgba(124, 101, 85, 0.15);
-  }
-
-  #Duftfinder-{{ section.id }} .finder-result-card[data-top='true'] {
-    border: 2px solid var(--finder-accent);
-    box-shadow: 0 14px 28px rgba(124, 101, 85, 0.15);
-  }
-
-  #Duftfinder-{{ section.id }} .finder-result-img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 0.5rem;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-score {
-    font-size: 0.73rem;
-    font-weight: 700;
-    color: #0f766e;
-    background: #ecfdf5;
-    border: 1px solid #d1fae5;
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    align-self: flex-start;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-result-card h3 {
-    margin: 0;
-    font-family: "Times New Roman", serif;
-    font-size: 1.3rem;
-    color: var(--finder-text);
-  }
-
-  #Duftfinder-{{ section.id }} .finder-meta {
-    font-size: 0.9rem;
-    color: var(--finder-muted);
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  #Duftfinder-{{ section.id }} .finder-price {
-    font-size: 1rem;
+  #Duftfinder-{{ section.id }} .duftfinder__result-match {
+    font-family: var(--df-font-body);
+    font-size: 0.6875rem;
     font-weight: 600;
-    color: var(--finder-text);
-  }
-
-  #Duftfinder-{{ section.id }} .finder-link {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 999px;
-    text-decoration: none;
-    margin-top: auto;
-    padding: 0.7rem 1rem;
-    background: #2a2a2a;
-    color: #fff;
-    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    color: var(--df-success);
   }
 
-  #Duftfinder-{{ section.id }} .finder-link:hover {
-    background: var(--finder-accent);
+  #Duftfinder-{{ section.id }} .duftfinder__result-title {
+    font-family: var(--df-font-display);
+    font-size: 1.375rem;
+    font-weight: 400;
+    color: var(--df-text);
+    margin: 0;
   }
 
+  #Duftfinder-{{ section.id }} .duftfinder__result-subtitle {
+    font-family: var(--df-font-body);
+    font-size: 0.875rem;
+    color: var(--df-text-muted);
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__result-price {
+    font-family: var(--df-font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--df-text);
+    margin-top: auto;
+  }
+
+  /* Responsive */
   @media (max-width: 600px) {
-    #Duftfinder-{{ section.id }} .finder-grid {
+    #Duftfinder-{{ section.id }} .duftfinder__options {
       grid-template-columns: 1fr;
     }
-    #Duftfinder-{{ section.id }} .finder-option {
-      flex-direction: row;
-      text-align: left;
+
+    #Duftfinder-{{ section.id }} .duftfinder__result {
+      grid-template-columns: 80px 1fr;
       gap: 1rem;
+      padding: 1rem;
     }
-    #Duftfinder-{{ section.id }} .finder-option .emoji {
-      font-size: 1.8rem;
-      margin: 0;
+
+    #Duftfinder-{{ section.id }} .duftfinder__result-image {
+      width: 80px;
+      height: 80px;
     }
   }
 
-  @keyframes finderFloat {
-    from { transform: translate3d(0, 0, 0) scale(1); }
-    to { transform: translate3d(25px, -15px, 0) scale(1.08); }
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    #Duftfinder-{{ section.id }} .duftfinder__progress-fill,
+    #Duftfinder-{{ section.id }} .duftfinder__option,
+    #Duftfinder-{{ section.id }} .duftfinder__btn,
+    #Duftfinder-{{ section.id }} .duftfinder__result {
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Animation for content transitions */
+  @keyframes df-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #Duftfinder-{{ section.id }} .duftfinder__content[data-animate] {
+    animation: df-fade-in 400ms var(--ease-out);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #Duftfinder-{{ section.id }} .duftfinder__content[data-animate] {
+      animation: none;
+    }
   }
 </style>
 
@@ -391,191 +411,176 @@
     const root = document.getElementById('Duftfinder-{{ section.id }}');
     if (!root) return;
 
-    const questionContainer = root.querySelector('[data-question]');
-    const stateContainer = root.querySelector('[data-state]');
-    const backBtn = root.querySelector('[data-back]');
-    const resetBtn = root.querySelector('[data-reset]');
-    const progress = root.querySelector('[data-progress]');
-    const progressText = root.querySelector('[data-progress-text]');
-    
-    let productData = [];
-    try {
-      productData = JSON.parse(root.querySelector('[data-products]').textContent.trim() || '[]');
-    } catch (e) {
-      console.warn('Duftfinder: Could not parse products', e);
-    }
+    const $ = (sel) => root.querySelector(sel);
+    const questionEl = $('[data-question]');
+    const stateEl = $('[data-state]');
+    const backBtn = $('[data-back]');
+    const resetBtn = $('[data-reset]');
+    const progressBar = $('[data-progress]');
+    const progressText = $('[data-progress-text]');
 
-    const fallbackProducts = [
-      { title: 'Weihrauch Premium', subtitle: 'Tiefe & Mystik', description: 'Traditioneller Weihrauch für meditative Momente.', price: '24,90 €', url: '/collections/weihrauch', mood: ['ruhig', 'sinnlich'], atmosphere: ['ritual', 'zuhause'], character: ['harzig'], intensity: ['tief', 'ausgewogen'] },
+    let products = [];
+    try {
+      products = JSON.parse($('[data-products]').textContent.trim() || '[]');
+    } catch (e) {}
+
+    const fallback = [
+      { title: 'Weihrauch Premium', subtitle: 'Traditionell & Meditativ', description: 'Hochwertiger Weihrauch für tiefe Momente.', price: '24,90 €', url: '/collections/weihrauch', mood: ['ruhig', 'sinnlich'], atmosphere: ['ritual', 'zuhause'], character: ['harzig'], intensity: ['tief', 'ausgewogen'] },
       { title: 'Oud Deluxe', subtitle: 'Luxuriös & Warm', description: 'Edler Oud für besondere Anlässe.', price: '39,90 €', url: '/collections/oud', mood: ['warm', 'sinnlich'], atmosphere: ['ritual', 'spa'], character: ['holzig', 'harzig'], intensity: ['tief'] },
       { title: 'Bakhoor Rose', subtitle: 'Blumig & Elegant', description: 'Rosenduft mit orientalischer Note.', price: '29,90 €', url: '/collections/bakhoor', mood: ['warm', 'ruhig'], atmosphere: ['zuhause', 'spa'], character: ['blumig'], intensity: ['ausgewogen', 'sanft'] }
     ];
 
-    const products = productData.length ? productData : fallbackProducts;
+    if (!products.length) products = fallback;
 
     const steps = [
-      {
-        key: 'mood',
-        title: 'Wie möchtest du dich fühlen?',
-        subtitle: 'Wähle das Gefühl, das dich begleiten soll.',
+      { key: 'mood', title: 'Wie möchtest du dich fühlen?', subtitle: 'Wähle das Gefühl, das dich begleiten soll.',
         options: [
-          { value: 'ruhig', emoji: '🍃', label: 'Ruhig & entspannt', desc: 'Entschleunigung' },
-          { value: 'warm', emoji: '🌅', label: 'Warm & geborgen', desc: 'Geborgenheit' },
-          { value: 'klar', emoji: '🏔️', label: 'Klar & fokussiert', desc: 'Konzentration' },
-          { value: 'sinnlich', emoji: '🌙', label: 'Sinnlich & tief', desc: 'Intensität' }
+          { value: 'ruhig', label: 'Ruhig & Entspannt', desc: 'Entschleunigung & Harmonie' },
+          { value: 'warm', label: 'Warm & Geborgen', desc: 'Geborgenheit & Nähe' },
+          { value: 'klar', label: 'Klar & Fokussiert', desc: 'Konzentration & Klarheit' },
+          { value: 'sinnlich', label: 'Sinnlich & Tief', desc: 'Intensität & Tiefe' }
         ]
       },
-      {
-        key: 'atmosphere',
-        title: 'Welche Atmosphäre suchst du?',
-        subtitle: 'Wo soll dich der Duft hinbringen?',
+      { key: 'atmosphere', title: 'Welche Atmosphäre suchst du?', subtitle: 'Wo soll dich der Duft hinbringen?',
         options: [
-          { value: 'natur', emoji: '🌲', label: 'Natur & Wald', desc: 'Erdung & Frische' },
-          { value: 'spa', emoji: '🧖‍♀️', label: 'Luxus Spa', desc: 'Wellness' },
-          { value: 'zuhause', emoji: '🏠', label: 'Gemütliches Zuhause', desc: 'Kamin & Kerzen' },
-          { value: 'ritual', emoji: '🕌', label: 'Tempel & Ritual', desc: 'Mystik & Tiefe' }
+          { value: 'natur', label: 'Natur & Wald', desc: 'Erdung & Frische' },
+          { value: 'spa', label: 'Luxus Spa', desc: 'Wellness & Pflege' },
+          { value: 'zuhause', label: 'Gemütliches Zuhause', desc: 'Kamin & Kerzenlicht' },
+          { value: 'ritual', label: 'Tempel & Ritual', desc: 'Mystik & Spiritualität' }
         ]
       },
-      {
-        key: 'character',
-        title: 'Welchen Charakter bevorzugst du?',
-        subtitle: 'Was spricht dich am meisten an?',
+      { key: 'character', title: 'Welchen Charakter bevorzugst du?', subtitle: 'Was spricht dich am meisten an?',
         options: [
-          { value: 'blumig', emoji: '🌸', label: 'Blumig & weich', desc: 'Zart & elegant' },
-          { value: 'holzig', emoji: '🪵', label: 'Holzig & klar', desc: 'Stark & natürlich' },
-          { value: 'suess', emoji: '🍯', label: 'Süß & gourmand', desc: 'Vanille & Honig' },
-          { value: 'harzig', emoji: '✨', label: 'Harzig & balsamisch', desc: 'Weihrauch & Amber' }
+          { value: 'blumig', label: 'Blumig & Weich', desc: 'Zart & elegant' },
+          { value: 'holzig', label: 'Holzig & Klar', desc: 'Stark & natürlich' },
+          { value: 'suess', label: 'Süß & Gourmand', desc: 'Vanille & Honig' },
+          { value: 'harzig', label: 'Harzig & Balsamisch', desc: 'Weihrauch & Amber' }
         ]
       },
-      {
-        key: 'intensity',
-        title: 'Wie intensiv darf es sein?',
-        subtitle: 'Deine Duft-Vorliebe.',
+      { key: 'intensity', title: 'Wie intensiv darf es sein?', subtitle: 'Deine Duft-Präferenz.',
         options: [
-          { value: 'sanft', emoji: '☁️', label: 'Sanft & dezent', desc: 'Leise im Hintergrund' },
-          { value: 'ausgewogen', emoji: '⚖️', label: 'Ausgewogen', desc: 'Präsent, nicht laut' },
-          { value: 'tief', emoji: '🔥', label: 'Tief & intensiv', desc: 'Raumfüllend' },
-          { value: 'frisch', emoji: '🌿', label: 'Klar & frisch', desc: 'Belebend' }
+          { value: 'sanft', label: 'Sanft & Dezent', desc: 'Leise im Hintergrund' },
+          { value: 'ausgewogen', label: 'Ausgewogen', desc: 'Präsent, nicht laut' },
+          { value: 'tief', label: 'Tief & Intensiv', desc: 'Raumfüllend & stark' },
+          { value: 'frisch', label: 'Klar & Frisch', desc: 'Belebend & leicht' }
         ]
       }
     ];
 
     const answers = {};
-    let currentStep = 0;
+    let step = 0;
 
-    const normalize = (str) => (str || '').toString().toLowerCase().trim();
+    const norm = (s) => (s || '').toString().toLowerCase().trim();
 
-    const setProgress = () => {
-      const ratio = ((currentStep + 1) / steps.length) * 100;
-      progress.style.width = `${Math.min(ratio, 100)}%`;
-      progressText.textContent = `Frage ${currentStep + 1} von ${steps.length}`;
-      backBtn.disabled = currentStep === 0;
+    const updateProgress = () => {
+      const pct = ((step + 1) / steps.length) * 100;
+      progressBar.style.width = `${pct}%`;
+      progressText.textContent = `${step + 1} / ${steps.length}`;
+      backBtn.disabled = step === 0;
     };
 
     const renderState = () => {
-      stateContainer.innerHTML = Object.entries(answers)
-        .map(([, value]) => `<span class="finder-pill">${value}</span>`)
+      stateEl.innerHTML = Object.values(answers)
+        .map((v) => `<span class="duftfinder__pill">${v}</span>`)
         .join('');
     };
 
+    const animate = () => {
+      questionEl.removeAttribute('data-animate');
+      void questionEl.offsetWidth; // reflow
+      questionEl.setAttribute('data-animate', '');
+    };
+
     const renderQuestion = () => {
-      const step = steps[currentStep];
-      questionContainer.innerHTML = `
-        <h3 class="finder-question-title">${step.title}</h3>
-        <p class="finder-question-subtitle">${step.subtitle}</p>
-        <div class="finder-grid">
-          ${step.options.map((opt) => `
-            <button class="finder-option" data-value="${opt.value}" type="button">
-              <span class="emoji">${opt.emoji}</span>
-              <div>
-                <strong>${opt.label}</strong>
-                <span>${opt.desc}</span>
-              </div>
+      const s = steps[step];
+      questionEl.innerHTML = `
+        <h3 class="duftfinder__question-title">${s.title}</h3>
+        <p class="duftfinder__question-subtitle">${s.subtitle}</p>
+        <div class="duftfinder__options">
+          ${s.options.map((o) => `
+            <button type="button" class="duftfinder__option" data-value="${o.value}">
+              <span class="duftfinder__option-label">${o.label}</span>
+              <span class="duftfinder__option-desc">${o.desc}</span>
             </button>
           `).join('')}
         </div>
       `;
 
-      questionContainer.querySelectorAll('[data-value]').forEach((btn) => {
+      questionEl.querySelectorAll('[data-value]').forEach((btn) => {
         btn.addEventListener('click', () => {
-          answers[step.key] = btn.dataset.value;
+          answers[s.key] = btn.dataset.value;
           renderState();
-
-          if (currentStep < steps.length - 1) {
-            currentStep += 1;
+          if (step < steps.length - 1) {
+            step++;
             renderQuestion();
-            setProgress();
-            return;
+            updateProgress();
+            animate();
+          } else {
+            renderResults();
+            animate();
           }
-
-          renderResults();
         });
       });
 
-      setProgress();
+      updateProgress();
     };
 
-    const rankProducts = () => {
-      const scored = products.map((product) => {
+    const rank = () => {
+      return products.map((p) => {
         let score = 0;
-
-        steps.forEach((step) => {
-          const answer = normalize(answers[step.key]);
-          const tags = Array.isArray(product[step.key]) ? product[step.key].map(normalize) : [];
-          if (tags.includes(answer)) {
-            score += 25;
-          }
+        steps.forEach((s) => {
+          const ans = norm(answers[s.key]);
+          const tags = (p[s.key] || []).map(norm);
+          if (tags.includes(ans)) score += 25;
         });
-
-        return { ...product, score };
-      });
-
-      return scored.sort((a, b) => b.score - a.score).slice(0, 3);
+        return { ...p, score };
+      }).sort((a, b) => b.score - a.score).slice(0, 3);
     };
 
     const renderResults = () => {
-      const matches = rankProducts();
-      
-      questionContainer.innerHTML = `
-        <h3 class="finder-question-title">Deine Duft-Empfehlungen</h3>
-        <p class="finder-question-subtitle">Basierend auf deinen Antworten haben wir diese Favoriten gefunden.</p>
-        <div class="finder-results">
-          ${matches.map((item, index) => `
-            <article class="finder-result-card" data-top="${index === 0}">
-              ${item.image ? `<img class="finder-result-img" src="${item.image}" alt="${item.title}" loading="lazy">` : ''}
-              <span class="finder-score">${item.score}% Match</span>
-              <h3>${item.title || 'LOUBAAN Duft'}</h3>
-              ${item.subtitle ? `<p class="finder-meta">${item.subtitle}</p>` : ''}
-              ${item.price ? `<p class="finder-price">${item.price}</p>` : ''}
-              <p class="finder-meta">${item.description || 'Ein handverlesener Duft für besondere Momente.'}</p>
-              <a class="finder-link" href="${item.url || '/collections/all'}">Zum Produkt</a>
-            </article>
+      const matches = rank();
+      questionEl.innerHTML = `
+        <h3 class="duftfinder__question-title">Deine Empfehlungen</h3>
+        <p class="duftfinder__question-subtitle">Basierend auf deinen Antworten</p>
+        <div class="duftfinder__results">
+          ${matches.map((m, i) => `
+            <a href="${m.url || '/collections/all'}" class="duftfinder__result" data-top="${i === 0}">
+              ${m.image ? `<img class="duftfinder__result-image" src="${m.image}" alt="${m.title}" loading="lazy">` : '<div class="duftfinder__result-image"></div>'}
+              <div class="duftfinder__result-content">
+                <span class="duftfinder__result-match">${m.score}% Match</span>
+                <h4 class="duftfinder__result-title">${m.title}</h4>
+                ${m.subtitle ? `<span class="duftfinder__result-subtitle">${m.subtitle}</span>` : ''}
+                ${m.price ? `<span class="duftfinder__result-price">${m.price}</span>` : ''}
+              </div>
+            </a>
           `).join('')}
         </div>
       `;
 
-      progress.style.width = '100%';
-      progressText.textContent = 'Fertig';
+      progressBar.style.width = '100%';
+      progressText.textContent = '✓';
       backBtn.hidden = true;
       resetBtn.hidden = false;
     };
 
     const reset = () => {
       Object.keys(answers).forEach((k) => delete answers[k]);
-      currentStep = 0;
+      step = 0;
       backBtn.hidden = false;
       backBtn.disabled = true;
       resetBtn.hidden = true;
       renderState();
       renderQuestion();
+      animate();
     };
 
     backBtn.addEventListener('click', () => {
-      if (currentStep === 0) return;
-      delete answers[steps[currentStep].key];
-      currentStep -= 1;
+      if (step === 0) return;
+      delete answers[steps[step].key];
+      step--;
       renderState();
       renderQuestion();
+      animate();
     });
 
     resetBtn.addEventListener('click', reset);
@@ -594,8 +599,8 @@
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker Text",
-      "default": "✨ Dein KI Duftberater"
+      "label": "Kicker",
+      "default": "Duftberater"
     },
     {
       "type": "text",
@@ -604,10 +609,10 @@
       "default": "Finde deinen perfekten Duft"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "subheading",
       "label": "Unterzeile",
-      "default": "Beantworte 4 kurze Fragen und entdecke Düfte, die zu dir passen."
+      "default": "Beantworte vier kurze Fragen und entdecke Düfte, die zu dir passen."
     }
   ],
   "blocks": [
