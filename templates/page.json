@@ -363,6 +363,34 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "1774042853de7740f9": {
+      "type": "apps",
+      "blocks": {
+        "eu_widerruf_button_form_inline_Qi8wF7": {
+          "type": "shopify://apps/eu-widerruf-button/blocks/form-inline/019b2ca9-9838-7858-9694-3a8051afa76e",
+          "disabled": true,
+          "settings": {
+            "show_heading": true,
+            "heading": "-",
+            "description": "-",
+            "iframe_height": 500,
+            "primary_color": "#000000",
+            "background_color": "#ffffff",
+            "text_color": "#374151",
+            "border_radius": "8px",
+            "max_width": "700px",
+            "show_order_lookup": true,
+            "require_order_number": false
+          }
+        }
+      },
+      "block_order": [
+        "eu_widerruf_button_form_inline_Qi8wF7"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -374,6 +402,7 @@
     "rich_text_8jGRNX",
     "collapsible_content_Gnp7GD",
     "rich_text_DGXkFK",
-    "image_with_text_XtV8Jq"
+    "image_with_text_XtV8Jq",
+    "1774042853de7740f9"
   ]
 }
