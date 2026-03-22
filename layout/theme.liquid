@@ -3,18 +3,28 @@
   <head><!-- SEOAnt Speed Up Script -->{%- if shop.metafields.seoantAppSiteSpeedUpV2.switch == 1 -%}{% include 'SEOAnt-SpeedUp' %}{%- endif -%}<!-- /SEOAnt Speed Up Script -->
 
     <meta charset="utf-8">
-  <!-- Google Analytics 4 — G-TQ8N6P8J3G -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ8N6P8J3G"></script>
+  <!-- Google Analytics 4 + Consent Mode V2 — G-TQ8N6P8J3G -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent Mode V2 — Default: alles verweigert bis Nutzer zustimmt
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 2000
+    });
     gtag('js', new Date());
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ8N6P8J3G"></script>
+  <script>
     gtag('config', 'G-TQ8N6P8J3G', {
       'anonymize_ip': true,
       'cookie_flags': 'SameSite=None;Secure'
     });
   </script>
-  <!-- End Google Analytics 4 -->
+  <!-- End Google Analytics 4 + Consent Mode V2 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
