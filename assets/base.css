@@ -3829,12 +3829,24 @@ details-disclosure > details {
 }
 
 
-/* Hide bundle widget on free PDF product */
+/* Hide bundle widget on specific products */
+/* Free PDF */
 .product--kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf [class*="bundle"],
 .product--kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf [class*="volume-discount"],
 .product--kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf [class*="quantity-break"],
 body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="bundle"],
 body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="volume-discount"],
-body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="quantity-break"] {
+body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="quantity-break"],
+/* Weihrauch products - bundle text says "ätherisches Öl" which is wrong */
+.product--silber-hojari-klarheit-leichtigkeit [class*="bundle"],
+.product--amber-hojari-der-alltagsbegleiter [class*="bundle"],
+.product--athiopischer-weihrauch-habesha-honey [class*="bundle"],
+.product--weihrauch-bruchstucke-premium-mix [class*="bundle"],
+.product--gruner-hojari-der-konig-der-dufte [class*="bundle"],
+body[data-handle="silber-hojari-klarheit-leichtigkeit"] [class*="bundle"],
+body[data-handle="amber-hojari-der-alltagsbegleiter"] [class*="bundle"],
+body[data-handle="athiopischer-weihrauch-habesha-honey"] [class*="bundle"],
+body[data-handle="weihrauch-bruchstucke-premium-mix"] [class*="bundle"],
+body[data-handle="gruner-hojari-der-konig-der-dufte"] [class*="bundle"] {
   display: none !important;
 }
