@@ -43,9 +43,7 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
     
-    {%- comment -%} Performance: Preconnect to critical third-party origins {%- endcomment -%}
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.shopify.com">
+    {%- comment -%} Removed duplicate preconnects - Shopify adds them automatically {%- endcomment -%}
 
     <title>
       {{ page_title }}

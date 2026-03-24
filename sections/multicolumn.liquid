@@ -1,6 +1,11 @@
-{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'loubaan-center-fix.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'section-multicolumn.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'loubaan-center-fix.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>
+  {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+  {{ 'loubaan-center-fix.css' | asset_url | stylesheet_tag }}
+</noscript>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
