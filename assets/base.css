@@ -3828,3 +3828,13 @@ details-disclosure > details {
   }
 }
 
+
+/* Hide bundle widget on free PDF product */
+.product--kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf [class*="bundle"],
+.product--kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf [class*="volume-discount"],
+.product--kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf [class*="quantity-break"],
+body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="bundle"],
+body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="volume-discount"],
+body[data-handle="kostenlose-raucheranleitung-weihrauch-atherische-ole-pdf"] [class*="quantity-break"] {
+  display: none !important;
+}
