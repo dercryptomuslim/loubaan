@@ -1,0 +1,594 @@
+{% comment %}
+  LOUBAAN eBook Reader — Räucheranleitung
+  Online-Version mit Download-Button
+{% endcomment %}
+
+<section class="ebook-reader" id="EbookReader-{{ section.id }}">
+  <div class="ebook-reader__container">
+    
+    <!-- Header with Download -->
+    <header class="ebook-reader__header">
+      <div class="ebook-reader__header-inner">
+        <span class="ebook-reader__badge">Kostenloser Guide</span>
+        <h1 class="ebook-reader__title">{{ section.settings.title }}</h1>
+        <p class="ebook-reader__subtitle">{{ section.settings.subtitle }}</p>
+        <a href="{{ section.settings.download_url }}" class="ebook-reader__download-btn" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          PDF herunterladen
+        </a>
+      </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="ebook-reader__toc">
+      <h2 class="ebook-reader__toc-title">Inhalt</h2>
+      <ol class="ebook-reader__toc-list">
+        <li><a href="#kapitel-1">Einführung ins Räuchern</a></li>
+        <li><a href="#kapitel-2">Weihrauch — Geschichte & Sorten</a></li>
+        <li><a href="#kapitel-3">Ätherische Öle — Grundlagen</a></li>
+        <li><a href="#kapitel-4">Räuchermethoden Schritt für Schritt</a></li>
+        <li><a href="#kapitel-5">Sicherheitshinweise</a></li>
+        <li><a href="#kapitel-6">LOUBAAN Empfehlungen</a></li>
+      </ol>
+    </nav>
+
+    <!-- Content -->
+    <article class="ebook-reader__content">
+      
+      <!-- Kapitel 1 -->
+      <section class="ebook-reader__chapter" id="kapitel-1">
+        <span class="ebook-reader__chapter-number">01</span>
+        <h2 class="ebook-reader__chapter-title">Einführung ins Räuchern</h2>
+        <div class="ebook-reader__chapter-content">
+          <p>Räuchern ist eine der ältesten Praktiken der Menschheit. Seit Jahrtausenden nutzen Kulturen auf der ganzen Welt duftende Harze, Hölzer und Kräuter, um Räume zu reinigen, Atmosphäre zu schaffen und innere Ruhe zu finden.</p>
+          <p>Anders als Kerzen oder Raumdüfte entfaltet Räucherwerk seinen Duft durch Hitze — sei es durch glühende Kohle, ein Stövchen oder direktes Anzünden. Dieser Prozess setzt die ätherischen Öle und aromatischen Verbindungen frei, die jedes Räucherwerk einzigartig machen.</p>
+          <h3>Warum Räuchern?</h3>
+          <ul>
+            <li><strong>Atmosphäre schaffen:</strong> Ein Raum verwandelt sich in Sekunden</li>
+            <li><strong>Rituale begleiten:</strong> Meditation, Yoga, Gebet</li>
+            <li><strong>Entspannung fördern:</strong> Stressabbau nach einem langen Tag</li>
+            <li><strong>Tradition leben:</strong> Verbindung zu uralten Praktiken</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Kapitel 2 -->
+      <section class="ebook-reader__chapter" id="kapitel-2">
+        <span class="ebook-reader__chapter-number">02</span>
+        <h2 class="ebook-reader__chapter-title">Weihrauch — Geschichte & Sorten</h2>
+        <div class="ebook-reader__chapter-content">
+          <p>Weihrauch (Olibanum) ist das getrocknete Harz des Boswellia-Baumes. Die wertvollsten Sorten stammen aus dem Oman, Jemen und Äthiopien — Regionen, in denen Weihrauch seit über 5.000 Jahren gehandelt wird.</p>
+          
+          <h3>Die wichtigsten Sorten</h3>
+          
+          <div class="ebook-reader__card">
+            <h4>Hojari (Oman)</h4>
+            <p>Der "König des Weihrauchs". Hojari zeichnet sich durch seine Reinheit und sein komplexes Aroma aus — zitrusartig, harzig und leicht süß. Er wird in verschiedenen Qualitätsstufen angeboten:</p>
+            <ul>
+              <li><strong>Royal/Grüner Hojari:</strong> Höchste Qualität, grünlich-weiß</li>
+              <li><strong>Silver/Silber Hojari:</strong> Klar und rein, intensives Aroma</li>
+              <li><strong>Amber/Gold Hojari:</strong> Wärmer, süßer, ideal für Einsteiger</li>
+            </ul>
+          </div>
+
+          <div class="ebook-reader__card">
+            <h4>Habesha Honey (Äthiopien)</h4>
+            <p>Äthiopischer Weihrauch mit charakteristischer Honignote. Weicher und süßer als omanischer Weihrauch — perfekt für alle, die einen sanfteren Einstieg suchen.</p>
+          </div>
+
+          <div class="ebook-reader__card">
+            <h4>Boswellia Sacra vs. Papyrifera</h4>
+            <p>Boswellia Sacra (Oman/Jemen) gilt als der edelste Weihrauch. Boswellia Papyrifera (Äthiopien/Sudan) hat einen eigenen, etwas erdigeren Charakter.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kapitel 3 -->
+      <section class="ebook-reader__chapter" id="kapitel-3">
+        <span class="ebook-reader__chapter-number">03</span>
+        <h2 class="ebook-reader__chapter-title">Ätherische Öle — Grundlagen</h2>
+        <div class="ebook-reader__chapter-content">
+          <p>Ätherische Öle sind hochkonzentrierte Pflanzenextrakte, die durch Destillation oder Kaltpressung gewonnen werden. Ein einziger Tropfen enthält die Essenz von hunderten Blüten oder Kilogramm an Pflanzenmaterial.</p>
+          
+          <h3>Qualitätsmerkmale</h3>
+          <ul>
+            <li><strong>100% naturrein:</strong> Keine synthetischen Zusätze</li>
+            <li><strong>Botanischer Name:</strong> Genaue Pflanzenart angegeben</li>
+            <li><strong>Herkunft:</strong> Ursprungsland bekannt</li>
+            <li><strong>Gewinnungsart:</strong> Destillation, Kaltpressung, etc.</li>
+          </ul>
+
+          <h3>Beliebte Öle für Anfänger</h3>
+          <div class="ebook-reader__grid">
+            <div class="ebook-reader__grid-item">
+              <strong>Lavendel</strong>
+              <p>Beruhigend, vielseitig, ideal zum Einschlafen</p>
+            </div>
+            <div class="ebook-reader__grid-item">
+              <strong>Zitrone</strong>
+              <p>Erfrischend, konzentrationsfördernd</p>
+            </div>
+            <div class="ebook-reader__grid-item">
+              <strong>Pfefferminze</strong>
+              <p>Belebend, klärend, kühlend</p>
+            </div>
+            <div class="ebook-reader__grid-item">
+              <strong>Weihrauch</strong>
+              <p>Meditativ, erdend, tiefgehend</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kapitel 4 -->
+      <section class="ebook-reader__chapter" id="kapitel-4">
+        <span class="ebook-reader__chapter-number">04</span>
+        <h2 class="ebook-reader__chapter-title">Räuchermethoden Schritt für Schritt</h2>
+        <div class="ebook-reader__chapter-content">
+          
+          <h3>Methode 1: Räucherkohle</h3>
+          <p>Die traditionelle Art, Weihrauch zu räuchern.</p>
+          <ol class="ebook-reader__steps">
+            <li>Räuchergefäß mit Sand oder Asche füllen</li>
+            <li>Kohle am Rand anzünden (sie beginnt zu funken)</li>
+            <li>Warten bis die Kohle durchgeglüht ist (ca. 5 Min.)</li>
+            <li>Weihrauchstückchen auf die Kohle legen</li>
+            <li>Genießen — bei Bedarf nachlegen</li>
+          </ol>
+
+          <h3>Methode 2: Stövchen</h3>
+          <p>Schonender und rauchärmer als Kohle.</p>
+          <ol class="ebook-reader__steps">
+            <li>Teelicht im Stövchen anzünden</li>
+            <li>Sieb oder Schale auflegen</li>
+            <li>Weihrauch oder ätherisches Öl (mit Wasser) platzieren</li>
+            <li>Der Duft entwickelt sich langsam und gleichmäßig</li>
+          </ol>
+
+          <h3>Methode 3: Diffuser (für ätherische Öle)</h3>
+          <p>Modern und praktisch für den Alltag.</p>
+          <ol class="ebook-reader__steps">
+            <li>Diffuser mit Wasser füllen (bis zur Markierung)</li>
+            <li>3-5 Tropfen ätherisches Öl hinzufügen</li>
+            <li>Einschalten und Nebelstufe wählen</li>
+            <li>Raum genießen</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Kapitel 5 -->
+      <section class="ebook-reader__chapter" id="kapitel-5">
+        <span class="ebook-reader__chapter-number">05</span>
+        <h2 class="ebook-reader__chapter-title">Sicherheitshinweise</h2>
+        <div class="ebook-reader__chapter-content">
+          <div class="ebook-reader__warning">
+            <h3>⚠️ Wichtig zu beachten</h3>
+            <ul>
+              <li>Räucherwerk <strong>nie unbeaufsichtigt</strong> brennen lassen</li>
+              <li>Feuerfeste Unterlage verwenden</li>
+              <li>Ausreichend lüften</li>
+              <li>Von Kindern und Haustieren fernhalten</li>
+              <li>Bei Atemwegserkrankungen: Vorsicht mit Rauch</li>
+            </ul>
+          </div>
+
+          <h3>Ätherische Öle sicher anwenden</h3>
+          <ul>
+            <li><strong>Nie unverdünnt auf die Haut:</strong> Immer mit Trägeröl mischen</li>
+            <li><strong>Nicht innerlich anwenden</strong> (außer explizit zugelassen)</li>
+            <li><strong>Schwangerschaft:</strong> Viele Öle sind nicht geeignet — vorher informieren</li>
+            <li><strong>Augen meiden:</strong> Bei Kontakt sofort mit Wasser spülen</li>
+            <li><strong>Kühl und dunkel lagern:</strong> Haltbarkeit verlängern</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Kapitel 6 -->
+      <section class="ebook-reader__chapter" id="kapitel-6">
+        <span class="ebook-reader__chapter-number">06</span>
+        <h2 class="ebook-reader__chapter-title">LOUBAAN Empfehlungen</h2>
+        <div class="ebook-reader__chapter-content">
+          <p>Entdecke unsere handverlesene Auswahl an Premium-Weihrauch und naturreinen ätherischen Öl-Blends.</p>
+          
+          <div class="ebook-reader__products">
+            <a href="/collections/weihrauch" class="ebook-reader__product-link">
+              <span class="ebook-reader__product-category">Weihrauch Collection</span>
+              <span class="ebook-reader__product-desc">Hojari, Habesha Honey & mehr aus Oman und Äthiopien</span>
+            </a>
+            <a href="/collections/blends" class="ebook-reader__product-link">
+              <span class="ebook-reader__product-category">Signature Blends</span>
+              <span class="ebook-reader__product-desc">Handgefertigte Duftkompositionen für jeden Moment</span>
+            </a>
+            <a href="/collections/atherische-ole" class="ebook-reader__product-link">
+              <span class="ebook-reader__product-category">Ätherische Öle</span>
+              <span class="ebook-reader__product-desc">100% naturrein, sorgfältig ausgewählt</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- Footer CTA -->
+    <footer class="ebook-reader__footer">
+      <div class="ebook-reader__footer-inner">
+        <p class="ebook-reader__footer-text">Gefällt dir dieser Guide?</p>
+        <a href="{{ section.settings.download_url }}" class="ebook-reader__download-btn ebook-reader__download-btn--large" download>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Kostenlos als PDF herunterladen
+        </a>
+        <p class="ebook-reader__footer-note">Kein Spam. Kein Newsletter. Einfach nur der Guide.</p>
+      </div>
+    </footer>
+
+  </div>
+</section>
+
+<style>
+  #EbookReader-{{ section.id }} {
+    --eb-bg: #0A0A0A;
+    --eb-surface: #111111;
+    --eb-surface-2: #1A1A1A;
+    --eb-border: #2A2A2A;
+    --eb-text: #E8E0D0;
+    --eb-text-muted: #9A8E7A;
+    --eb-gold: #C9A84C;
+    --eb-gold-light: #E8CC7A;
+    
+    --eb-font-display: "Cormorant Garamond", "Times New Roman", serif;
+    --eb-font-body: "DM Sans", system-ui, sans-serif;
+    
+    background: var(--eb-bg);
+    color: var(--eb-text);
+    font-family: var(--eb-font-body);
+    line-height: 1.7;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header */
+  #EbookReader-{{ section.id }} .ebook-reader__header {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--eb-border);
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--eb-gold);
+    background: rgba(201, 168, 76, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__title {
+    font-family: var(--eb-font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--eb-text);
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__subtitle {
+    font-size: 1.125rem;
+    color: var(--eb-text-muted);
+    margin: 0 0 2rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--eb-gold);
+    color: var(--eb-bg);
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 200ms ease;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__download-btn:hover {
+    background: var(--eb-gold-light);
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__download-btn--large {
+    font-size: 1.125rem;
+    padding: 1.25rem 2.5rem;
+  }
+
+  /* TOC */
+  #EbookReader-{{ section.id }} .ebook-reader__toc {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--eb-border);
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__toc-title {
+    font-family: var(--eb-font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--eb-gold);
+    margin: 0 0 1.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__toc-list li {
+    counter-increment: toc;
+    margin-bottom: 0.75rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__toc-list a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--eb-text);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background 200ms ease;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__toc-list a:hover {
+    background: var(--eb-surface);
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__toc-list a::before {
+    content: "0" counter(toc);
+    font-family: var(--eb-font-display);
+    font-size: 0.875rem;
+    color: var(--eb-gold);
+    min-width: 2rem;
+  }
+
+  /* Chapters */
+  #EbookReader-{{ section.id }} .ebook-reader__chapter {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--eb-border);
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-number {
+    display: block;
+    font-family: var(--eb-font-display);
+    font-size: 0.875rem;
+    color: var(--eb-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-title {
+    font-family: var(--eb-font-display);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 400;
+    color: var(--eb-text);
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-content p {
+    margin-bottom: 1.25rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-content h3 {
+    font-family: var(--eb-font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--eb-gold);
+    margin: 2.5rem 0 1rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--eb-text);
+    margin: 0 0 0.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-content ul,
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-content ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__chapter-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Cards */
+  #EbookReader-{{ section.id }} .ebook-reader__card {
+    background: var(--eb-surface);
+    border: 1px solid var(--eb-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__card h4 {
+    color: var(--eb-gold);
+  }
+
+  /* Grid */
+  #EbookReader-{{ section.id }} .ebook-reader__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 600px) {
+    #EbookReader-{{ section.id }} .ebook-reader__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__grid-item {
+    background: var(--eb-surface);
+    border: 1px solid var(--eb-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__grid-item strong {
+    display: block;
+    color: var(--eb-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__grid-item p {
+    font-size: 0.875rem;
+    color: var(--eb-text-muted);
+    margin: 0;
+  }
+
+  /* Steps */
+  #EbookReader-{{ section.id }} .ebook-reader__steps {
+    counter-reset: steps;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__steps li {
+    counter-increment: steps;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--eb-surface);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__steps li::before {
+    content: counter(steps);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--eb-gold);
+    color: var(--eb-bg);
+    font-weight: 600;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Warning */
+  #EbookReader-{{ section.id }} .ebook-reader__warning {
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__warning h3 {
+    color: var(--eb-gold) !important;
+    margin-top: 0 !important;
+  }
+
+  /* Products */
+  #EbookReader-{{ section.id }} .ebook-reader__products {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__product-link {
+    display: block;
+    background: var(--eb-surface);
+    border: 1px solid var(--eb-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: border-color 200ms ease, transform 200ms ease;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__product-link:hover {
+    border-color: var(--eb-gold);
+    transform: translateY(-2px);
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__product-category {
+    display: block;
+    font-family: var(--eb-font-display);
+    font-size: 1.25rem;
+    color: var(--eb-text);
+    margin-bottom: 0.25rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__product-desc {
+    font-size: 0.875rem;
+    color: var(--eb-text-muted);
+  }
+
+  /* Footer */
+  #EbookReader-{{ section.id }} .ebook-reader__footer {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__footer-text {
+    font-family: var(--eb-font-display);
+    font-size: 1.5rem;
+    color: var(--eb-text);
+    margin: 0 0 1.5rem;
+  }
+
+  #EbookReader-{{ section.id }} .ebook-reader__footer-note {
+    font-size: 0.875rem;
+    color: var(--eb-text-muted);
+    margin: 1.5rem 0 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "eBook Reader",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Räucheranleitung"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Untertitel",
+      "default": "Weihrauch & Ätherische Öle — Ein praktischer Guide"
+    },
+    {
+      "type": "url",
+      "id": "download_url",
+      "label": "PDF Download URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "eBook Reader"
+    }
+  ]
+}
+{% endschema %}
