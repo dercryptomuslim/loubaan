@@ -42,6 +42,10 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+    
+    {%- comment -%} Performance: Preconnect to critical third-party origins {%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.shopify.com">
 
     <title>
       {{ page_title }}
@@ -55,6 +59,13 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+
+    {%- comment -%} LCP Optimization: Preload Hero Image on Homepage {%- endcomment -%}
+    {%- if request.page_type == 'index' -%}
+      {%- assign hero_image = 'Generated_Image_December_21_2025_-_4_34PM.jpg' -%}
+      <link rel="preload" as="image" href="{{ hero_image | file_img_url: '750x' }}" media="(max-width: 749px)" fetchpriority="high">
+      <link rel="preload" as="image" href="{{ hero_image | file_img_url: '1500x' }}" media="(min-width: 750px)" fetchpriority="high">
+    {%- endif -%}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -284,6 +295,11 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    
+    {%- comment -%} LCP: Preload critical above-the-fold CSS {%- endcomment -%}
+    {%- if request.page_type == 'index' -%}
+      <link rel="preload" href="{{ 'section-image-banner.css' | asset_url }}" as="style">
+    {%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
