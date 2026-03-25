@@ -302,6 +302,12 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "17744520176faf7a05": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -311,6 +317,7 @@
     "featured_collection",
     "volume_discount_cta",
     "image_with_text_RDBpjr",
-    "newsletter"
+    "newsletter",
+    "17744520176faf7a05"
   ]
 }
