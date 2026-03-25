@@ -119,6 +119,20 @@
                   {%- assign loubaan_test_enabled = false -%}
                   
                   {%- if loubaan_test_enabled -%}
+                    {%- comment -%} Initialize base_variant and base_ml for smallest ml variant {%- endcomment -%}
+                    {%- assign base_variant = nil -%}
+                    {%- assign base_ml = 999999 -%}
+                    {%- for variant in product.variants -%}
+                      {%- assign option1_lower = variant.option1 | downcase -%}
+                      {%- if option1_lower contains 'ml' -%}
+                        {%- assign ml_string = option1_lower | remove: 'ml' | strip -%}
+                        {%- assign ml_value = ml_string | times: 1 -%}
+                        {%- if ml_value > 0 and ml_value < base_ml -%}
+                          {%- assign base_variant = variant -%}
+                          {%- assign base_ml = ml_value -%}
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
                     <div class="loubaan-unit-price" id="loubaan-unit-price-{{ section.id }}">
                       <div class="unit-price-display" id="unit-price-display-{{ section.id }}">
                         <div class="current-unit-price" id="current-unit-price-{{ section.id }}">
@@ -1034,14 +1048,6 @@
       </script>
       <script src="{{ 'product-model.js' | asset_url }}" defer></script>
     {%- endif -%}
-
-    {%- liquid
-      if product.selected_or_first_available_variant.featured_media
-        assign seo_media = product.selected_or_first_available_variant.featured_media
-      else
-        assign seo_media = product.featured_media
-      endif
-    -%}
 
     <script type="application/ld+json">
       {{ product | structured_data }}

@@ -1330,3 +1330,96 @@ class CartPerformance {
     );
   }
 }
+
+/* ==========================================================================
+   LOUBAAN UX ENHANCEMENTS - JavaScript
+   Premium UX interactions for cart, navigation, and scroll
+   ========================================================================== */
+
+class LoubaaUXEnhancements {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.initCartAnimation();
+    this.initScrollProgress();
+    this.initSmoothAnchors();
+  }
+
+  initCartAnimation() {
+    const cartBubble = document.querySelector('.cart-count-bubble');
+    if (!cartBubble) return;
+
+    document.addEventListener('cart:update', () => {
+      cartBubble.classList.add('animate');
+      setTimeout(() => cartBubble.classList.remove('animate'), 500);
+    });
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'characterData' || mutation.type === 'childList') {
+          cartBubble.classList.add('animate');
+          setTimeout(() => cartBubble.classList.remove('animate'), 500);
+        }
+      });
+    });
+
+    observer.observe(cartBubble, { 
+      characterData: true, 
+      childList: true, 
+      subtree: true 
+    });
+  }
+
+  initScrollProgress() {
+    if (document.querySelector('.scroll-indicator')) return;
+    
+    const indicator = document.createElement('div');
+    indicator.className = 'scroll-indicator';
+    document.body.prepend(indicator);
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      indicator.style.width = `${progress}%`;
+    };
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateProgress();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  initSmoothAnchors() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          const headerHeight = document.querySelector('.section-header')?.offsetHeight || 0;
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  new LoubaaUXEnhancements();
+});

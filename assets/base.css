@@ -3828,3 +3828,286 @@ details-disclosure > details {
   }
 }
 
+/* ==========================================================================
+   LOUBAAN UX ENHANCEMENTS
+   Premium UX optimizations for navigation, mobile, and interactions
+   ========================================================================== */
+
+/* --- Enhanced Mobile Touch Targets --- */
+@media screen and (max-width: 749px) {
+  .header__icon,
+  .menu-drawer__menu-item,
+  .list-menu__item--link {
+    min-height: 4.4rem;
+    min-width: 4.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-drawer__menu-item {
+    padding: 1.4rem 2rem;
+  }
+
+  .header__icon--cart,
+  .header__icon--account,
+  .header__icon--menu {
+    padding: 1rem;
+    margin: -0.5rem;
+  }
+}
+
+/* --- Smooth Transitions Global --- */
+.header__icon,
+.menu-drawer__menu-item,
+.list-menu__item--link,
+.button,
+.link,
+.card,
+.product-card-wrapper,
+.cart-count-bubble {
+  transition: transform 0.2s ease, 
+              background-color 0.2s ease, 
+              color 0.2s ease,
+              box-shadow 0.2s ease,
+              opacity 0.2s ease;
+}
+
+/* --- Enhanced Focus States for Accessibility --- */
+.header__icon:focus-visible,
+.menu-drawer__menu-item:focus-visible,
+.list-menu__item--link:focus-visible,
+.button:focus-visible {
+  outline: 0.3rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0.3rem;
+  border-radius: 0.4rem;
+}
+
+/* --- Navigation Hover Effects --- */
+@media screen and (min-width: 990px) {
+  .header-menu__item:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 0.2rem;
+    background: rgb(var(--color-button));
+    border-radius: 0.2rem;
+    animation: navUnderline 0.3s ease forwards;
+  }
+
+  .header-menu__item {
+    position: relative;
+  }
+}
+
+@keyframes navUnderline {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+/* --- Active Menu Item Indicator --- */
+.menu-drawer__menu-item--active,
+.header__menu-item[aria-current="page"] {
+  font-weight: var(--font-body-weight-bold);
+  color: rgb(var(--color-button));
+}
+
+.menu-drawer__menu-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.4rem;
+  height: 60%;
+  background: rgb(var(--color-button));
+  border-radius: 0 0.2rem 0.2rem 0;
+}
+
+.menu-drawer__menu-item {
+  position: relative;
+}
+
+/* --- Cart Icon Animation --- */
+.cart-count-bubble {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header__icon--cart:hover .cart-count-bubble {
+  transform: scale(1.15);
+}
+
+@keyframes cartBounce {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(0.95); }
+  75% { transform: scale(1.1); }
+}
+
+.cart-count-bubble.animate {
+  animation: cartBounce 0.5s ease;
+}
+
+/* --- Mobile Menu Slide Animation --- */
+.menu-drawer {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease;
+}
+
+.menu-drawer__submenu {
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- Enhanced Product Card Hover --- */
+.product-card-wrapper:hover {
+  transform: translateY(-0.4rem);
+}
+
+.product-card-wrapper:active {
+  transform: translateY(-0.2rem);
+}
+
+/* --- Sticky Header Smooth Transition --- */
+.shopify-section-header-sticky {
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.shopify-section-header-hidden {
+  transform: translateY(-100%);
+}
+
+.scrolled-past-header .header-wrapper {
+  box-shadow: 0 0.2rem 1rem rgba(var(--color-shadow), 0.08);
+}
+
+/* --- Button Press Effect --- */
+.button:active {
+  transform: scale(0.98);
+}
+
+/* --- Quick View / Quick Add Improvements --- */
+.quick-add__submit {
+  transition: background-color 0.2s ease,
+              transform 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.quick-add__submit:hover {
+  transform: scale(1.02);
+}
+
+.quick-add__submit:active {
+  transform: scale(0.98);
+}
+
+/* --- Loading States --- */
+.loading::after {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border: 0.2rem solid rgba(var(--color-foreground), 0.2);
+  border-top-color: rgb(var(--color-foreground));
+  border-radius: 50%;
+  animation: loadingSpin 0.8s linear infinite;
+}
+
+@keyframes loadingSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Scroll Indicator for Long Pages --- */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 0.3rem;
+  background: linear-gradient(90deg, rgb(var(--color-button)), rgb(var(--color-button)));
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+/* --- Mobile Drawer Overlay --- */
+.menu-drawer-container::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.menu-drawer-container[open]::before {
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+/* --- Enhanced Search Input --- */
+.search__input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-button), 0.3);
+}
+
+/* --- Variant Selector Enhanced States --- */
+.product-form__input input:checked + label {
+  border-color: rgb(var(--color-button));
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-button));
+}
+
+.product-form__input label:hover {
+  border-color: rgba(var(--color-button), 0.5);
+}
+
+/* --- Quantity Selector UX --- */
+.quantity__button:hover {
+  background: rgba(var(--color-foreground), 0.05);
+}
+
+.quantity__button:active {
+  background: rgba(var(--color-foreground), 0.1);
+  transform: scale(0.95);
+}
+
+/* --- Footer Link Hover --- */
+.footer__list-item a:hover {
+  color: rgb(var(--color-button));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+/* --- Reduced Motion Support for UX Enhancements --- */
+@media (prefers-reduced-motion: reduce) {
+  .header__icon,
+  .menu-drawer__menu-item,
+  .list-menu__item--link,
+  .button,
+  .link,
+  .card,
+  .product-card-wrapper,
+  .cart-count-bubble,
+  .menu-drawer,
+  .menu-drawer__submenu,
+  .shopify-section-header-sticky {
+    transition: none;
+  }
+
+  .cart-count-bubble.animate,
+  .header-menu__item:hover::after {
+    animation: none;
+  }
+
+  .product-card-wrapper:hover {
+    transform: none;
+  }
+}
+
