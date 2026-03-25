@@ -187,6 +187,38 @@ function closeExitSuccess() {
   }
 }
 
+// Omnisend Contact Subscription
+function subscribeToOmnisend(email) {
+  if (typeof omnisend !== 'undefined' && omnisend.identifyContact) {
+    omnisend.identifyContact({
+      email: email,
+      tags: ['exit-intent', 'rabatt-20'],
+      emailMarketingConsent: 'subscribed'
+    });
+  }
+
+  if (typeof window.omnisend !== 'undefined' && window.omnisend.push) {
+    window.omnisend.push(['track', '$identify', {
+      $email: email,
+      $tags: ['exit-intent', 'rabatt-20']
+    }]);
+  }
+}
+
+// Shopify Customer API Fallback
+function subscribeToShopify(email) {
+  fetch('/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      'form_type': 'customer',
+      'utf8': '✓',
+      'contact[email]': email,
+      'contact[tags]': 'newsletter,exit-intent,rabatt-20'
+    })
+  }).catch(function() {});
+}
+
 // Email Form Handling
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('exit-intent-form');
@@ -196,10 +228,11 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const email = document.getElementById('exit-email-input').value;
       if (email) {
-        // Hide main popup
+        subscribeToOmnisend(email);
+        subscribeToShopify(email);
+
         closeExitIntent();
         
-        // Show success popup
         setTimeout(() => {
           const successPopup = document.getElementById('loubaan-exit-success');
           if (successPopup) {
@@ -208,7 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }, 400);
         
-        // Track conversion
         if (typeof gtag !== 'undefined') {
           gtag('event', 'exit_intent_email_capture', {
             event_category: 'conversion',
@@ -216,9 +248,6 @@ document.addEventListener('DOMContentLoaded', function() {
             value: 20
           });
         }
-        
-        // You can add email to newsletter here
-        // subscribeToNewsletter(email);
       }
     });
   }
