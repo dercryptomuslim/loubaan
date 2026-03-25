@@ -810,7 +810,10 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- render 'loubaan-social-proof', product: product -%}
+                {%- render 'loubaan-shipping-info' -%}
                 {%- render 'loubaan-trust-badges' -%}
+                {%- render 'loubaan-why-us' -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">

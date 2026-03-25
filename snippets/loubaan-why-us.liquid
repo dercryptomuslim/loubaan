@@ -1,0 +1,107 @@
+{% doc %}
+  Renders a compact "Warum LOUBAAN?" section on product pages.
+  Designed for Google Shopping visitors who don't know the brand.
+
+  @example
+  {% render 'loubaan-why-us' %}
+{% enddoc %}
+
+<details class="loubaan-why-us" open>
+  <summary class="why-us__heading">
+    <span class="why-us__heading-text">Warum LOUBAAN?</span>
+    <span class="why-us__toggle" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </span>
+  </summary>
+  <div class="why-us__content">
+    <div class="why-us__item">
+      <span class="why-us__bullet" aria-hidden="true">&#x2726;</span>
+      <span><strong>Naturreines &Ouml;l</strong> &mdash; 100% rein, ohne k&uuml;nstliche Zus&auml;tze oder Streckmittel</span>
+    </div>
+    <div class="why-us__item">
+      <span class="why-us__bullet" aria-hidden="true">&#x2726;</span>
+      <span><strong>Handgefertigt</strong> &mdash; Kleine Chargen f&uuml;r h&ouml;chste Qualit&auml;t aus Berlin</span>
+    </div>
+    <div class="why-us__item">
+      <span class="why-us__bullet" aria-hidden="true">&#x2726;</span>
+      <span><strong>Bewusster Genuss</strong> &mdash; Aromatherapie f&uuml;r Ruhe, Entspannung &amp; Wohlbefinden</span>
+    </div>
+    <div class="why-us__item">
+      <span class="why-us__bullet" aria-hidden="true">&#x2726;</span>
+      <span><strong>&Uuml;ber 1.000 Kunden</strong> &mdash; Vertrauen auf LOUBAAN f&uuml;r ihr t&auml;gliches Ritual</span>
+    </div>
+  </div>
+</details>
+
+{% stylesheet %}
+  .loubaan-why-us {
+    margin: 1.6rem 0;
+    border: 1px solid rgba(var(--color-foreground), 0.08);
+    border-radius: 0.8rem;
+    overflow: hidden;
+  }
+
+  .why-us__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.6rem;
+    background: rgba(var(--color-foreground), 0.03);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .why-us__heading::-webkit-details-marker {
+    display: none;
+  }
+
+  .why-us__heading-text {
+    font-size: 1.4rem;
+    font-weight: var(--font-body-weight-bold);
+    color: rgb(var(--color-foreground));
+    letter-spacing: 0.04em;
+  }
+
+  .why-us__toggle {
+    transition: transform 0.2s ease;
+    color: rgba(var(--color-foreground), 0.5);
+  }
+
+  .loubaan-why-us[open] .why-us__toggle {
+    transform: rotate(180deg);
+  }
+
+  .why-us__content {
+    padding: 1.2rem 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .why-us__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .why-us__bullet {
+    flex-shrink: 0;
+    color: rgb(var(--color-button));
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .why-us__item strong {
+    color: rgb(var(--color-foreground));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .why-us__toggle {
+      transition: none;
+    }
+  }
+{% endstylesheet %}

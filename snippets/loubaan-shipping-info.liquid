@@ -1,0 +1,87 @@
+{% doc %}
+  Renders shipping time, return policy, and payment icons for product pages.
+  Designed to build trust with Google Shopping visitors.
+
+  @example
+  {% render 'loubaan-shipping-info' %}
+{% enddoc %}
+
+<div class="loubaan-shipping-info" role="complementary" aria-label="Versand & Rückgabe">
+  <ul class="shipping-info__list">
+    <li class="shipping-info__item">
+      <span class="shipping-info__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </span>
+      <span class="shipping-info__text">
+        <strong>Versand in 1-3 Werktagen</strong>
+        <span class="shipping-info__sub">Kostenlos ab 50 &euro; Bestellwert</span>
+      </span>
+    </li>
+    <li class="shipping-info__item">
+      <span class="shipping-info__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+      </span>
+      <span class="shipping-info__text">
+        <strong>14 Tage R&uuml;ckgaberecht</strong>
+        <span class="shipping-info__sub">Kostenlose R&uuml;cksendung</span>
+      </span>
+    </li>
+    <li class="shipping-info__item">
+      <span class="shipping-info__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </span>
+      <span class="shipping-info__text">
+        <strong>Sichere Zahlung</strong>
+        <span class="shipping-info__sub">PayPal, Klarna, Kreditkarte, Apple Pay</span>
+      </span>
+    </li>
+  </ul>
+</div>
+
+{% stylesheet %}
+  .loubaan-shipping-info {
+    margin: 1.6rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(var(--color-foreground), 0.02);
+    border: 1px solid rgba(var(--color-foreground), 0.06);
+    border-radius: 0.8rem;
+  }
+
+  .shipping-info__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .shipping-info__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .shipping-info__icon {
+    flex-shrink: 0;
+    color: rgb(62, 214, 96);
+    margin-top: 0.1rem;
+  }
+
+  .shipping-info__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4;
+  }
+
+  .shipping-info__text strong {
+    font-size: 1.3rem;
+    color: rgb(var(--color-foreground));
+  }
+
+  .shipping-info__sub {
+    font-size: 1.1rem;
+    color: rgba(var(--color-foreground), 0.55);
+    margin-top: 0.1rem;
+  }
+{% endstylesheet %}
