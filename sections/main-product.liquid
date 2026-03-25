@@ -810,6 +810,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- render 'loubaan-trust-badges' -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -1053,6 +1054,7 @@
       {{ product | structured_data }}
     </script>
   </div>
+  {%- render 'loubaan-sticky-atc', product: product, section_id: section.id -%}
 </product-info>
 
 {% schema %}
