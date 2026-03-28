@@ -24,6 +24,10 @@
           "type": "title",
           "settings": {}
         },
+        "judge_me_reviews_preview_badge_xDGhCB": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -62,23 +66,19 @@
           "settings": {
             "custom_liquid": "{%- if product.metafields.custom.duftnote != blank or product.metafields.custom.duftprofil != blank or product.metafields.custom.duftthema != blank or product.metafields.custom.hautwirkung != blank -%}\n<div style=\"margin:2rem 0;padding:1.5rem;background:#f9f7f4;border-radius:12px;border:1px solid #e8e4de;\">\n  <div style=\"display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem 2rem;\">\n    {%- if product.metafields.custom.duftnote != blank -%}\n    <div style=\"padding:0.8rem;background:#fff;border-radius:8px;\">\n      <span style=\"font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:#8b7355;font-weight:700;display:block;margin-bottom:0.4rem;\">Duftnote</span>\n      <span style=\"font-size:1rem;color:#333;font-weight:500;\">{{ product.metafields.custom.duftnote }}</span>\n    </div>\n    {%- endif -%}\n    {%- if product.metafields.custom.duftprofil != blank -%}\n    <div style=\"padding:0.8rem;background:#fff;border-radius:8px;\">\n      <span style=\"font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:#8b7355;font-weight:700;display:block;margin-bottom:0.4rem;\">Duftprofil</span>\n      <span style=\"font-size:1rem;color:#333;font-weight:500;\">{{ product.metafields.custom.duftprofil }}</span>\n    </div>\n    {%- endif -%}\n    {%- if product.metafields.custom.duftthema != blank -%}\n    <div style=\"padding:0.8rem;background:#fff;border-radius:8px;\">\n      <span style=\"font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:#8b7355;font-weight:700;display:block;margin-bottom:0.4rem;\">Duftthema</span>\n      <span style=\"font-size:1rem;color:#333;font-weight:500;\">{{ product.metafields.custom.duftthema }}</span>\n    </div>\n    {%- endif -%}\n    {%- if product.metafields.custom.hautwirkung != blank -%}\n    <div style=\"padding:0.8rem;background:#fff;border-radius:8px;\">\n      <span style=\"font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:#8b7355;font-weight:700;display:block;margin-bottom:0.4rem;\">Hautwirkung</span>\n      <span style=\"font-size:1rem;color:#333;font-weight:500;\">{{ product.metafields.custom.hautwirkung }}</span>\n    </div>\n    {%- endif -%}\n  </div>\n</div>\n{%- endif -%}"
           }
-        },
-        "judge_me_reviews_preview_badge_xDGhCB": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "judge_me_reviews_preview_badge_xDGhCB",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
         "share",
-        "custom_liquid_AR88MA",
-        "judge_me_reviews_preview_badge_xDGhCB"
+        "custom_liquid_AR88MA"
       ],
       "settings": {
         "enable_sticky_info": true,
