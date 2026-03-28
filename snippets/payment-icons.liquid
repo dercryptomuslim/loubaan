@@ -1,0 +1,39 @@
+{% comment %}
+  Payment Method Icons — Shows available payment options
+{% endcomment %}
+
+<div class="loubaan-payment-icons">
+  <span class="loubaan-payment-icons__label">Sichere Bezahlung mit</span>
+  <div class="loubaan-payment-icons__list">
+    {%- for type in shop.enabled_payment_types -%}
+      {{ type | payment_type_svg_tag: class: 'loubaan-payment-icon' }}
+    {%- endfor -%}
+  </div>
+</div>
+
+<style>
+  .loubaan-payment-icons {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .loubaan-payment-icons__label {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(var(--color-foreground), 0.5);
+    margin-bottom: 0.5rem;
+  }
+
+  .loubaan-payment-icons__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .loubaan-payment-icon {
+    height: 24px;
+    width: auto;
+    opacity: 0.7;
+  }
+</style>

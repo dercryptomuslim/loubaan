@@ -501,6 +501,8 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
+                {%- comment -%} LOUBAAN: Benefit checkmarks before description {%- endcomment -%}
+                {%- render 'product-benefits', product: product -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
@@ -1047,6 +1049,9 @@
       {{ product | structured_data }}
     </script>
   </div>
+  
+  {%- comment -%} LOUBAAN: Sticky Add-to-Cart for mobile {%- endcomment -%}
+  {%- render 'sticky-add-to-cart', product: product -%}
 </product-info>
 
 {% schema %}

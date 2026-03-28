@@ -1,0 +1,120 @@
+{% comment %}
+  Sticky Add to Cart — Mobile only
+  Shows a fixed CTA bar at the bottom on scroll
+{% endcomment %}
+
+<div class="sticky-atc" id="StickyATC" hidden>
+  <div class="sticky-atc__inner">
+    <div class="sticky-atc__info">
+      <span class="sticky-atc__title">{{ product.title | truncate: 25 }}</span>
+      <span class="sticky-atc__price">{{ product.selected_or_first_available_variant.price | money }}</span>
+    </div>
+    <button
+      type="button"
+      class="sticky-atc__button button button--primary"
+      data-sticky-atc-trigger
+    >
+      In den Warenkorb
+    </button>
+  </div>
+</div>
+
+<style>
+  .sticky-atc {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgb(var(--color-background));
+    border-top: 1px solid rgba(var(--color-foreground), 0.1);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sticky-atc.is-visible {
+    transform: translateY(0);
+  }
+
+  .sticky-atc__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .sticky-atc__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+  }
+
+  .sticky-atc__title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticky-atc__price {
+    font-size: 0.8125rem;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  .sticky-atc__button {
+    flex-shrink: 0;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Only show on mobile */
+  @media (min-width: 750px) {
+    .sticky-atc {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const stickyATC = document.getElementById('StickyATC');
+    const productForm = document.querySelector('product-form');
+    const mainATC = document.querySelector('.product-form__submit');
+    
+    if (!stickyATC || !mainATC) return;
+    
+    // Remove hidden attribute
+    stickyATC.removeAttribute('hidden');
+    
+    // Show/hide based on scroll position
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyATC.classList.remove('is-visible');
+        } else {
+          stickyATC.classList.add('is-visible');
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0,
+      rootMargin: '0px'
+    });
+    
+    observer.observe(mainATC);
+    
+    // Click handler — trigger main form submit
+    const stickyButton = stickyATC.querySelector('[data-sticky-atc-trigger]');
+    if (stickyButton && mainATC) {
+      stickyButton.addEventListener('click', () => {
+        mainATC.click();
+      });
+    }
+  })();
+</script>

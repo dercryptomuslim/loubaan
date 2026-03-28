@@ -1,0 +1,89 @@
+{% comment %}
+  LOUBAAN Trust Badges — Under CTA Button
+  Shows shipping, guarantee, and quality badges
+{% endcomment %}
+
+<div class="loubaan-trust-badges">
+  <div class="loubaan-trust-badges__grid">
+    <div class="loubaan-trust-badges__item">
+      <svg class="loubaan-trust-badges__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+      <span>Kostenloser Versand DE</span>
+    </div>
+    <div class="loubaan-trust-badges__item">
+      <svg class="loubaan-trust-badges__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span>30 Tage Zufriedenheitsgarantie</span>
+    </div>
+    <div class="loubaan-trust-badges__item">
+      <svg class="loubaan-trust-badges__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/>
+      </svg>
+      <span>100% Naturrein</span>
+    </div>
+    <div class="loubaan-trust-badges__item">
+      <svg class="loubaan-trust-badges__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      <span>Sichere Bezahlung</span>
+    </div>
+  </div>
+  
+  <div class="loubaan-trust-badges__delivery">
+    <svg class="loubaan-trust-badges__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/>
+      <polyline points="12,6 12,12 16,14"/>
+    </svg>
+    <span>Lieferung in 2-4 Werktagen</span>
+  </div>
+</div>
+
+<style>
+  .loubaan-trust-badges {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.08);
+  }
+
+  .loubaan-trust-badges__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1rem;
+  }
+
+  .loubaan-trust-badges__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+
+  .loubaan-trust-badges__icon {
+    flex-shrink: 0;
+    color: rgba(var(--color-foreground), 0.5);
+  }
+
+  .loubaan-trust-badges__delivery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(var(--color-foreground), 0.03);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  @media (max-width: 749px) {
+    .loubaan-trust-badges__grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>

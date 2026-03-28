@@ -114,6 +114,10 @@
     </div>
   {%- endif -%}
 
+  {%- comment -%} LOUBAAN: Trust badges after buy buttons {%- endcomment -%}
+  {%- render 'product-trust-badges' -%}
+  {%- render 'payment-icons' -%}
+
   {%- if show_pickup_availability -%}
     {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
