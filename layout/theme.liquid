@@ -418,6 +418,24 @@
 
     <!-- Metricool Analytics -->
     <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"1b804c9232bbb26fd703b8ddbe9c5cac"})});</script>
-  </body>
+  
+  <!-- Google Ads Add To Cart Conversion Tracking -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fire conversion when Add to Cart button is clicked
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('button[name="add"], .product-form__cart-submit, [data-type="add-to-cart-btn"]');
+        if (btn) {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18020179737/9I2FCPrd1o0cEJm-2JBD',
+            'value': 1.0,
+            'currency': 'EUR'
+          });
+        }
+      });
+    });
+  </script>
+  <!-- End Google Ads Add To Cart -->
+</body>
 </html>
 
